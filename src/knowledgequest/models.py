@@ -13,8 +13,9 @@ class Address(models.Model):
     emailid = models.BigIntegerField(blank=True, null=True)
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'address'
+        app_label = 'knowledgequest'
 
 
 class Email(models.Model):
@@ -53,5 +54,6 @@ class Email(models.Model):
     user = models.TextField(blank=True, null=True)
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'email'
+        app_label = 'knowledgequest'

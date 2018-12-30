@@ -51,3 +51,6 @@ MANIFEST
 
 # Per-project virtualenvs
 .venv*/
+
+# data and libraries
+src/knowledgequest/static/*

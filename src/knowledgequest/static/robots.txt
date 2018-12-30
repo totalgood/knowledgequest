@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /static/
+# Disallow: /tmp/
+# Disallow: /data/
+# Disallow: /secret.html
+# Disallow: /secret/
