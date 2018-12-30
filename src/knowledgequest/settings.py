@@ -25,7 +25,7 @@ SECRET_KEY = '$w#ggr+4g)xyd&gy52p*78*d#k2)&s_ddyam)c*@ty#py1yg9g'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['totalgood.com', '0.0.0.0', 'totalgood.org', 'nlpia.org', 'storydecoder.com']
+ALLOWED_HOSTS = ['192.168.1.14', 'gpu.totalgood.com', 'totalgood.com', '0.0.0.0', 'totalgood.org', 'nlpia.org', 'storydecoder.com']
 
 
 # Application definition
@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_extensions',
 ]
 
 MIDDLEWARE = [
@@ -76,7 +77,7 @@ WSGI_APPLICATION = 'knowledgequest.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': os.path.join(BASE_DIR, '..', '..', '..', 'src', 'springboard', 'tannistha', 'enron_email.db'),
     }
 }
 
