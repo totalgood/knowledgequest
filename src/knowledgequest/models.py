@@ -39,7 +39,7 @@ class Email(models.Model):
     server = models.TextField(blank=True, null=True)
     name = models.TextField(blank=True, null=True)
 
-    participants = ManyToManyField(Address, through='Participant')
+    participants = models.ManyToManyField(Address, through='Participant')
     # denormalized raw text from e-mail headers
     from_field = models.TextField(db_column='from', blank=True, null=True)  # Field renamed because it was a Python reserved word.
     to = models.TextField(blank=True, null=True)
