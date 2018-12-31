@@ -83,9 +83,9 @@ DATABASES = {
     },
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'knowledgequest',
-        'USER': 'kq',
-        'PASSWORD': os.environ.get('POSTGRES_KQ_PW', 'password_314159'),
+        'NAME': 'enronemail',
+        'USER': 'enron',
+        'PASSWORD': os.environ.get('POSTGRES_ENRON_PW', 'password_314159'),
         'HOST': 'localhost',
         'PORT': '',
     }
