@@ -65,6 +65,18 @@ class Email(models.Model):
         app_label = 'knowledgequest'
 
 
+def email_address(models.Model):
+    email = models.ForeignKey(Email)
+    address = models.ForeignKey(Address)
+    kind = models.CharField(max_length=4)
+
+    class Meta:
+        managed = True
+        db_table = 'email_address'
+        app_label = 'knowledgequest'
+
+
+
 def create_from_sqlite(path='/home/hobs/src/springboard/tannistha/enron_email.db', tables='Email Address'.split()):
     with sqlite3.connect('/home/hobs/src/springboard/tannistha/enron_email.db') as con:
         cur = con.cursor()
@@ -89,5 +101,3 @@ def create_from_sqlite(path='/home/hobs/src/springboard/tannistha/enron_email.db
                 record = zip(djfields, row)
                 record = dict([(djfield, value) for (djfield, value, sqfield) in zip(djfields, row, fields) if hasattr(model, djfield)])
                 results = model.objects.get_or_create(**record)
-    
-
