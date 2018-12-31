@@ -9,7 +9,7 @@ from django.db import models
 
 
 class Address(models.Model):
-    address = models.TextField(blank=True, null=True)
+    address = models.TextField(blank=True, null=False, primary_key=True)
     emailid = models.BigIntegerField(blank=True, null=True)
 
     class Meta:
@@ -19,7 +19,7 @@ class Address(models.Model):
 
 
 class Email(models.Model):
-    i = models.BigIntegerField(blank=True, null=True)
+    i = models.BigIntegerField(blank=True, null=False, primary_key=True)
     j = models.BigIntegerField(blank=True, null=True)
     server = models.TextField(blank=True, null=True)
     name = models.TextField(blank=True, null=True)
