@@ -84,7 +84,10 @@ class Participant(models.Model):
         app_label = 'knowledgequest'
 
 
-def create_from_sqlite(path='/home/hobs/src/springboard/tannistha/enron_email.db', tables='Email Address'.split()):
+def create_from_sqlite(
+        path='/home/hobs/src/springboard/tannistha/enron_email.db',
+        tables='Email Address'.split(),
+        batch_size=999):
     with sqlite3.connect('/home/hobs/src/springboard/tannistha/enron_email.db') as con:
         cur = con.cursor()
         cur.execute('SELECT SQLITE_VERSION()')
@@ -101,10 +104,16 @@ def create_from_sqlite(path='/home/hobs/src/springboard/tannistha/enron_email.db
             cur2 = con.cursor()
             cur2.execute('SELECT * FROM {}'.format(table_name.lower()))
             rows = cur2.fetchall()
+
+            batch = []
             for i, row in tqdm(enumerate(rows)):
                 djfields = [(s.lower() + '_field' if s in PYTHON_KEYWORDS else s.lower()) for s in fields]
                 if not i:
                     print('djfields: ', djfields)
                 record = zip(djfields, row)
                 record = dict([(djfield, value) for (djfield, value, sqfield) in zip(djfields, row, fields) if hasattr(model, djfield)])
-                results = model.objects.get_or_create(**record)
+                obj = model(**record)
+                if not ((i + 1) % batch_size):
+                    results = model.objects.bulk_create(batch, batch_size=batch_size)
+                    batch = []
+                batch.append(obj)
