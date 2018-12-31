@@ -9,7 +9,14 @@ from django.db import models
 from tqdm import tqdm
 import sqlite3
 import keyword
-keywords = set(keyword.kwlist)
+
+PYTHON_KEYWORDS = set(keyword.kwlist)
+PARTICIPANT_CHOICES = (
+    ('FR', 'from'),
+    ('TO', 'to'),
+    ('CC', 'CC'),
+    ('BC', 'BCC'),
+)
 
 
 class Address(models.Model):
@@ -25,22 +32,28 @@ class Address(models.Model):
 
 class Email(models.Model):
     id = models.AutoField(primary_key=True)
+
+    # emailid: i.j.server.name
     i = models.BigIntegerField(blank=True, null=True)
     j = models.BigIntegerField(blank=True, null=True)
     server = models.TextField(blank=True, null=True)
     name = models.TextField(blank=True, null=True)
-    attendees = models.TextField(blank=True, null=True)
+
+    participants = ManyToManyField(Address, through='Participant')
+    # denormalized raw text from e-mail headers
+    from_field = models.TextField(db_column='from', blank=True, null=True)  # Field renamed because it was a Python reserved word.
+    to = models.TextField(blank=True, null=True)
     bcc = models.TextField(blank=True, null=True)
     cc = models.TextField(blank=True, null=True)
+    attendees = models.TextField(blank=True, null=True)
+
     content_transfer_encoding = models.TextField(blank=True, null=True)
     content_type = models.TextField(blank=True, null=True)
     date = models.TextField(blank=True, null=True)
-    from_field = models.TextField(db_column='from', blank=True, null=True)  # Field renamed because it was a Python reserved word.
     mime_version = models.TextField(blank=True, null=True)
     re = models.TextField(blank=True, null=True)
     subject = models.TextField(blank=True, null=True)
     time = models.TextField(blank=True, null=True)
-    to = models.TextField(blank=True, null=True)
     x_filename = models.TextField(blank=True, null=True)
     x_folder = models.TextField(blank=True, null=True)
     x_from = models.TextField(blank=True, null=True)
@@ -65,16 +78,10 @@ class Email(models.Model):
         app_label = 'knowledgequest'
 
 
-def email_address(models.Model):
-    email = models.ForeignKey(Email)
-    address = models.ForeignKey(Address)
-    kind = models.CharField(max_length=4)
-
-    class Meta:
-        managed = True
-        db_table = 'email_address'
-        app_label = 'knowledgequest'
-
+class Participant(models.Model):
+    email = models.ForeignKey(Email, on_delete=models.CASCADE)
+    address = models.ForeignKey(Address, on_delete=models.CASCADE)
+    kind = models.CharField(max_length=2, choices=PARTICIPANT_CHOICES)
 
 
 def create_from_sqlite(path='/home/hobs/src/springboard/tannistha/enron_email.db', tables='Email Address'.split()):
