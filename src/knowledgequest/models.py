@@ -26,8 +26,6 @@ class Address(models.Model):
     emailid = models.BigIntegerField(blank=True, null=True)
 
     class Meta:
-        managed = True
-        db_table = 'address'
         app_label = 'knowledgequest'
 
 
@@ -74,8 +72,6 @@ class Email(models.Model):
     user = models.TextField(blank=True, null=True)
 
     class Meta:
-        managed = True
-        db_table = 'email'
         app_label = 'knowledgequest'
 
 
@@ -83,6 +79,9 @@ class Participant(models.Model):
     email = models.ForeignKey(Email, on_delete=models.CASCADE)
     address = models.ForeignKey(Address, on_delete=models.CASCADE)
     kind = models.CharField(max_length=2, choices=PARTICIPANT_CHOICES)
+
+    class Meta:
+        app_label = 'knowledgequest'
 
 
 def create_from_sqlite(path='/home/hobs/src/springboard/tannistha/enron_email.db', tables='Email Address'.split()):
@@ -103,7 +102,7 @@ def create_from_sqlite(path='/home/hobs/src/springboard/tannistha/enron_email.db
             cur2.execute('SELECT * FROM {}'.format(table_name.lower()))
             rows = cur2.fetchall()
             for i, row in tqdm(enumerate(rows)):
-                djfields = [(s.lower() + '_field' if s in keywords else s.lower()) for s in fields]
+                djfields = [(s.lower() + '_field' if s in PYTHON_KEYWORDS else s.lower()) for s in fields]
                 if not i:
                     print('djfields: ', djfields)
                 record = zip(djfields, row)
