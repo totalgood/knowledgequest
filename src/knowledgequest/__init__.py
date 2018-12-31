@@ -9,3 +9,5 @@ except DistributionNotFound:
     __version__ = 'unknown'
 finally:
     del get_distribution, DistributionNotFound
+
+default_app_config = 'knowledgequest.apps.KnowledgeQuest'

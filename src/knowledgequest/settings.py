@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_extensions',
+
+    'knowledgequest',
 ]
 
 MIDDLEWARE = [
@@ -75,11 +77,11 @@ WSGI_APPLICATION = 'knowledgequest.wsgi.application'
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
+    'sqlite': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, '..', '..', '..', 'src', 'springboard', 'tannistha', 'enron_email.db'),
     },
-    'postgres': {
+    'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'knowledgequest',
         'USER': 'kq',
