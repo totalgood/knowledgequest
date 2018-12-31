@@ -20,7 +20,8 @@ PARTICIPANT_CHOICES = (
 
 
 class Address(models.Model):
-    id = models.AutoField(primary_key=True)
+    # id = models.AutoField(primary_key=True)
+
     address = models.TextField(blank=True, null=True)
     emailid = models.BigIntegerField(blank=True, null=True)
 
@@ -31,7 +32,7 @@ class Address(models.Model):
 
 
 class Email(models.Model):
-    id = models.AutoField(primary_key=True)
+    # id = models.AutoField(primary_key=True)
 
     # emailid: i.j.server.name
     i = models.BigIntegerField(blank=True, null=True)
@@ -39,7 +40,7 @@ class Email(models.Model):
     server = models.TextField(blank=True, null=True)
     name = models.TextField(blank=True, null=True)
 
-    participants = models.ManyToManyField(Address, through='Participant')
+    # participants = models.ManyToManyField(Address, through='Participant')
     # denormalized raw text from e-mail headers
     from_field = models.TextField(db_column='from', blank=True, null=True)  # Field renamed because it was a Python reserved word.
     to = models.TextField(blank=True, null=True)
