@@ -6,10 +6,14 @@ MODEL_CLASSES = [obj for name, obj in vars(knowledgequest.models).items() if not
 
 
 for ModelClass in MODEL_CLASSES:
+    print(ModelClass)
     modeladmin_class_name = '{}Admin'.format(ModelClass.__name__)
+    field_names = tuple([f.name for f in ModelClass._meta.get_fields()])
+    print(field_names)
     class CustomModelAdmin(admin.ModelAdmin):
-        list_display = tuple([f.name for f in ModelClass._meta.get_fields()])
+        list_display = field_names
     locals()[modeladmin_class_name] = CustomModelAdmin
+    print(locals()[modeladmin_class_name])
     ModelAdminClass = locals()[modeladmin_class_name]
     try:
         admin.site.register(ModelClass, ModelAdminClass)
