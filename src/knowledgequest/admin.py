@@ -1,7 +1,8 @@
 from django.contrib import admin
+from django.db.models.base import ModelBase
 import knowledgequest.models
 
-MODEL_CLASSES = [name for name, obj in vars(knowledgequest.models).items() if not name.startswith('_') and isinstance(obj, django.db.models.base.ModelBase)]
+MODEL_CLASSES = [name for name, obj in vars(knowledgequest.models).items() if not name.startswith('_') and isinstance(obj, ModelBase)]
 
 
 for ModelClass in MODEL_CLASSES:
