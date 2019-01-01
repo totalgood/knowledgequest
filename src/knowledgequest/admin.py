@@ -8,7 +8,7 @@ MODEL_CLASSES = [obj for name, obj in vars(knowledgequest.models).items() if not
 for ModelClass in MODEL_CLASSES:
     print(ModelClass)
     modeladmin_class_name = '{}Admin'.format(ModelClass.__name__)
-    field_names = tuple([f.name for f in ModelClass._meta.get_fields() if not type(f).lower().endswith('rel')])
+    field_names = tuple([f.name for f in ModelClass._meta.get_fields() if not type(f).__name__.lower().endswith('rel')])
     print(field_names)
     class CustomModelAdmin(admin.ModelAdmin):
         list_display = field_names
