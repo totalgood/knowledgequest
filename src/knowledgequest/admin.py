@@ -12,7 +12,7 @@ for ModelClass in MODEL_CLASSES:
     print(field_names)
     class CustomModelAdmin(admin.ModelAdmin):
         list_display = field_names
-    locals()[modeladmin_class_name] = CustomModelAdmin
+    globals()[modeladmin_class_name] = globals().pop('CustomModelAdmin')
     print(locals()[modeladmin_class_name])
     ModelAdminClass = locals()[modeladmin_class_name]
     try:
