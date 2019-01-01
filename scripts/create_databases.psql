@@ -1,0 +1,15 @@
+#!/usr/bin/env envsubst
+# useenvsubst to insert passwords
+CREATE DATABASE knowledgequest;
+CREATE USER kq WITH PASSWORD '${POSTGRES_KNOWLEDGEQUEST_PW}';
+ALTER ROLE kq SET client_encoding TO 'utf8';
+ALTER ROLE kq SET default_transaction_isolation TO 'read committed';
+ALTER ROLE kq SET timezone TO 'UTC';
+GRANT ALL PRIVILEGES ON DATABASE knowledgequest TO kq;
+
+CREATE DATABASE enronemail;
+CREATE USER enron WITH PASSWORD '${POSTGRES_ENRON_PW}';
+ALTER ROLE enron SET client_encoding TO 'utf8';
+ALTER ROLE enron SET timezone TO 'UTC';
+GRANT ALL PRIVILEGES ON DATABASE enronemail TO enron;
+ALTER ROLE enron SET default_transaction_isolation TO 'read committed';
