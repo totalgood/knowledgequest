@@ -15,7 +15,7 @@
 # numpy==1.13.3
 # scipy==1.0
 
-django
-django-extensions
+django>=1.8,<1.9
+django-extensions>=1.8,<1.9
 psycopg2
 -e .
