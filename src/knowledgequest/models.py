@@ -102,11 +102,13 @@ def create_from_sqlite(
             fields = [row[1] for row in rows]
             print('sqfields: ', fields)
             cur2 = con.cursor()
+            count = cur2.execute('select count(id) from {}'.format(table_name)).scalar()
+            cur2 = con.cursor()
             cur2.execute('SELECT * FROM {}'.format(table_name.lower()))
             rows = cur2.fetchall()
 
             batch = []
-            for i, row in tqdm(enumerate(rows)):
+            for i, row in tqdm(enumerate(rows), total=total):
                 djfields = [(s.lower() + '_field' if s in PYTHON_KEYWORDS else s.lower()) for s in fields]
                 if not i:
                     print('djfields: ', djfields)

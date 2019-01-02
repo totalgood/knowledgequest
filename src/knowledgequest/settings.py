@@ -40,6 +40,12 @@ INSTALLED_APPS = [
     'django_extensions',
 
     'knowledgequest',
+
+    # django_quiz
+    'quiz',
+    'multichoice',
+    'true_false',
+    'essay',
 ]
 
 MIDDLEWARE = [
