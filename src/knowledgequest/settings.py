@@ -41,11 +41,11 @@ INSTALLED_APPS = [
 
     'knowledgequest',
 
-    # django_quiz
-    'quiz',
-    'multichoice',
-    'true_false',
-    'essay',
+    # # django_quiz
+    # 'quiz',
+    # 'multichoice',
+    # 'true_false',
+    # 'essay',
 ]
 
 MIDDLEWARE = [
