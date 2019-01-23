@@ -41,47 +41,47 @@
   Q: "What is a deterministic model?"
   A: "A model or algorithm that has a closed form solution (can be solved by evaluating a sequence of mathematical expressions) without relying on random sampling or other stochastic (semi-random) algorithms. A stochastic model or algorithm should converge to the same solution to a given problem (for the same dataset) regardless of when or where it is trained."
 -
-Q: "What is a nondeterministic model?"
-A: "A model or algorithm that has no closed form solution and relies on stochastic or random sampling techniques to achieve a solution.$"
+  Q: "What is a nondeterministic model?"
+  A: "A model or algorithm that has no closed form solution and relies on stochastic or random sampling techniques to achieve a solution.$"
 -
-Q: "Give examples of deterministic and nondeterministic models."
-A: "Stochastic: KNN, K-Means, Stochastic Gradient Descent? Neural Networks with random dropout or random initialization of weights, Random Forest, Decision Tree. Deterministic: Linear Regression, PCA, SVD, Logistic Regression, Polynomial Regression, Stochastic Gradient Descent?"
+  Q: "Give examples of deterministic and nondeterministic models."
+  A: "Stochastic: KNN, K-Means, Stochastic Gradient Descent? Neural Networks with random dropout or random initialization of weights, Random Forest, Decision Tree. Deterministic: Linear Regression, PCA, SVD, Logistic Regression, Polynomial Regression, Stochastic Gradient Descent?"
 - 
-Q: "What are the characteristics you look for in a Data Science or Machine Learning model?"
-A: "Training time/complexity per data sample and feature (dimensionality). Inference time/complexity. Data efficiency. Number of parameters (degrees of freedom). Linearity/nonlinearity of the solution. Nonlinearity/complexity of the generated model. Classifier or regressor. Supervised or unsupervised. Stochastic or deterministic."
+  Q: "What are the characteristics you look for in a Data Science or Machine Learning model?"
+  A: "Training time/complexity per data sample and feature (dimensionality). Inference time/complexity. Data efficiency. Number of parameters (degrees of freedom). Linearity/nonlinearity of the solution. Nonlinearity/complexity of the generated model. Classifier or regressor. Supervised or unsupervised. Stochastic or deterministic."
 -
-Q: "What is a leverage plot and what should I look for?"
-A: "I don't know."
+  Q: "What is a leverage plot and what should I look for?"
+  A: "I don't know."
 -
-Q: "What is a residual plot and what should I look for?"
-A: "you want to look for any patterns or anomalies in the data. If the residuals are not normally and uniformly distrubuted, that's an opportunity for you to do additional cleaning, like removing outliers from your training set (but not your test set), filling in missing or incorrect values. If there's some clear curvature to the data then that's an opportunity to do some more feature engineering, like squaring or rooting or taking the log of all your features to create new features."
+  Q: "What is a residual plot and what should I look for?"
+  A: "you want to look for any patterns or anomalies in the data. If the residuals are not normally and uniformly distrubuted, that's an opportunity for you to do additional cleaning, like removing outliers from your training set (but not your test set), filling in missing or incorrect values. If there's some clear curvature to the data then that's an opportunity to do some more feature engineering, like squaring or rooting or taking the log of all your features to create new features."
 -
-Q: "What is a quantile plot and what should I look for?"
-A: "I'm not sure, but it seems to show the normal statistics (z-score) variation across various values of your target variable. It seems to plot the standard deviation and mean of your predictions in a rolling window across a sorted list of your target variable (like home price). So it reveals oportunities for additional feature engineering on the \"tails\" or edges of the plot, where you may have fewer examples and the model may need to include nonlinearities to deal with _edge cases_."
+  Q: "What is a quantile plot and what should I look for?"
+  A: "I'm not sure, but it seems to show the normal statistics (z-score) variation across various values of your target variable. It seems to plot the standard deviation and mean of your predictions in a rolling window across a sorted list of your target variable (like home price). So it reveals oportunities for additional feature engineering on the \"tails\" or edges of the plot, where you may have fewer examples and the model may need to include nonlinearities to deal with _edge cases_."
 -
-Q: "What is False Discovery Rate?"
-A: "It's a way to adjust your P-Value or T-test or Z-test or X^2 test to account for the number of experiments you've run, then number of times you've compared your P-value to your 5% threshold (typically). If you only do one experiment you can be 95% confident that your results are going to be repeatable by others, if your P-value is below 5%. But if you do 2 experiments, an only one passes the p-value threshold test, then you can only be 91% confident. So to keep your confidence high, you need to tighten your P-value threshold based on the number of tests you've performed on a given dataset."
+  Q: "What is False Discovery Rate?"
+  A: "It's a way to adjust your P-Value or T-test or Z-test or X^2 test to account for the number of experiments you've run, then number of times you've compared your P-value to your 5% threshold (typically). If you only do one experiment you can be 95% confident that your results are going to be repeatable by others, if your P-value is below 5%. But if you do 2 experiments, an only one passes the p-value threshold test, then you can only be 91% confident. So to keep your confidence high, you need to tighten your P-value threshold based on the number of tests you've performed on a given dataset."
 -
-Q: "What is the Kernel Trick?" 
-A: "It's when an ML algorithm like SVM transforms the feature vectors using a linear or nonlinear kernel function. For example there may be a  linear rotation and scaling matrix that unwinds and flattens a spiral classification dataset (there's an example in playground.tensorflow.org)."
+  Q: "What is the Kernel Trick?" 
+  A: "It's when an ML algorithm like SVM transforms the feature vectors using a linear or nonlinear kernel function. For example there may be a  linear rotation and scaling matrix that unwinds and flattens a spiral classification dataset (there's an example in playground.tensorflow.org)."
 -
-Q: "And what does it mean when someone says that an algorithm like SVM doesn't actually transform the data with the kernel?"
-A: "The kernel can be selected and optimized within the cost function calculation of a SVM or SVC, so it's applied to the loss rather than to the higher dimensional feature vectors to save computational effort (I think)."
+  Q: "And what does it mean when someone says that an algorithm like SVM doesn't actually transform the data with the kernel?"
+  A: "The kernel can be selected and optimized within the cost function calculation of a SVM or SVC, so it's applied to the loss rather than to the higher dimensional feature vectors to save computational effort (I think)."
 -
-Q: "Where can I find some good DS FAQs or anwers to common questions?"
-A: "In addition to this knowledgequest chatbot, you can try places like Springboard.com's community Kahn Academy and Kaggle.com. For deeper questions you should do some searches on scholar.google.com."
+  Q: "Where can I find some good DS FAQs or anwers to common questions?"
+  A: "In addition to this knowledgequest chatbot, you can try places like Springboard.com's community Kahn Academy and Kaggle.com. For deeper questions you should do some searches on scholar.google.com."
 -
-Q: "Recruiter contacted me about jobs in Houston for DS, Sr DS and Data Analytics. The data analytics position looks like the work I already do, but it's a bit advanced. What should I do?"
-A: "Apply for all of them, and read the job descriptions with an eye for the experiences you've had on Springboard and at work with each of the tools, languages, challenges in those job descriptions. Take notes on how you used the tool, or solved a problem at work, whenever you have an interesting problem or tool or learn something from the other DSs or developers."
+  Q: "Recruiter contacted me about jobs in Houston for DS, Sr DS and Data Analytics. The data analytics position looks like the work I already do, but it's a bit advanced. What should I do?"
+  A: "Apply for all of them, and read the job descriptions with an eye for the experiences you've had on Springboard and at work with each of the tools, languages, challenges in those job descriptions. Take notes on how you used the tool, or solved a problem at work, whenever you have an interesting problem or tool or learn something from the other DSs or developers."
 -
-Q: "The job descripotion mentions Spark, what should I do?"
-A: "Make sure you know what Spark is and think about all the places you've used it on Springboard or at work. What problems is it good at? Paralellizable machine learning pipelines that need to scale to more data than fits into RAM. The employer won't expect you to be able to code up a Spark pipeline during a code interview. But they will ask you to analyze a problem and describe how Spark might be helpful. "
+  Q: "The job descripotion mentions Spark, what should I do?"
+  A: "Make sure you know what Spark is and think about all the places you've used it on Springboard or at work. What problems is it good at? Paralellizable machine learning pipelines that need to scale to more data than fits into RAM. The employer won't expect you to be able to code up a Spark pipeline during a code interview. But they will ask you to analyze a problem and describe how Spark might be helpful. "
 -
   Q: "The job descripotion mentions ETL/ELT, what should I do?"
   A: "What does ETL stand for? \"Extract Transform Load.\" What does ELT mean? \"Extract Load Transform.\" Are they different in some way? Which acronym do you prefer? Which one makes more sense based on what your experience with ETL? Why? I prefer \"ELT\" even though it isn't as common as ETL. ELT is the order that I typically have to do things during the data cleaning and visualizaiton process. But in a large database, you may have to do a lot of the transformations incrementally on only portions of the DB or individual records, loading them one at a time and transforming them. So both acronyms make sense. Make sure you know what the hiring manager means by the terms Extract, Transform and Load terms and think about all the places you've encountered similar problems and tools at work or on Springboard. The hiring manager and team may ask about any experience you have with ETL and any insights you have about it, like how do you deal with missing values? How can you automate some of the most labor intensive parts of ETL? What are the challenges of ETL? What are some good ETL tools?"
 -
-Q: "Why does GridSearchCV take so long? What's wrong with my code?"
-A: "GridSearchCV trains 3 different models on the data, by default, because it uses KFolds cross-validation with K=3. In addition, your implementation of your `create_model()` function trains and validates a Keras neural net model every time you call it. So the GridSearchCV is retraining and revalidating your model 3 times, for a total of 6 trainings.  Never use the black-box functions that do the work of a data scientist, like hyperparameter optimization or cross-validation. Training and evaluating model performance usually requires a lot of computation and memory and time, and you want to minimize that time by inserting your DS intuition into the optimization process. If you do want to automate a grid search use `itertools.product()` to manually iterate through your hyperparameter combinations and evaluate your model performance."
+  Q: "Why does GridSearchCV take so long? What's wrong with my code?"
+  A: "GridSearchCV trains 3 different models on the data, by default, because it uses KFolds cross-validation with K=3. In addition, your implementation of your `create_model()` function trains and validates a Keras neural net model every time you call it. So the GridSearchCV is retraining and revalidating your model 3 times, for a total of 6 trainings.  Never use the black-box functions that do the work of a data scientist, like hyperparameter optimization or cross-validation. Training and evaluating model performance usually requires a lot of computation and memory and time, and you want to minimize that time by inserting your DS intuition into the optimization process. If you do want to automate a grid search use `itertools.product()` to manually iterate through your hyperparameter combinations and evaluate your model performance."
 -
-Q: "What's the right way to do hyperparameter optimization?"
-A: "Bayesean search rather than grid search, or human-intuition-driven manual search. If you don't have probability distributions in mind that you want to test, just assume that the prior is a continuous distribution across a range of values or a list of discrete values. Check out the `hyperopt` package on github and pypi. If you can't figure out how to implement bayesean search, then just do a random sort of your grid search product(): `sorted(product(param1_list, param2_list, ...))`. And if you really want to speed things up, Start with random search for the values that minimize the training and inference time for your models. For parameters that increase the training time significantly, only try them rarely, and only with one parameter at a time."
+  Q: "What's the right way to do hyperparameter optimization?"
+  A: "Bayesean search rather than grid search, or human-intuition-driven manual search. If you don't have probability distributions in mind that you want to test, just assume that the prior is a continuous distribution across a range of values or a list of discrete values. Check out the `hyperopt` package on github and pypi. If you can't figure out how to implement bayesean search, then just do a random sort of your grid search product(): `sorted(product(param1_list, param2_list, ...))`. And if you really want to speed things up, Start with random search for the values that minimize the training and inference time for your models. For parameters that increase the training time significantly, only try them rarely, and only with one parameter at a time."
