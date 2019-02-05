@@ -5,8 +5,8 @@
   q: "What's the benefits of using log loss vs accuracy? And usually where log loss is used? (do we just treat for example 5 % quantile as outliers?)"
   a: "There are numerous cost/loss functions you can use, or you can make up your own. Almost all of them will give you the same answer to your optimization/fitting problem. But some will be better or worse at telling you how good your model is at predicting the things you care about. Sometimes you care about the standard error, sometimes you care about the log of the computer standard error, sometimes accuracy is more important to the success of your project, sometimes precision, sometimes recall, sometimes F1 or AUC. What do you think the agile approach would be to answering your question? Is there a way to use my answer to 1 to come up with an approach to question 2? Is there a way to ask your \"boss\" or customer which one matters most to them? What is the measure of units that most businesses measure success or lose (cost ) with? What are the best \"units\" for business decisions?"
 -
-  q: 'How to detect outliers in a data set and how to handle them?'
-  a: 'Like other pipeline design challenges, I do outlier filtering in an agile way. Can you guess what that is? Spoiler alert... Outliers can be discarded automatically during hyperparameter tuning, or even within the model itself (random forest or xg-boost) '
+  q: "How to detect outliers in a data set and how to handle them?"
+  a: "Like other pipeline design challenges, I do outlier filtering in an agile way. Can you guess what that is? Spoiler alert... Outliers can be discarded automatically during hyperparameter tuning, or even within the model itself (random forest or xg-boost)"
 -
   q: "Can I use .corr() or pierson correlation on a binary or categorical variable?"
   a: "Correlation is a mathematical statistic. It can be calculated on any numerical value where that numerical value contains information about the real world (integer ordinal, binary, float, or bool, but not a categorical variable until it has been one-hot encoded). What do we do with all categorical features to create numerical values that work in a machine learning pipeline? Hint: correlation is equivalent to linear regression."
@@ -85,3 +85,107 @@
 -
   Q: "What's the right way to do hyperparameter optimization?"
   A: "Bayesean search rather than grid search, or human-intuition-driven manual search. If you don't have probability distributions in mind that you want to test, just assume that the prior is a continuous distribution across a range of values or a list of discrete values. Check out the `hyperopt` package on github and pypi. If you can't figure out how to implement bayesean search, then just do a random sort of your grid search product(): `sorted(product(param1_list, param2_list, ...))`. And if you really want to speed things up, Start with random search for the values that minimize the training and inference time for your models. For parameters that increase the training time significantly, only try them rarely, and only with one parameter at a time."
+-
+  Q: "What are replicants in the context of bootstrapping?"
+  A: "I don't know but I imagine they are the duplicates that occur due to random sampling with replacement."
+-
+  Q: "What kinds of problems are there in the inferential statistic exercises?"
+  A: "Problems that indicate your understanding of Z-score, T-tests and other statistical measures of how likely it is that a statistic, like mean or sum, is significantly different in one group (the treatment vs the control)."
+-
+  Q: "What is the difference between Data Wrangling, Data Storytelling, and EDA (Exploratory Data Analysis)?"
+  A: "What does data wrangling mean to you? Loading, cleaning, and organizing your data into a form suitable for visualization and modeling. Generally that means consolidating your data into a single table. What does data story telling mean to you? It's building a story about the real world that the data is telling you. You need to have done EDA and data wrangnling first so you have plots and statistics about your data that can help you come up with those ELI5 descriptions of what's going on in the real world to cause that data to appear in your database. What are people clicking on a particular button? What are men generally taller and denser, on average, than women? Those are examples of questions that data story telling might answer. What does EDA mean to you? Exploratory Data Analysis is the plotting and statistics calculations you do on your data to get a better understanding of what's going on in the real world to create those data entries. You want to look for patterns and correlations between features to see if they make sense or contradict your intuitions. These patterns will suggest models and statistical tests that you can use to build a Data Science pipeline and a data story."
+-
+  Q: "Are these plots useful or should I remove them?"
+  A: "What are you trying to convey to the reader? What do you want them to get out of them? What do they tell you? Is that piece of information obvious at first glance? You reader will likely only look at the plot for a few seconds. In a bar plot, the bars next to each other should always have a relationship to each other that is interesting, since those will be compared to each other. If you have more than 10 bars on a single plot, they will likely hide the important pairs that you want your reader to look at, so cluster or group them more agressively. And never ever use raw counts on a bar plot or histogram, always us percent or normalized count so that your plot shows probability and allows your reader to compare values from different histograms with different total counts (like the cohorts in your income survey data)."
+- 
+  Q: "The conclusion to my capstone starts with "The above plots show that feature importance are driving model performance." What do you think?"
+  A: "I'm not sure I understand what you are trying to say with that. Are you saying that the features with high feature importances values from the random forest model statistics are important to the model's decision tree branches? That's a circular statement that doesn't say anything new. Talk about the real world affects of your features on your target, income level. Talk about the fact that relationship status questions can have both a postiive and a negative impact on income. "married with wife" relationship status is highly positively correlated with income, whereas "married with children" relationship status is highly negatively correlated with income. And talk about how education level is not highly correlated with income, above a high school diploma. Those are interesting, meaningful, specific conclusions you can share with your reader."
+- 
+  Q: "Which penalty function should I use for logistic regression, l1 or l2. My dataset has the heights and weights of hospital patients and the target variable is gender."
+  A: "What do you think is the right way to chose between two different possible settings or values for a hyperparameter, like the regularization penalty metric for logistic regression? Try it, right? Whichever one improves your performance on the test set is the **right** one, right? And for this particular model your degrees of freedom is only 2 (`len(np.array(model.coef_).flatten())`) and the number of examples is presumably much larger than 2, probably 100s or even 1000s. So theres almost no change your 2 DOF logistic regression can overfit. So it doesn't matter what C value (inverse regularization strength) you chose and which penalty metric you choose."
+-
+  Q: "What is the difference between l1 and l2 penalty or distance? How does each one affect the regularization penalty in a logistic regression."
+  A: "l2 penalty is crows flies distance. L1 penalty is manhattan distance. The 1 and 2 come from the exponent on each feature/dimension value that is applied before summing up the individual dimension distances to compute the distance. So a manhattan (l1) distance metric is usually better because a drop in an individual dimension coefficent in your model will have a greater overall impact on the penalty than for l2. Consider the diagonal of a 1x1x1 cube for a 3 DOF linear regression model with slopes of 1, 1, and 1, vs 1, 0, and 0. The first model would have an l2 penalty of sqrt(3)=1.7 and the second, much simpler model, would have an l2 penalty of 1. That's a drop of 42%. For manhattan (l1) distance the penalty would drop from 3 to 1, gives a drop of 66%."
+-
+  Q: Which penalty function should I use for logistic regression, l1 or l2. My dataset has the heights and weights of hospital patients and the target variable is gender.
+  A: What do you think is the right way to chose between two different possible settings or values for a hyperparameter, like the regularization penalty metric for logistic regression? Try it, right? Whichever one improves your performance on the test set is the **right** one, right? And for this particular model your degrees of freedom is only 2 (`len(np.array(model.coef_).flatten())`) and the number of examples is presumably much larger than 2, probably 100s or even 1000s. So theres almost no change your 2 DOF logistic regression can overfit. So it doesn't matter what C value (inverse regularization strength) you chose and which penalty metric you choose.
+-
+  Q: What is the difference between l1 and l2 penalty or distance? How does each one affect the regularization penalty in a logistic regression.
+  A: How do you chose any hyperparameter? What does l1 penalty mean? What does l2 penalty/distance mean?
+-
+  Q (teacher): If you're given a data set with 10 columns 1M rows of numbers and the 10th column is the target you are trying to predict. What do you do to get started?
+  A (student): df.describe(), df.info(), assume any low cardinality integers are categorical (get_dummies). Scatter plot of each feature vs the target. Linear regression, if no overfitting, random forest, if overfitting add regularization or feature reduction.
+-
+  Q: How does one decide what to do next with a 2-layer 128-cell LSTM network that is getting 95% training set accuracy and 91% test set accuracy for sentiment analysis? Does it have high variance or high bias?
+  A: I don't like using those terms what's a better way to describe how your model is doing? (Overfitting vs underfitting)  You model is overfitting so you need to increase the random dropout and reduce the number of layers or the number of neurons in each layer. In general the only way to decide what to do next is to try it. And record your answers in a hyper-parameter tuning log or table. And record each new model as a separate python file or notebook so your can reproduce the results of previous models. Especially when it takes a long time to train.
+- 
+  Q: should I get more data to reduce overfitting?
+  A: getting more data is usually the harder thing to do so you should do it last. Instead try to make your model smarter by increasing regularization and reducing the number of features or doing feature reduction like PCA.
+- 
+  Q: Is scaling and normalization useful for a Linear Regression? What about SVM?
+  A: No, in general vastly different scales do not affect the performance of most ML models like linear regression. However a Support Vector Classifier and Support Vector Regressor do tend to benefit from normalized scaling of the data (for example `sklearn.preprocessing.MinMaxScaler()`). This is because an SVM optimizes the margin between target values/class, and normalizing your feature values ensures that the margin is balanced across the features. For example, the margin/separation between the class boundary for a feature ranging over +/- 100 would be 100x further away from the "true" class boundary than for a feature ranging between +/- 1, if feature normalization or scaling were not used.
+-
+  Q: My tensorflow+CUDA installation is not recognizing my GPU when I train a model. What should I do?
+  A: What is your OS, CUDA, python, and tensorflow version. Mine works for CUDA 9.0 on Ubuntu 18.04 with python 3.6 and tensorflow 2.0. In addition, it may help to set the global environment variable `export CUDA_AVAILABLEGPUS="0"` if you have 1 GPU or `export CUDA_AVAILABLEGPUS="0,1"` if you have 2 GPUs.
+-
+  Q: Is the movie review dataset a good one?
+  A: Yes.
+-
+  Q: "SQL is not applicable to what I want to do. Do I need to do these exercises?"
+  A: "I don't use SQL much in my everyday work as a data scientist and machine learning engineer. However as a backend software engineer it will be a critical skill. And I've had many Data Science interviews where I asked or was asked SQL questions. Even people who only want to use Tableau to explore and visualize data often have to use SQL. One way around this is to use an ORM, like `Django` or `sqlalchemy`."
+-
+  Q: "Is SQL required for DS work?"
+  A: "No, but it's required to get through many interviews."
+- 
+  Q: "The inferential statistics exercises are hard."
+  A: "Inferential statistics is all about using classical Data Science statistical approaches to create basic models to predict a target varialbe. And example of an inferential statistics model would be if you tried to predict gender based on only the height and weight of people. You could take the mean height and weight of the women in your training set, and likewise for the men, and then assume that whichever centroid your test examples are closest to can be used to assign them a predicted gender label. Obviously this model has flaws and a machine learning approach would involve creating additional features, like perhaps dividing the height by the weight and then finding the optimal threshold on this estimate of BMI (body mass index) to predict the gender (whichever threshold gives you the highest accuracy, precision, or recall, whatever you care about most). "
+- 
+  Q: "How can a testing engineer position interview (asked about DS applied to test engineering) be parlayed into a Data Science position."
+  A: "Once you have the job as a test engineer, you can show your colleagues how to predicting and diagnose issues with hardware or software (whatever you're testing) using machine learning."
+- 
+  Q: "I'm in sales and marketing. How can I apply AI to my work?"
+  A: "You can use ML (a form of AI) to predict customer behavior, like favorable or unfavorable response to a marketing campaign or the sales generated by a particular promotion. You could even build a chatbot or a generative model to perform that advertisement for you. Google is a leader in AI research and their focus is on advertising and marketing, mostly through the AI that is part of their search engine and ad-words program."
+- 
+  Q: "What are some ways to learn about marketing, and marketing techniques that apply ML."
+  A: "There are numerous blog posts and academic papers on applying ML to marketing and advertisement. Search for "advertising marketing machine learning" on DuckDuckGo.com, toolbox.google.com/datasetsearch, kaggle.com/datasets,  and scholar.google.com."
+-
+  Q (teacher): "What is a good way to plot data that has widely varying scale like the frequency or document frequency for the 50 most frequent words in my documents?"
+  A (student): "I don't know, maybe zoom in on one part of the data? Oh I know, how about a log scale plot so that all the values have equal visibility."
+- 
+  Q: "What values for min_df and max_df I should you use for the `sklearn` `TfidfVectorizer()` ?"
+  A: "What does df mean? What does min_df do? What does max_df do? How does it help a model? What is the purpose. How does df vary across the words in your documents? How many documents would be affected if you increased the min_df by one? How much would your vocabulary size be reduced? How much would this help your model? What if you decreased max_df by 1 or by 1% (.01), how many documents would be affected? How much would this help?"
+- 
+  Q: "Is it a good data science project to build a smart search tool for GEO and Environmental dataset like oil pipeline locations, whale and marine species migration data, farming data, etc."
+  A: "No. Just gathering up the metadata about those datasets would be very difficult and time consuming. The best project ideas are not ideas that I generate on my own, they are ideas that are suggested by a dataset a table with numbers in it."
+- 
+  Q: "What is a good dataset to practice joining datasets or tables?"
+  A: "The conventional approach is to find an existing data science problems like predicting home prices and predicting crime in Chicago and then join them to create additional features for both problems. The crime data joined on the latitude and longitude or street address in both tables could be useful as a feature in predicting home prices. And the home prices and number of stories and other features of homes might be useful in predicting crime rates if joined with the crime table on the street address or geolocation of the crime reports."
+- 
+  Q: "What about joining the Kaggle competition on predicting the dish name based on the ingredient lists in recipes, with another table from grocery stores about their stock of those ingredients. Is that a good Data Science project?"
+  A: "Is it going to be easy to obtain a reqpresentative sampling of grocery store stock and prices from across the united states? It's not. So it is better to let the datasets suggest a project rather than letting you mind dream up hypothetical datasets that might be hard to obtain. For example can you think of a way to use the FDA.gov website which has CSV files of food items and their nutritional content? What if you joined it on the recipe dataset from Kaggle? What would your target variable be? (any of the nuttitional components available on the FDA databse, like sugar or fat or calories or vitamin C) Would it be supervised or unsupervised? (unsupervised) Use toolbox.google.com/datasetsearch and kaggle.com/datasets to help you come up with a dataset (or pair of datasets) and a problem statement."
+-
+  Q: "For hyperparameter tuning, feature selection in particular, if I add a new feature to my model, how do I know if it helped or hurt. "
+  A: "If you see an improvement on your training set accuracy but your test set accuracy is degraded then the feature likely doesn't contain useful information for the model, so it can be skipped."
+-
+  Q: "For hyperparameter tuning, feature selection in particular, should I train a model based on a single feature at a time before training on combinations? "
+  A: "It will be more efficient to simply accumulate more and more features by adding features one at a time and not training on them each independently. If you don't see an improvement in the training set or the test set accuracy, then you can likely skip it. Or you can keep it in and wait until your test set accuracy is degraded before your ignore features."
+- 
+  Q: "For hyperparameter tuning, should I record the model coefficients using something like `model.save()` with every new combination of features or hyperparameters that I train it on?"
+  A: "Not if the model is relatively fast to train/fit.  Because you've recorded your hyperparameters in a hyperparameter tuning log or table you can always recreate any of the models that worked well by refitting it using those hyperparameters and the training set you used the first time.  If the model is complicated with a lot of coefficients and takes a long time to train you can save a "checkpoint" whenever you see an improvement in your test set accuracy, so you don't have to try to recreate it later."
+-
+  Q: "What are the characteristics you look for in a Data Science or Machine Learning model?"
+  A: "Training time/complexity per data sample and feature (dimensionality). Inference time/complexity. Data efficiency. Number of parameters (degrees of freedom). Linearity/nonlinearity of the solution. Nonlinearity/complexity of the generated model. Classifier or regressor. Supervised or unsupervised. Stochastic or deterministic."
+  R: "Springboard 2019 DSC curriculum and Phoenix"
+-
+  Q: "What makes a good dataset?"
+  A: "A large number of labeled samples is important to make the problem straightforward. high dimensionality can make the problem harder. Examine the relationship between possible target variables and the other features to make sure the target is something that would be interesting to "predict" if you only had access to the features."
+  R: "Sprinboard 2019 student Ali"
+-
+  Q: "Should I look for something I'm interested in, or something that would be a good project?"
+  A: "Both. Start with the dataset, like at the google dataset search tool. Look for interesting datasets where the data is arranged in tables that you can easily import an manipulate (CSVs with numerical values). Think about the dimensionality of the features and the number of samples/examples/rows and whether you think the problem will be solvable. Examine the relationship between possible target variables and the other features to make sure the target is something that would be interesting to "predict" if you only had access to the features.
+  R: Sprinboard 2019 DSC student Ali"
+-
+  Q: "How can I view the sparse matrix output of a `vectorizer.transform()` method, like sklearn.CountVectorizer().transform()"
+  A: "`doc_vectors = pd.DataFrame(sparse_matrix, columns=vectorizer.get_feature_names())`"
+  R: "Springboard 2019 student Karolina"
+-
