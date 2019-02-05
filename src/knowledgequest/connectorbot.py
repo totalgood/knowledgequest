@@ -21,7 +21,7 @@ REDDIT_BOT_SECRET = os.environ['REDDIT_BOT_SECRET']
 REDDIT_BOT_UN = os.environ['REDDIT_BOT_UN']
 REDDIT_BOT_PW = os.environ['REDDIT_BOT_PW']
 
-MAX_COMMENTS = 5
+MAX_COMMENTS = 50
 
 if __name__ == '__main__':
     bot = praw.Reddit(user_agent=f'{REDDIT_BOT_NAME} v0.0.1',
@@ -32,11 +32,13 @@ if __name__ == '__main__':
     for subname in SUBREDDIT_NAMES:
         try:
             subreddit = bot.subreddit(subname)
+            print(f'Subscribed to {subname}')
             comments = subreddit.stream.comments()
         except:
             print(f'Unable to subscribe to {subname}')
         records = []
         for i, c in enumerate(comments):
+            print(f'Retrieved {i}:{c.author_fullname}: {c.body[:60]}')
             records.append(dict((k,v) for (k, v) in c.__dict__.items() if 
                     not k.startswith('_') and 
                     isinstance(v, (str, int, bool, float, list, tuple, dict))))
