@@ -22,7 +22,7 @@ REDDIT_BOT_SECRET = os.environ['REDDIT_BOT_SECRET']
 REDDIT_BOT_UN = os.environ['REDDIT_BOT_UN']
 REDDIT_BOT_PW = os.environ['REDDIT_BOT_PW']
 
-MAX_COMMENTS = 200
+MAX_COMMENTS = 99
 
 if __name__ == '__main__':
     bot = praw.Reddit(user_agent=f'{REDDIT_BOT_NAME} v0.0.1',
@@ -49,7 +49,7 @@ if __name__ == '__main__':
                     break
             with open(f'connectorbot_{subname}.json', 'at') as fout:
                 fout.write(json.dumps(records, indent=2))
-        time.sleep(30*60)
+        time.sleep(10*60)
 
 """
 for comment in comments:
