@@ -1,6 +1,7 @@
 import os
 import json
 import praw
+import time
 
 for k, v in os.environ.items():
     if k.startswith('REDDIT_BOT_'):
@@ -21,7 +22,7 @@ REDDIT_BOT_SECRET = os.environ['REDDIT_BOT_SECRET']
 REDDIT_BOT_UN = os.environ['REDDIT_BOT_UN']
 REDDIT_BOT_PW = os.environ['REDDIT_BOT_PW']
 
-MAX_COMMENTS = 100
+MAX_COMMENTS = 200
 
 if __name__ == '__main__':
     bot = praw.Reddit(user_agent=f'{REDDIT_BOT_NAME} v0.0.1',
@@ -29,24 +30,26 @@ if __name__ == '__main__':
                       client_secret=f'{REDDIT_BOT_SECRET}',
                       user_name=f'{REDDIT_BOT_UN}',
                       password=f'{REDDIT_BOT_PW}')
-    for subname in SUBREDDIT_NAMES:
-        try:
-            subreddit = bot.subreddit(subname)
-            print(f'Subscribed to {subname}')
-            comments = subreddit.stream.comments()
-        except:
-            print(f'Unable to subscribe to {subname}')
-        records = []
-        for i, c in enumerate(comments):
-            c.author_fullname = getattr(c, 'author_fullname', '') 
-            print(f'Retrieved {i}:{c.author_fullname}: {c.body[:60]}')
-            records.append(dict((k,v) for (k, v) in c.__dict__.items() if 
-                    not k.startswith('_') and 
-                    isinstance(v, (str, int, bool, float, list, tuple, dict))))
-            if len(records) >= MAX_COMMENTS:
-                break
-        with open(f'connectorbot_{subname}.json', 'at') as fout:
-            fout.write(json.dumps(records, indent=2))
+    while True:
+        for subname in SUBREDDIT_NAMES:
+            try:
+                subreddit = bot.subreddit(subname)
+                print(f'Subscribed to {subname}')
+                comments = subreddit.stream.comments()
+            except:
+                print(f'Unable to subscribe to {subname}')
+            records = []
+            for i, c in enumerate(comments):
+                c.author_fullname = getattr(c, 'author_fullname', '') 
+                print(f'Retrieved {i}:{c.author_fullname}: {c.body[:60]}')
+                records.append(dict((k,v) for (k, v) in c.__dict__.items() if 
+                        not k.startswith('_') and 
+                        isinstance(v, (str, int, bool, float, list, tuple, dict))))
+                if len(records) >= MAX_COMMENTS:
+                    break
+            with open(f'connectorbot_{subname}.json', 'at') as fout:
+                fout.write(json.dumps(records, indent=2))
+        time.sleep(30*60)
 
 """
 for comment in comments:
