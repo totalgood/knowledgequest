@@ -52,5 +52,10 @@ MANIFEST
 # Per-project virtualenvs
 .venv*/
 
+# Per-project secrets and passwords
+.bash_env
+secret*
+credential*
+
 # data and libraries
 src/knowledgequest/static/*

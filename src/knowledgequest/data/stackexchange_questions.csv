@@ -1,0 +1,589 @@
+,accepted_answer,accepted_answer_id,answer_count,body,comments,id,is_answered,link,owner_id,question_id,revisions,score,tags,timeline,title,url,view_count
+0,,,1,"<p>I have already set my magento2 to production mode before. I would like to know if I should run <code>php bin/magento deploy:mode:set production</code> every time if I added new code to my magento2?</p>
+",,54169392,False,https://stackoverflow.com/questions/54169392/do-i-need-to-run-the-set-production-mode-command-every-time-i-updated-my-magento,4711049,54169392,"({'comment': 'Improved question formatting.', 'is_rollback': False, 'revision_guid': '0FCF49B3-AEE5-4875-881C-A399F16417C9', 'revision_number': 2, 'set_community_wiki': False, 'post_id': 54169392, 'creation_date': datetime.datetime(2019, 1, 13, 13, 56, 25), 'revision_type': 'single_user', 'user': <User 'Taslim' (5670752) @ 113f5a048>}, {'is_rollback': False, 'revision_guid': '9571DEE3-5C66-4397-8EE7-BB97B36C3530', 'revision_number': 1, 'title': 'Do i need to run the set production mode command every time i updated my magento2 code?', 'set_community_wiki': False, 'post_id': 54169392, 'tags': ['magento', 'magento2'], 'creation_date': datetime.datetime(2019, 1, 13, 5, 36, 57), 'revision_type': 'single_user', 'user': <User 'Kevin Lee' (4711049) @ 1147c45c0>})",0,"('magento', 'magento2')","({'post_id': 54173661, 'timeline_type': 'answer', 'creation_date': datetime.datetime(2019, 1, 13, 14, 7, 41)}, {'post_id': 54169392, 'timeline_type': 'revision', 'creation_date': datetime.datetime(2019, 1, 13, 13, 56, 25)}, {'timeline_type': 'question', 'creation_date': datetime.datetime(2019, 1, 13, 5, 36, 57)})",Do i need to run the set production mode command every time i updated my magento2 code?,http://stackoverflow/questions/54169392,8
+1,,,0,"<p>I have a page <a href=""https://blockchainit.cloud"" rel=""nofollow noreferrer"">https://blockchainit.cloud</a> that has a form that hits an API. The API returns the user to a different page, and also responds with a <code>json</code>. On the return page, I would like to set a react state with the <code>json object</code>.</p>
+
+<p>The above link is working so please try it out for yourself (it is all in html for testing simplicity). In the production version <a href=""https://blockchainit.cloud/success"" rel=""nofollow noreferrer"">https://blockchainit.cloud/success</a> would be a react route. </p>
+
+<p>Here is the html code for the form and server, it is very simple:</p>
+
+<pre><code>&lt;html lang=""en""&gt;
+  &lt;head&gt;
+    &lt;meta charset=""UTF-8"" /&gt;
+    &lt;meta name=""viewport"" content=""width=device-width, initial-scale=1.0"" /&gt;
+    &lt;meta http-equiv=""X-UA-Compatible"" content=""ie=edge"" /&gt;
+    &lt;title&gt;PayPal Node App&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Blockchainit&lt;/h1&gt;
+    &lt;h2&gt;Buy for 3.33&lt;/h2&gt;
+    &lt;form action=""https://cloudhookstester.net/testpay"" method=""post""&gt;
+      &lt;input type=""submit"" value=""Buy"" /&gt;
+    &lt;/form&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+
+app.post(""/success"", (req, res) =&gt; {
+  res.json(""PAY-xxxxx"");
+});
+</code></pre>
+
+<p>I generally know how to setState, but just am unsure of how I ""grab"" this json object. Any guidance would be appreciated :) Thanks!</p>
+",,54173660,False,https://stackoverflow.com/questions/54173660/how-to-setstate-with-a-returned-json-object-react,6815505,54173660,"({'is_rollback': False, 'revision_guid': '38FC0B12-4B48-40CD-BAED-011D138356A5', 'revision_number': 1, 'title': 'How to setState with a returned json object (react)', 'set_community_wiki': False, 'post_id': 54173660, 'tags': ['json', 'reactjs', 'state'], 'creation_date': datetime.datetime(2019, 1, 13, 14, 7, 37), 'revision_type': 'single_user', 'user': <User 'Hanley Soilsmith' (6815505) @ 113938518>},)",0,"('json', 'reactjs', 'state')","({'timeline_type': 'question', 'creation_date': datetime.datetime(2019, 1, 13, 14, 7, 37)},)",How to setState with a returned json object (react),http://stackoverflow/questions/54173660,1
+2,54173457.0,54173457.0,1,"<p><div class=""snippet"" data-lang=""js"" data-hide=""false"" data-console=""true"" data-babel=""false"">
+<div class=""snippet-code"">
+<pre class=""snippet-code-css lang-css prettyprint-override""><code>.header {
+  position: relative;
+  top: 1px;
+  left: 589px;
+  padding-top: 20px;
+  padding-bottom: 10px;
+}
+
+.subtitle {
+  position: relative;
+  right: 26px;
+  letter-spacing: 2px;
+  padding-top: 5px;
+  font-size: 21px;
+  font-family: arial;
+  font-weight: bold;
+  color: #6b6b6b;
+  text-shadow: 0px 0 #6b6b6b, 0 0px #6b6b6b, 2px 0 #6b6b6b, 0 0px #6b6b6b;
+}
+
+
+/* Menu*/
+nav {
+  position: relative;
+  left: 210px;
+  height: 70px;
+  border-radius: 60px;
+  background: #dc67e9;
+  width: 1000px;
+}
+
+ul {
+  margin-left: 17%;
+}
+
+ul li {
+  display: inline-block;
+  line-height: 80px
+}
+
+ul li a {
+  text-decoration: none;
+  font-family: 'Coiny', cursive;
+  font-size: 19px;
+  color: white;
+  padding: 0 20px
+}
+
+ul li a:hover {
+  color: black;
+}
+
+.bannerimage {
+  margin-left: 5px;
+  margin-top: 4px;
+}
+
+.banner {
+  margin-top: 4px;
+  background-color: #dc67e9;
+  width: 100%;
+  height: 589px;
+}
+
+.bannerpromo1 {
+  position: relative;
+  bottom: 500px;
+  margin-left: 60px;
+  font-family: 'Lobster', cursive;
+  color: black;
+  text-shadow: -3px 0 white, 0 3px white, 3px 0 white, 0 -3px white;
+  font-size: 70px;
+}
+
+.bannerpromo2 {
+  position: relative;
+  bottom: 470px;
+  margin-left: -780px;
+  font-family: 'Lobster', cursive;
+  color: #585656;
+  text-shadow: -3px 0 white, 0 3px white, 3px 0 white, 0 -3px white;
+  font-size: 50px;
+  text-align: center;
+}
+
+.subscribebanner {
+  width: 250px;
+  height: 50px;
+  background-color: #dc67e9;
+  position: relative;
+  left: 190px;
+  bottom: 430px;
+  border: 4px solid white;
+}
+
+.subscribebannertext {
+  margin-left: 30px;
+  margin-top: 15px;
+  font-family: 'Coiny', cursive;
+  word-spacing: 2px;
+  font-size: 30px;
+}
+
+.howitworks {
+  font-size:60px;
+  font-family: 'Lobster', cursive;
+  text-shadow: #a8a8a8 4px 6px;
+  margin-top: 50px;
+  position: relative;
+  left: 555px;
+}
+
+.subheaderbox1{
+  position: relative;
+  margin-top: 20px;
+  right: 315px;
+  border-radius: 25px;
+  background: #adcae1;
+  width: 200px;
+  height: 100px;
+}
+.subheaderbox2{
+  position: relative;
+  bottom: 100px;
+  left: 65px;
+  border-radius: 25px;
+  background: #adcae1;
+  width: 200px;
+  height: 100px;
+}
+.subheaderbox3{
+  position: relative;
+  bottom: 200px;
+  left: 450px;
+  border-radius: 25px;
+  background: #adcae1;
+  width: 200px;
+  height: 100px;
+}
+.subheaders {
+  position: relative;
+  bottom: 275px;
+  font-size: 40px;
+  margin-left: -265px;
+  word-spacing: 250px;
+  letter-spacing: 3px;
+  color: white;
+}
+
+.box1{
+  position: relative;
+  right: 370px;
+  bottom: 225px;
+  border-radius: 7px;
+  border: 5px dotted #dc67e9;
+}
+.box2{
+  position: relative;
+  right: -15px;
+  bottom: 500px;
+  border-radius: 7px;
+  border: 5px dotted #dc67e9;
+}
+.box3{
+  position: relative;
+  right: -405px;
+  bottom: 780px;
+  border-radius: 7px;
+  border: 5px dotted #dc67e9;
+}
+
+.step1{
+  position: relative;
+  right: 932px;
+  bottom: 219px;
+  color: #666666;
+  font-size: 30px;
+  text-align: center;
+}
+.step2{
+  position: relative;
+  right: 546px;
+  bottom: 493px;
+  color: #666666;
+  font-size: 30px;
+  text-align: center;
+}
+.step3{
+  position: relative;
+  right: 153px;
+  bottom: 766px;
+  color: #666666;
+  font-size: 30px;
+  text-align: center;
+}
+
+.section1{
+  position: relative;
+  margin-top: 20px;
+  bottom: 660px;
+  background-color: #adcae1;
+  margin-left: -570px;
+  width: 720px;
+  height: 500px;
+  text-align: center;
+  color: white;
+}
+.section2{
+  position: relative;
+  left: 149px;
+  bottom: 660px;
+  background-color: #adcae1;
+  width: 720px;
+  height: 500px;
+  text-align: center;
+  color: white;
+}
+.section1title{
+  padding-top: 80px;
+  font-size: 70px;
+}
+.section1text{
+  font-size: 40px;
+  line-height: 50px;
+  text-shadow: none;
+  color: #f0f0f0;
+  position: relative;
+  bottom: 10px;
+}
+.section2title{
+  padding-top: 100px;
+  font-size: 70px;
+}
+.section2text{
+  font-size: 35px;
+  line-height: 40px;
+  text-shadow: none;
+  color: #f0f0f0;
+  padding-left: 1px;
+  position: relative;
+  bottom: 20px;
+}
+.imgsect1{
+  margin-left: 148px;
+  position: relative;
+  bottom: 1660px
+}
+
+.imgsect2{
+  position: relative;
+  bottom: 1668px;
+  right: 571px;
+}
+
+.examples{
+  font-size: 50px;
+  text-align: center;
+  line-height: 180px;
+  position: relative;
+  bottom: 1670px;
+  right: 550px;
+}
+.examplesdesign1{
+  position: relative;
+  bottom: 2580px;
+  right: 320px;
+  width: 980px;
+  height: 8px;
+  background-color: #dc67e9;
+}
+.examplesdesign2{
+  position: relative;
+  bottom: 1730px;
+  right: 325px;
+  width: 980px;
+  height: 8px;
+  background-color: #dc67e9;
+}</code></pre>
+<pre class=""snippet-code-html lang-html prettyprint-override""><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;SweetVie-Home-Page&lt;/title&gt;
+    &lt;meta charset=""UTF-8""&gt;
+    &lt;link rel=""stylesheet"" href=""indexstyle.css""&gt;
+    &lt;link href=""https://fonts.googleapis.com/css?family=Bungee+Shade|Lobster"" rel=""stylesheet""&gt;
+    &lt;link href=""https://fonts.googleapis.com/css?family=Coiny"" rel=""stylesheet""&gt;
+    &lt;link rel=""stylesheet"" href=""indexstyle.css""&gt;
+    &lt;style&gt;
+      a {
+        text-decoration: none;
+      }
+    &lt;/style&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div class=""topfiller""&gt;&lt;/div&gt;
+
+    &lt;div class=""header""&gt;
+      &lt;img src=""images/logo.jpg"" height=""90"" alt=""SweetVieLogo""&gt;
+      &lt;h2 class=""subtitle""&gt;Vegan Baking Made Easy&lt;/h2&gt;
+    &lt;/div&gt;
+
+    &lt;nav&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;a href=""#""&gt;HOME&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=""#""&gt;ABOUT US&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=""#""&gt;COMMUNITY&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=""#""&gt;FAQ&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=""#""&gt;SUBSCRIBE&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/nav&gt;
+
+    &lt;div class=""banner""&gt;
+      &lt;img class=""bannerimage"" src=""images/mainpageimage.jpg"" width=""1414px"" height=""580px"" alt=""homepagebanner""&gt;
+      &lt;h2 class=""bannerpromo1""&gt;Premium Packaged &lt;br&gt;Dessert Baking Kits&lt;/h2&gt;
+      &lt;h2 class=""bannerpromo2""&gt;High-quality,&lt;br&gt; organic and&lt;br&gt; vegan ingredients &lt;/h2&gt;
+      &lt;div class=""subscribebanner""&gt;
+        &lt;h3 class=""subscribebannertext""&gt; &lt;a href=""Subscribe.html"" style=""color: white""&gt; SUBSCRIBE&lt;/a&gt;&lt;/h3&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=""howitworks""&gt;
+      &lt;h1&gt;How It Works&lt;/h1&gt;
+      &lt;div class=""subheaderbox1""&gt;&lt;/div&gt;
+      &lt;div class=""subheaderbox2""&gt;&lt;/div&gt;
+      &lt;div class=""subheaderbox3""&gt;&lt;/div&gt;
+      &lt;div class=""subheaders""&gt;
+        &lt;h2&gt;Click Prepare Enjoy&lt;/h2&gt;
+      &lt;/div&gt;
+
+      &lt;div&gt;
+        &lt;img class=""box1"" src=""images/howitworks1.jpg"" height=""200"" width=""300"" alt=""step1""&gt;
+      &lt;/div&gt;
+      &lt;h3 class=""step1""&gt;Select one of the three&lt;br&gt;subscription options&lt;/h3&gt;
+      &lt;div&gt;
+        &lt;img class=""box2"" src=""images/howitworks2.jpg"" height=""200"" width=""300"" alt=""step2""&gt;
+      &lt;/div&gt;
+      &lt;h3 class=""step2""&gt;Get involved and play&lt;br&gt;with your food&lt;/h3&gt;
+      &lt;div&gt;
+        &lt;img class=""box3"" src=""images/howitworks3.jpg"" height=""200"" width=""300"" alt=""step3""&gt;
+      &lt;/div&gt;
+      &lt;h3 class=""step3""&gt;Share or indulge in your&lt;br&gt;decadent and delicious treat&lt;/h3&gt;
+
+    &lt;div class=""section1""&gt;
+      &lt;h2 class=""section1title""&gt;Food Time&lt;br&gt; Family Time&lt;/h2&gt;
+      &lt;br&gt;
+      &lt;p class=""section1text""&gt;Timeless family fun,&lt;br&gt; sharing special treats with the &lt;br&gt; special people you love &lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class=""section2""&gt;
+      &lt;h2 class=""section2title""&gt;The Next Step&lt;/h2&gt;
+      &lt;br&gt;
+      &lt;p class=""section2text""&gt;Health and desserts don't really&lt;br&gt; go together, with the exception of&lt;br&gt; SweetVie's sweets. Vegan desserts are the&lt;br&gt; baby steps you need for the best kind&lt;br&gt; of progress&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class=""imgsect1""&gt;
+      &lt;img src=""images/homepagesection1.jpg"" width=""720px"" height=""500px"" alt=""Food Time Family Time.jpg""&gt;
+    &lt;/div&gt;
+    &lt;div class=""imgsect2""&gt;
+      &lt;img src=""images/homepagesection2.jpg"" width=""720px"" height=""500px"" alt=""The Next Step.jpg""&gt;
+    &lt;/div&gt;
+
+    &lt;div class=""examples""&gt;
+      &lt;h2&gt;Showcasing a collection of our most classic recipes&lt;/h2&gt;
+      &lt;img src=""images/dessertsarranged.jpg"" width=""900px"" height=""800px"" alt=""""&gt;
+    &lt;/div&gt;
+    &lt;div class=""examplesdesign1""&gt;&lt;/div&gt;
+    &lt;div class=""examplesdesign2""&gt;&lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+</div>
+</div>
+</p>
+
+<p>I'm confused as to why there is a large white space at the bottom of my website. I'm not too experienced with html/css, but I inspected the website's elements and it seems to be the div class'howitworks' that is creating the extra space.<br>
+I don't see a problem within the css styling of the div that could result this issue, but then again I'm very unfamiliar with the interactions between css properties and their respective elements. Any help would be appreciated</p>
+","({'post_id': 54173362, 'score': 0, 'body': 'Sorry, I keep posting before I inputting the actual code', 'creation_date': datetime.datetime(2019, 1, 13, 13, 27, 40), 'post_type': 'question', 'id': 95175645, 'owner_id': 10601806, 'owner': <User 'Jacob Matias' (10601806) @ 113979f28>}, {'post_id': 54173362, 'score': 1, 'body': 'Please see how to <a href=""https://stackoverflow.com/help/mcve"">create a minimal, concrete, and verifiable example</a>.', 'creation_date': datetime.datetime(2019, 1, 13, 13, 25, 55), 'post_type': 'question', 'id': 95175619, 'owner_id': 395910, 'owner': <User 'Terry' (395910) @ 1139f12e8>}, {'post_id': 54173362, 'score': 0, 'body': 'Can you post your code so we can examine it?', 'creation_date': datetime.datetime(2019, 1, 13, 13, 25, 42), 'post_type': 'question', 'id': 95175613, 'owner_id': 8616823, 'owner': <User 'Jonny' (8616823) @ 1139f1470>})",54173362,True,https://stackoverflow.com/questions/54173362/unwanted-white-space-at-the-bottom-of-my-website,10601806,54173362,"({'comment': 'added 9697 characters in body; edited tags', 'is_rollback': False, 'revision_guid': '901CA988-9DF7-4EF6-90E3-27E52C3719AF', 'revision_number': 2, 'set_community_wiki': False, 'post_id': 54173362, 'last_tags': ['css'], 'tags': ['html', 'css'], 'creation_date': datetime.datetime(2019, 1, 13, 13, 26, 36), 'revision_type': 'single_user', 'user': <User 'Jacob Matias' (10601806) @ 113979ba8>}, {'is_rollback': False, 'revision_guid': '992288E9-725A-48AD-A063-6260AF785ED6', 'revision_number': 1, 'title': 'Unwanted White Space at the bottom of my website', 'set_community_wiki': False, 'post_id': 54173362, 'tags': ['css'], 'creation_date': datetime.datetime(2019, 1, 13, 13, 25, 1), 'revision_type': 'single_user', 'user': <User 'Jacob Matias' (10601806) @ 113979cc0>})",-1,"('html', 'css')","({'post_id': 54173457, 'timeline_type': 'revision', 'creation_date': datetime.datetime(2019, 1, 13, 14, 7, 36)}, {'post_id': 54173457, 'comment_id': 95176231, 'timeline_type': 'comment', 'creation_date': datetime.datetime(2019, 1, 13, 14, 3, 6)}, {'post_id': 54173457, 'timeline_type': 'accepted_answer', 'creation_date': datetime.datetime(2019, 1, 13, 13, 55, 32)}, {'post_id': 54173457, 'comment_id': 95176095, 'timeline_type': 'comment', 'creation_date': datetime.datetime(2019, 1, 13, 13, 55, 30)}, {'post_id': 54173457, 'comment_id': 95176064, 'timeline_type': 'comment', 'creation_date': datetime.datetime(2019, 1, 13, 13, 53, 23)}, {'post_id': 54173457, 'comment_id': 95176035, 'timeline_type': 'comment', 'creation_date': datetime.datetime(2019, 1, 13, 13, 52, 15)}, {'post_id': 54173457, 'timeline_type': 'revision', 'creation_date': datetime.datetime(2019, 1, 13, 13, 51, 27)}, {'post_id': 54173457, 'comment_id': 95176005, 'timeline_type': 'comment', 'creation_date': datetime.datetime(2019, 1, 13, 13, 49, 38)}, {'post_id': 54173457, 'timeline_type': 'revision', 'creation_date': datetime.datetime(2019, 1, 13, 13, 44, 27)}, {'post_id': 54173457, 'timeline_type': 'answer', 'creation_date': datetime.datetime(2019, 1, 13, 13, 38, 50)}, {'post_id': 54173362, 'comment_id': 95175645, 'timeline_type': 'comment', 'creation_date': datetime.datetime(2019, 1, 13, 13, 27, 40)}, {'post_id': 54173362, 'timeline_type': 'revision', 'creation_date': datetime.datetime(2019, 1, 13, 13, 26, 36)}, {'post_id': 54173362, 'comment_id': 95175619, 'timeline_type': 'comment', 'creation_date': datetime.datetime(2019, 1, 13, 13, 25, 55)}, {'post_id': 54173362, 'comment_id': 95175613, 'timeline_type': 'comment', 'creation_date': datetime.datetime(2019, 1, 13, 13, 25, 42)}, {'timeline_type': 'question', 'creation_date': datetime.datetime(2019, 1, 13, 13, 25, 1)}, {'post_id': 54173362, 'timeline_type': 'vote_aggregate', 'creation_date': datetime.datetime(2019, 1, 12, 16, 0)})",Unwanted White Space at the bottom of my website,http://stackoverflow/questions/54173362,23
+3,,,0,"<pre><code>SELECT        STOCKCODE, DESCRIPTION, TOTALSTOCK
+FROM            dbo.STOCK_ITEMS
+WHERE        (STOCKCODE NOT IN
+SELECT DISTINCT STOCKCODE
+FROM            dbo.DR_INVLINES AS DR_INVLINES_1
+WHERE        (STOCKCODE &lt;&gt; '') AND (STOCKCODE NOT LIKE '.%') AND (TRANSDATE &gt;= DATEADD(month, - 3, GETDATE())) AND (QUANTITY &gt;= 0)))
+</code></pre>
+",,54173653,False,https://stackoverflow.com/questions/54173653/getting-max-date-from-another-table-for-the-sql-not-in-result-set,10907336,54173653,"({'comment': 'added 24 characters in body', 'is_rollback': False, 'revision_guid': '30CCFC45-9C17-4CF6-A8D4-F3127C3563ED', 'revision_number': 2, 'set_community_wiki': False, 'post_id': 54173653, 'creation_date': datetime.datetime(2019, 1, 13, 14, 7, 28), 'revision_type': 'single_user', 'user': <User 'Dale Burrell' (1127428) @ 1139e85c0>}, {'is_rollback': False, 'revision_guid': 'D0918F17-E963-49A1-9DBF-553209B602A2', 'revision_number': 1, 'title': 'Getting Max date from another table for the SQL NOT IN result set', 'set_community_wiki': False, 'post_id': 54173653, 'tags': ['sql-server'], 'creation_date': datetime.datetime(2019, 1, 13, 14, 6, 29), 'revision_type': 'single_user', 'user': <User 'scyllaSL' (10907336) @ 1139e8198>})",0,"('sql-server',)","({'post_id': 54173653, 'timeline_type': 'revision', 'creation_date': datetime.datetime(2019, 1, 13, 14, 7, 28)}, {'timeline_type': 'question', 'creation_date': datetime.datetime(2019, 1, 13, 14, 6, 29)})",Getting Max date from another table for the SQL NOT IN result set,http://stackoverflow/questions/54173653,6
+4,,,1,"<p>I'm getting the following error when installing the CSV Import Suite on my Wordpress / WooCommerce site,</p>
+
+<p><em>""CSV Import Suite requires the function mb_detect_encoding to import and export CSV files. Please ask your hosting provider to enable this function.""</em></p>
+
+<p>Does anyone have any ideas how to solve the issue?</p>
+","({'post_id': 54173122, 'score': 0, 'body': 'Follow the suggestion given by the plugin. It&#39;s pretty clear: <b>Please ask your hosting provider to enable this function.</b>', 'creation_date': datetime.datetime(2019, 1, 13, 13, 1, 56), 'post_type': 'question', 'id': 95175265, 'owner_id': 9131961, 'owner': <User 'cabrerahector' (9131961) @ 113e49ac8>},)",54173122,False,https://stackoverflow.com/questions/54173122/getting-a-mb-detect-encoding-error-when-installing-csv-import-suite-on-woocommer,2561123,54173122,"({'comment': 'edited title', 'is_rollback': False, 'last_title': 'Getting a mb_detect_encoding when installing CSV Import Suite on WooCommerce', 'revision_guid': 'EAE40C1C-B970-4E12-8B9D-2248484B88A7', 'revision_number': 2, 'title': 'Getting a mb_detect_encoding error when installing CSV Import Suite on WooCommerce', 'set_community_wiki': False, 'post_id': 54173122, 'creation_date': datetime.datetime(2019, 1, 13, 13, 1, 18), 'revision_type': 'single_user', 'user': <User 'Sam Allen' (2561123) @ 113e49c18>}, {'is_rollback': False, 'revision_guid': '9BC89A52-CD01-4052-8BA0-0D4669BE16FB', 'revision_number': 1, 'title': 'Getting a mb_detect_encoding when installing CSV Import Suite on WooCommerce', 'set_community_wiki': False, 'post_id': 54173122, 'tags': ['php', 'wordpress', 'woocommerce'], 'creation_date': datetime.datetime(2019, 1, 13, 12, 55, 16), 'revision_type': 'single_user', 'user': <User 'Sam Allen' (2561123) @ 113e490f0>})",0,"('php', 'wordpress', 'woocommerce')","({'post_id': 54173659, 'timeline_type': 'answer', 'creation_date': datetime.datetime(2019, 1, 13, 14, 7, 11)}, {'post_id': 54173122, 'comment_id': 95175265, 'timeline_type': 'comment', 'creation_date': datetime.datetime(2019, 1, 13, 13, 1, 56)}, {'post_id': 54173122, 'timeline_type': 'revision', 'creation_date': datetime.datetime(2019, 1, 13, 13, 1, 18)}, {'timeline_type': 'question', 'creation_date': datetime.datetime(2019, 1, 13, 12, 55, 16)})",Getting a mb_detect_encoding error when installing CSV Import Suite on WooCommerce,http://stackoverflow/questions/54173122,11
+5,,,1,"<p>I just imported and started using a ScheduledExecutorService in my program, and I'm getting a compile error with the sample usage example from their documentation:</p>
+
+<p><a href=""https://docs.oracle.com/javase/7/docs/api/java/util/concurrent/ScheduledExecutorService.html"" rel=""nofollow noreferrer"">https://docs.oracle.com/javase/7/docs/api/java/util/concurrent/ScheduledExecutorService.html</a></p>
+
+<pre><code>import static java.util.concurrent.TimeUnit.*;
+class BeeperControl {
+    private final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
+
+    public void beepForAnHour() {
+        final Runnable beeper = new Runnable() {
+             public void run() { System.out.println(""beep""); }
+        };
+
+        final ScheduledFuture&lt;?&gt; beeperHandle = scheduler.scheduleAtFixedRate(beeper, 10, 10, SECONDS);
+
+        scheduler.schedule(new Runnable() {
+            public void run() { beeperHandle.cancel(true); }
+        }, 60 * 60, SECONDS);
+    }
+}
+</code></pre>
+
+<p>I'm developing in Android Studio (version 3.2.4).  I also tried forcing my project to use Java version 1.8, but that did not do anything.  (The project normally uses Java 1.7)</p>
+
+<p>The error is the following:</p>
+
+<blockquote>
+  <p>error: method execute in class ThreadPoolExecutor cannot be applied to given types;</p>
+  
+  <p>required: Runnable</p>
+  
+  <p>found: no arguments</p>
+  
+  <p>reason: actual and formal argument lists differ in length</p>
+</blockquote>
+
+<p>I don't use ThreadPoolExecutor, and from what I can tell, the above example is calling all of ScheduledExecutorService's methods correctly with the right number of arguments.</p>
+
+<p><strong>Update</strong>
+I have tested the code sample alone in it's own file and tried compiling it in a terminal, and it does compile fine.  So this means there is something wrong with my surrounding code or my environment. I will look into it more and update this question with more details as I find it.</p>
+",,54165669,False,https://stackoverflow.com/questions/54165669/getting-compile-error-from-scheduledexecutorservice-sample-usage,10013384,54165669,"({'comment': 'deleted 196 characters in body', 'is_rollback': False, 'revision_guid': '7C30B75A-80AC-4875-8CFC-6742E235E406', 'revision_number': 3, 'set_community_wiki': False, 'post_id': 54165669, 'creation_date': datetime.datetime(2019, 1, 13, 13, 59, 20), 'revision_type': 'single_user', 'user': <User 'Matthew Strom' (10013384) @ 11380f1d0>}, {'comment': 'added 287 characters in body', 'is_rollback': False, 'revision_guid': 'D465958F-4057-4896-A879-0BB1DCEF0F7A', 'revision_number': 2, 'set_community_wiki': False, 'post_id': 54165669, 'creation_date': datetime.datetime(2019, 1, 13, 13, 50, 23), 'revision_type': 'single_user', 'user': <User 'Matthew Strom' (10013384) @ 11380f908>}, {'is_rollback': False, 'revision_guid': '7693154F-5D8C-4CB3-AC7F-8FD590B093FF', 'revision_number': 1, 'title': 'Getting compile error from ScheduledExecutorService sample usage', 'set_community_wiki': False, 'post_id': 54165669, 'tags': ['java', 'android', 'compiler-errors', 'threadpoolexecutor', 'scheduledexecutorservice'], 'creation_date': datetime.datetime(2019, 1, 12, 18, 38, 54), 'revision_type': 'single_user', 'user': <User 'Matthew Strom' (10013384) @ 11380fcf8>})",0,"('java', 'android', 'compiler-errors', 'threadpoolexecutor', 'scheduledexecutorservice')","({'post_id': 54173658, 'timeline_type': 'answer', 'creation_date': datetime.datetime(2019, 1, 13, 14, 7)}, {'post_id': 54165669, 'timeline_type': 'revision', 'creation_date': datetime.datetime(2019, 1, 13, 13, 59, 20)}, {'post_id': 54165669, 'timeline_type': 'revision', 'creation_date': datetime.datetime(2019, 1, 13, 13, 50, 23)}, {'timeline_type': 'question', 'creation_date': datetime.datetime(2019, 1, 12, 18, 38, 54)})",Getting compile error from ScheduledExecutorService sample usage,http://stackoverflow/questions/54165669,28
+6,,,0,"<p>i am a create project in delphi 10.2.3 and work fine FLAG_SECURE code in firemonky android app . but update delphi to 10.3 just code not work and not black screen in record screen. i am use to code but not work
+please help</p>
+
+<pre><code>uses
+  ...,
+  Androidapi.JNI.App,
+  Androidapi.JNI.GraphicsContentViewText,
+  FMX.Helpers.Android;
+
+procedure TForm1.FormCreate(Sender: TObject);
+begin
+  SharedActivity.getWindow.setFlags(TJWindowManager_LayoutParams.JavaClass.FLAG_SECURE, TJWindowManager_LayoutParams.JavaClass.FLAG_SECURE);
+end;
+</code></pre>
+
+<pre><code>uses
+ Androidapi.NativeActivity;
+
+procedure TForm1.FormCreate(Sender: TObject);
+const
+ AWINDOW_FLAG_SECURE = $00002000;
+begin
+  ANativeActivity_setWindowFlags(PANativeActivity(System.DelphiActivity), AWINDOW_FLAG_SECURE, 0);
+end;
+</code></pre>
+
+<p>this two code work fine in delphi 10.2.3 but not work in delphi 10.3.</p>
+",,54173600,False,https://stackoverflow.com/questions/54173600/problem-flag-secure-not-work-in-delphi-10-3,10909298,54173600,"({'comment': 'deleted 7 characters in body', 'is_rollback': False, 'revision_guid': 'DA58C0EF-96FA-4598-9BF8-0E7C53F6F8DB', 'revision_number': 2, 'set_community_wiki': False, 'post_id': 54173600, 'creation_date': datetime.datetime(2019, 1, 13, 14, 6, 53), 'revision_type': 'single_user', 'user': <User 'MartynA' (2663863) @ 113982f98>}, {'is_rollback': False, 'revision_guid': '398D59E5-3FF1-49CE-8D9C-7C1449E40205', 'revision_number': 1, 'title': 'problem Flag_secure not work in delphi 10.3', 'set_community_wiki': False, 'post_id': 54173600, 'tags': ['delphi'], 'creation_date': datetime.datetime(2019, 1, 13, 13, 59, 25), 'revision_type': 'single_user', 'user': <User 'novinafzar' (10909298) @ 113982390>})",0,"('delphi',)","({'post_id': 54173600, 'timeline_type': 'revision', 'creation_date': datetime.datetime(2019, 1, 13, 14, 6, 53)}, {'timeline_type': 'question', 'creation_date': datetime.datetime(2019, 1, 13, 13, 59, 25)})",problem Flag_secure not work in delphi 10.3,http://stackoverflow/questions/54173600,3
+7,,,1,"<p>I have a question about matching a pattern of string</p>
+
+<p>I want copy certain file with some identification characters</p>
+
+<p>For example:</p>
+
+<pre><code>20190108JPYUSDabced.csv
+20190108CHNUSDabced.csv
+20190108IJKUSDabcde.csv
+</code></pre>
+
+<p>So I want to used command to just copy the first 2 files</p>
+
+<pre><code>cp 20190108(JPY|CHN)USDabced.csv
+</code></pre>
+
+<p>Does not work.</p>
+
+<p>Received error:
+    -bash: syntax error near unexpected token ‘(‘</p>
+","({'post_id': 54173084, 'score': 2, 'body': 'You can use this with <code>extglob</code>: <code>cp 20190108@(JPY|CHN)USDabced.csv destination</code>.', 'creation_date': datetime.datetime(2019, 1, 13, 13, 41, 33), 'post_type': 'question', 'id': 95175856, 'owner_id': 6176817, 'owner': <User 'PesaThe' (6176817) @ 113da8908>}, {'post_id': 54173084, 'score': 1, 'body': 'Relevant and likely helpful: <a href=""https://superuser.com/questions/441422/how-do-you-use-regular-expressions-with-the-cp-command-in-linux"">How do you use regular expressions with the cp command in Linux?</a>', 'creation_date': datetime.datetime(2019, 1, 13, 12, 53, 34), 'post_type': 'question', 'id': 95175123, 'owner_id': 2057919, 'owner': <User 'Ed Cottrell' (2057919) @ 113da8240>}, {'post_id': 54173084, 'score': 1, 'body': '<code>cp</code> doesn&#39;t accept regular expressions. You&#39;ll need to approach this some other way, but it&#39;s hard to offer much help without more information.', 'creation_date': datetime.datetime(2019, 1, 13, 12, 52, 41), 'post_type': 'question', 'id': 95175110, 'owner_id': 2057919, 'owner': <User 'Ed Cottrell' (2057919) @ 113da8748>})",54173084,False,https://stackoverflow.com/questions/54173084/why-i-cannot-match-certain-string-with-in-regex,10909139,54173084,"({'comment': 'edited tags', 'is_rollback': False, 'revision_guid': 'BA3B386A-3849-49EA-A7E9-8A84BE58BAD2', 'revision_number': 3, 'set_community_wiki': False, 'post_id': 54173084, 'last_tags': ['regex', 'bash'], 'tags': ['regex', 'bash', 'globbing'], 'creation_date': datetime.datetime(2019, 1, 13, 13, 17, 21), 'revision_type': 'single_user', 'user': <User 'Cyrus' (3776858) @ 113f57be0>}, {'comment': 'edited tags', 'is_rollback': False, 'revision_guid': '9D35783C-1E96-4682-852C-ECB47C788A32', 'revision_number': 2, 'set_community_wiki': False, 'post_id': 54173084, 'last_tags': ['regex'], 'tags': ['regex', 'bash'], 'creation_date': datetime.datetime(2019, 1, 13, 12, 52, 50), 'revision_type': 'single_user', 'user': <User 'Ed Cottrell' (2057919) @ 113f57400>}, {'is_rollback': False, 'revision_guid': 'DE192BD3-E938-491E-8649-6CCDDDCDF120', 'revision_number': 1, 'title': 'Why I cannot match certain string with ( | ) in regex', 'set_community_wiki': False, 'post_id': 54173084, 'tags': ['regex'], 'creation_date': datetime.datetime(2019, 1, 13, 12, 49, 26), 'revision_type': 'single_user', 'user': <User 'Maik' (10909139) @ 113f57c18>})",0,"('regex', 'bash', 'globbing')","({'post_id': 54173657, 'timeline_type': 'answer', 'creation_date': datetime.datetime(2019, 1, 13, 14, 6, 49)}, {'post_id': 54173084, 'comment_id': 95175856, 'timeline_type': 'comment', 'creation_date': datetime.datetime(2019, 1, 13, 13, 41, 33)}, {'post_id': 54173084, 'timeline_type': 'revision', 'creation_date': datetime.datetime(2019, 1, 13, 13, 17, 21)}, {'post_id': 54173084, 'comment_id': 95175123, 'timeline_type': 'comment', 'creation_date': datetime.datetime(2019, 1, 13, 12, 53, 34)}, {'post_id': 54173084, 'timeline_type': 'revision', 'creation_date': datetime.datetime(2019, 1, 13, 12, 52, 50)}, {'post_id': 54173084, 'comment_id': 95175110, 'timeline_type': 'comment', 'creation_date': datetime.datetime(2019, 1, 13, 12, 52, 41)}, {'timeline_type': 'question', 'creation_date': datetime.datetime(2019, 1, 13, 12, 49, 26)}, {'post_id': 54173084, 'timeline_type': 'vote_aggregate', 'creation_date': datetime.datetime(2019, 1, 12, 16, 0)})",Why I cannot match certain string with ( | ) in regex,http://stackoverflow/questions/54173084,19
+8,,,1,"<p>If I have a list of indices and a list of values,
+how do I sum the vals of duplicate indices? Below the value 1 appears in the index 3 times and so the vals would sum to 11.</p>
+
+<pre><code>d['inds'] == [0,   1,   7,   1,   1,   5, 10]
+d['vals'] == [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0]
+</code></pre>
+
+<p>would return</p>
+
+<pre><code>[1.0, 7.0, 0.0, 11.0, 0.0, 6.0, 0.0, 3.0]
+</code></pre>
+","({'post_id': 54173579, 'score': 0, 'body': 'Does index <code>10</code> map to <code>7.0</code>?', 'creation_date': datetime.datetime(2019, 1, 13, 14, 5, 8), 'post_type': 'question', 'id': 95176262, 'owner_id': 1084416, 'owner': <User 'Peter Wood' (1084416) @ 1140f0390>}, {'post_id': 54173579, 'score': 0, 'body': 'Why is <code>7.0</code> in the second position?', 'creation_date': datetime.datetime(2019, 1, 13, 14, 3, 32), 'post_type': 'question', 'id': 95176240, 'owner_id': 1084416, 'owner': <User 'Peter Wood' (1084416) @ 1140f0ac8>}, {'post_id': 54173579, 'score': 2, 'body': 'Why the 11.0 is in the fourth position?', 'creation_date': datetime.datetime(2019, 1, 13, 13, 58, 5), 'post_type': 'question', 'id': 95176135, 'owner_id': 4001592, 'owner': <User 'Daniel Mesejo' (4001592) @ 113fa3b00>}, {'post_id': 54173579, 'score': 4, 'body': 'Please explain in detail where each element of the output comes from', 'creation_date': datetime.datetime(2019, 1, 13, 13, 58, 1), 'post_type': 'question', 'id': 95176133, 'owner_id': 2988730, 'owner': <User 'Mad Physicist' (2988730) @ 1140cf320>})",54173579,False,https://stackoverflow.com/questions/54173579/python-sum-by-index,6471247,54173579,"({'is_rollback': False, 'revision_guid': '0AEF64F2-2A06-4A1E-9DE9-5E2F1C56D318', 'revision_number': 1, 'title': 'python sum by index', 'set_community_wiki': False, 'post_id': 54173579, 'tags': ['python', 'vector', 'indexing'], 'creation_date': datetime.datetime(2019, 1, 13, 13, 55, 48), 'revision_type': 'single_user', 'user': <User 'Julia Dills' (6471247) @ 113e6b9b0>},)",0,"('python', 'vector', 'indexing')","({'post_id': 54173656, 'timeline_type': 'answer', 'creation_date': datetime.datetime(2019, 1, 13, 14, 6, 49)}, {'post_id': 54173579, 'comment_id': 95176262, 'timeline_type': 'comment', 'creation_date': datetime.datetime(2019, 1, 13, 14, 5, 8)}, {'post_id': 54173579, 'comment_id': 95176240, 'timeline_type': 'comment', 'creation_date': datetime.datetime(2019, 1, 13, 14, 3, 32)}, {'post_id': 54173579, 'comment_id': 95176135, 'timeline_type': 'comment', 'creation_date': datetime.datetime(2019, 1, 13, 13, 58, 5)}, {'post_id': 54173579, 'comment_id': 95176133, 'timeline_type': 'comment', 'creation_date': datetime.datetime(2019, 1, 13, 13, 58, 1)}, {'timeline_type': 'question', 'creation_date': datetime.datetime(2019, 1, 13, 13, 55, 48)})",python sum by index,http://stackoverflow/questions/54173579,13
+9,,,1,"<p><strong>Edit</strong>: I found the issue: I have not accounted for when multiples of 3 and 5 match! Any hints on how to eliminate the duplicate numbers?</p>
+
+<p>I'm trying to solve the first problem of the Euler Problems from Free Code camp: Multiples of 3 and 5 <a href=""https://learn.freecodecamp.org/coding-interview-prep/project-euler/problem-1-multiples-of-3-and-5"" rel=""nofollow noreferrer"">https://learn.freecodecamp.org/coding-interview-prep/project-euler/problem-1-multiples-of-3-and-5</a></p>
+
+<p><strong>The problem is this</strong>: Find the sum of all the multiples of 3 or 5 below the provided parameter value number.</p>
+
+<p>When I look at my code, it works for the case of 10, but not any of the others. I have looked, tried another option but can not find the issue. Here is what I did. </p>
+
+<p><strong>My Thought Process and current implementation of task</strong></p>
+
+<ol>
+<li>Made a loop listing all numbers until the parameter number</li>
+<li>Made two while loops one for multiples of 3 and one for multiples of 5</li>
+<li><p>In each while loop I wanted to continuously add the multiplier (3 or 5) until the num is less than the total of threes or fives
+I had to add +3 and +5 so the last number in the total array would not go over num</p></li>
+<li><p>I then took the total array and implemented the reduce function to get the sum of the threes and fives totals</p></li>
+</ol>
+
+<p>Note: I am able to get an array of the values. In the case of 10, I got [3, 6, 9, 5]</p>
+
+<p><strong>My Code</strong>
+<div class=""snippet"" data-lang=""js"" data-hide=""false"" data-console=""true"" data-babel=""false"">
+<div class=""snippet-code"">
+<pre class=""snippet-code-js lang-js prettyprint-override""><code>function multiplesOf3and5(num) {
+    let total = [];
+    let threes = 0;
+    let fives = 0;
+    const reducer = (accumulator, currentValue) =&gt; accumulator + currentValue;
+
+    for (let i = 1; i &lt; num; i++) {
+        while (num &gt; threes+3) {
+            //total.push(threes);
+            threes += 3;
+            total.push(threes)
+        }
+        while (num &gt; fives+5) {
+            //total.push(fives);
+            fives += 5;
+            total.push(fives)
+        }
+    }
+    total = total.reduce(reducer);
+    return total;
+}
+console.log(multiplesOf3and5(10))
+console.log(multiplesOf3and5(49))
+console.log(multiplesOf3and5(1000))</code></pre>
+</div>
+</div>
+</p>
+
+<p><strong>What I've tried to solve it:</strong></p>
+
+<p>-Tried individually summing within each while loop to get a sum for all the multiples of 3 up to num and the same for the second while loop</p>
+
+<p>-I did this by adding two arrays, total1 and total to account for the sums of threes and fives respectively. </p>
+
+<p><strong>Test Cases:</strong></p>
+
+<p>multiplesOf3and5(1000) should return 233168. (I got 266333)</p>
+
+<p>multiplesOf3and5(49) should return 543. (I got 633)</p>
+
+<p>multiplesOf3and5(10) should return 23. (I got 23)</p>
+","({'post_id': 54173512, 'score': 0, 'body': 'Have any suggestions/ hints on how to do that?', 'creation_date': datetime.datetime(2019, 1, 13, 14, 4, 17), 'post_type': 'question', 'id': 95176249, 'owner_id': 10769225, 'owner': <User 'Tyler Morales' (10769225) @ 1140c4c88>}, {'post_id': 54173512, 'score': 0, 'body': 'you are definitively right', 'creation_date': datetime.datetime(2019, 1, 13, 14, 2, 14), 'post_type': 'question', 'id': 95176209, 'owner_id': 3880585, 'owner': <User 'gaetanoM' (3880585) @ 1140c4e80>}, {'post_id': 54173512, 'score': 0, 'body': 'Yes. After digging in a little more I think the problem is the duplicate between them', 'creation_date': datetime.datetime(2019, 1, 13, 14, 0, 3), 'post_type': 'question', 'id': 95176170, 'owner_id': 10769225, 'owner': <User 'Tyler Morales' (10769225) @ 1140c4710>}, {'post_id': 54173512, 'score': 0, 'body': 'for 49 you should  have: 3+ 6+ 9+ 12+ 15+ 18+ 21+ 24+ 27+ 30+ 33+ 36+ 39+ 42+ 45+ 48+ 5+ 10+ 15+ 20+ 25+ 30+ 35+ 40+ 45  and the result is exactly 633. Did I understand correctly?', 'creation_date': datetime.datetime(2019, 1, 13, 13, 58, 40), 'post_type': 'question', 'id': 95176148, 'owner_id': 3880585, 'owner': <User 'gaetanoM' (3880585) @ 1140c4470>})",54173512,False,https://stackoverflow.com/questions/54173512/trying-to-add-all-values-in-one-one-array-to-another-in-js-using-reducer-functio,10769225,54173512,"({'comment': 'I did not account for the duplicate numbers ', 'is_rollback': False, 'revision_guid': '64BCE9D4-2301-46A3-9EE2-94F5129B343D', 'revision_number': 2, 'set_community_wiki': False, 'post_id': 54173512, 'creation_date': datetime.datetime(2019, 1, 13, 13, 57, 18), 'revision_type': 'single_user', 'user': <User 'Tyler Morales' (10769225) @ 1140dffd0>}, {'is_rollback': False, 'revision_guid': '150B6E2C-5F64-4D5D-BE26-E86FC6E7528C', 'revision_number': 1, 'title': 'Trying to add all values in one one array to another in JS using reducer function', 'set_community_wiki': False, 'post_id': 54173512, 'tags': ['javascript', 'algorithm'], 'creation_date': datetime.datetime(2019, 1, 13, 13, 47, 20), 'revision_type': 'single_user', 'user': <User 'Tyler Morales' (10769225) @ 1140df828>})",0,"('javascript', 'algorithm')","({'post_id': 54173655, 'timeline_type': 'answer', 'creation_date': datetime.datetime(2019, 1, 13, 14, 6, 48)}, {'post_id': 54173512, 'comment_id': 95176249, 'timeline_type': 'comment', 'creation_date': datetime.datetime(2019, 1, 13, 14, 4, 17)}, {'post_id': 54173512, 'comment_id': 95176209, 'timeline_type': 'comment', 'creation_date': datetime.datetime(2019, 1, 13, 14, 2, 14)}, {'post_id': 54173512, 'comment_id': 95176170, 'timeline_type': 'comment', 'creation_date': datetime.datetime(2019, 1, 13, 14, 0, 3)}, {'post_id': 54173512, 'comment_id': 95176148, 'timeline_type': 'comment', 'creation_date': datetime.datetime(2019, 1, 13, 13, 58, 40)}, {'post_id': 54173512, 'timeline_type': 'revision', 'creation_date': datetime.datetime(2019, 1, 13, 13, 57, 18)}, {'timeline_type': 'question', 'creation_date': datetime.datetime(2019, 1, 13, 13, 47, 20)})",Trying to add all values in one one array to another in JS using reducer function,http://stackoverflow/questions/54173512,12

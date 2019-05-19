@@ -1,0 +1,459 @@
+,accepted,body,comments,creation_date,id,is_accepted,last_activity_date,last_edit_date,owner_id,owner_info,question_id,revisions,score,url
+0,False,"<p>That's not the intended workflow.  The way the system's designed you should</p>
+
+<ol>
+<li>Work on your system in developer mode</li>
+<li>When you're done, run <code>setup:di:compile</code> an <code>deploy:mode:set</code></li>
+<li>Push your system to production</li>
+</ol>
+
+<p>Two and three may happen in different orders or be interlaced depending on the choices your team makes.</p>
+
+<p>The main point is you're not meant to work on a system that's in production mode.  This does make some traditional PHP workflows impossible (i.e. where you're editing and working on the system as it's in production mode)</p>
+",<unfetched sequence: Comment>,2019-01-13 14:07:41,54173661,False,2019-01-13 14:07:41,,4668,"(128251, 4668, 'registered', 80, 'https://www.gravatar.com/avatar/e5abe1d27b286199c319b0cbe75596c3?s=128&d=identicon&r=PG', 'Alan Storm', 'https://stackoverflow.com/users/4668/alan-storm')",54169392,<unfetched sequence: PostRevision>,0,http://stackoverflow/questions/54169392/54173661#54173661
+1,True,"<p>You are consistently using <code>position:relative</code> in conjunction with <code>bottom: length</code> in order to reposition your elements.</p>
+
+<p>The above method <strong><em>only repositions the rendered layer of your element</em></strong> not the actual element in DOM. Which effectively means that, technically, your element is still at the same position it was before applying <code>bottom</code> to it. Which means it still occupies the same space. </p>
+
+<p><strike>The quick and dirty fix for it would be to give the last of your elements a big negative bottom margin, to make up for the extra space.  </strike>
+On second thought, the fastest way to fix it would be to replace all <code>bottom: value</code> with <code>margin-top: -value</code>.</p>
+
+<p>But this, along with how you've built your layout is a really poor design decision (especially since you don't know how much you need make up for, as your elements will likely have different heights on different devices).<br>
+You'll therefore have big problems displaying the contents reasonably on devices of various widths or devices with variable width (think rotating a phone or a tablet).</p>
+
+<p>A better approach would be to rethink your layout, probably to use containers/sections, and make your elements actually be where you want them displayed, rather than moving their rendered layer.</p>
+
+<p>Note: the <code>position:relative; left|top|bottom|right: length;</code> is a technique intended for animations, specifically because it doesn't actually move the actual element from DOM, <strong>thus</strong> not triggering re-renders on subsequent elements in DOM, making animations very light on the browser (which doesn't need to repaint the rest of the document at each frame). It's not a technique intended for layouts.</p>
+
+<p>Here's how your layout looks with <code>bottom</code>s replaced with negative top margins:</p>
+
+<p><div class=""snippet"" data-lang=""js"" data-hide=""true"" data-console=""true"" data-babel=""false"">
+<div class=""snippet-code snippet-currently-hidden"">
+<pre class=""snippet-code-css lang-css prettyprint-override""><code>.header {
+  position: relative;
+  top: 1px;
+  left: 589px;
+  padding-top: 20px;
+  padding-bottom: 10px;
+}
+
+.subtitle {
+  position: relative;
+  right: 26px;
+  letter-spacing: 2px;
+  padding-top: 5px;
+  font-size: 21px;
+  font-family: arial;
+  font-weight: bold;
+  color: #6b6b6b;
+  text-shadow: 0px 0 #6b6b6b, 0 0px #6b6b6b, 2px 0 #6b6b6b, 0 0px #6b6b6b;
+}
+
+
+/* Menu*/
+nav {
+  position: relative;
+  left: 210px;
+  height: 70px;
+  border-radius: 60px;
+  background: #dc67e9;
+  width: 1000px;
+}
+
+ul {
+  margin-left: 17%;
+}
+
+ul li {
+  display: inline-block;
+  line-height: 80px
+}
+
+ul li a {
+  text-decoration: none;
+  font-family: 'Coiny', cursive;
+  font-size: 19px;
+  color: white;
+  padding: 0 20px
+}
+
+ul li a:hover {
+  color: black;
+}
+
+.bannerimage {
+  margin-left: 5px;
+  margin-top: 4px;
+}
+
+.banner {
+  margin-top: 4px;
+  background-color: #dc67e9;
+  width: 100%;
+  height: 589px;
+}
+
+.bannerpromo1 {
+  position: relative;
+  margin-top: -500px;
+  margin-left: 60px;
+  font-family: 'Lobster', cursive;
+  color: black;
+  text-shadow: -3px 0 white, 0 3px white, 3px 0 white, 0 -3px white;
+  font-size: 70px;
+}
+
+.bannerpromo2 {
+  position: relative;
+  margin-top: -470px;
+  margin-left: -780px;
+  font-family: 'Lobster', cursive;
+  color: #585656;
+  text-shadow: -3px 0 white, 0 3px white, 3px 0 white, 0 -3px white;
+  font-size: 50px;
+  text-align: center;
+}
+
+.subscribebanner {
+  width: 250px;
+  height: 50px;
+  background-color: #dc67e9;
+  position: relative;
+  left: 190px;
+  margin-top: -430px;
+  border: 4px solid white;
+}
+
+.subscribebannertext {
+  margin-left: 30px;
+  margin-top: 15px;
+  font-family: 'Coiny', cursive;
+  word-spacing: 2px;
+  font-size: 30px;
+}
+
+.howitworks {
+  font-size:60px;
+  font-family: 'Lobster', cursive;
+  text-shadow: #a8a8a8 4px 6px;
+  margin-top: 50px;
+  position: relative;
+  left: 555px;
+}
+
+.subheaderbox1{
+  position: relative;
+  margin-top: 20px;
+  right: 315px;
+  border-radius: 25px;
+  background: #adcae1;
+  width: 200px;
+  height: 100px;
+}
+.subheaderbox2{
+  position: relative;
+  margin-top: -100px;
+  left: 65px;
+  border-radius: 25px;
+  background: #adcae1;
+  width: 200px;
+  height: 100px;
+}
+.subheaderbox3{
+  position: relative;
+  margin-top: -200px;
+  left: 450px;
+  border-radius: 25px;
+  background: #adcae1;
+  width: 200px;
+  height: 100px;
+}
+.subheaders {
+  position: relative;
+  margin-top: -275px;
+  font-size: 40px;
+  margin-left: -265px;
+  word-spacing: 250px;
+  letter-spacing: 3px;
+  color: white;
+}
+
+.box1{
+  position: relative;
+  right: 370px;
+  margin-top: -225px;
+  border-radius: 7px;
+  border: 5px dotted #dc67e9;
+}
+.box2{
+  position: relative;
+  right: -15px;
+  margin-top: -500px;
+  border-radius: 7px;
+  border: 5px dotted #dc67e9;
+}
+.box3{
+  position: relative;
+  right: -405px;
+  margin-top: -780px;
+  border-radius: 7px;
+  border: 5px dotted #dc67e9;
+}
+
+.step1{
+  position: relative;
+  right: 932px;
+  margin-top: -219px;
+  color: #666666;
+  font-size: 30px;
+  text-align: center;
+}
+.step2{
+  position: relative;
+  right: 546px;
+  margin-top: -493px;
+  color: #666666;
+  font-size: 30px;
+  text-align: center;
+}
+.step3{
+  position: relative;
+  right: 153px;
+  margin-top: -766px;
+  color: #666666;
+  font-size: 30px;
+  text-align: center;
+}
+
+.section1{
+  position: relative;
+  margin-top: 20px;
+  margin-top: -660px;
+  background-color: #adcae1;
+  margin-left: -570px;
+  width: 720px;
+  height: 500px;
+  text-align: center;
+  color: white;
+}
+.section2{
+  position: relative;
+  left: 149px;
+  margin-top: -660px;
+  background-color: #adcae1;
+  width: 720px;
+  height: 500px;
+  text-align: center;
+  color: white;
+}
+.section1title{
+  padding-top: 80px;
+  font-size: 70px;
+}
+.section1text{
+  font-size: 40px;
+  line-height: 50px;
+  text-shadow: none;
+  color: #f0f0f0;
+  position: relative;
+  bottom: 10px;
+}
+.section2title{
+  padding-top: 100px;
+  font-size: 70px;
+}
+.section2text{
+  font-size: 35px;
+  line-height: 40px;
+  text-shadow: none;
+  color: #f0f0f0;
+  padding-left: 1px;
+  position: relative;
+  bottom: 20px;
+}
+.imgsect1{
+  margin-left: 148px;
+  position: relative;
+  margin-top: -1660px
+}
+
+.imgsect2{
+  position: relative;
+  margin-top: -1668px;
+  right: 571px;
+}
+
+.examples{
+  font-size: 50px;
+  text-align: center;
+  line-height: 180px;
+  position: relative;
+  margin-top: -1670px;
+  right: 550px;
+}
+.examplesdesign1{
+  position: relative;
+  margin-top: -2580px;
+  right: 320px;
+  width: 980px;
+  height: 8px;
+  background-color: #dc67e9;
+}
+.examplesdesign2{
+  position: relative;
+  margin-top: -1730px;
+  right: 325px;
+  width: 980px;
+  height: 8px;
+  background-color: #dc67e9;
+}</code></pre>
+<pre class=""snippet-code-html lang-html prettyprint-override""><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;SweetVie-Home-Page&lt;/title&gt;
+    &lt;meta charset=""UTF-8""&gt;
+    &lt;link rel=""stylesheet"" href=""indexstyle.css""&gt;
+    &lt;link href=""https://fonts.googleapis.com/css?family=Bungee+Shade|Lobster"" rel=""stylesheet""&gt;
+    &lt;link href=""https://fonts.googleapis.com/css?family=Coiny"" rel=""stylesheet""&gt;
+    &lt;link rel=""stylesheet"" href=""indexstyle.css""&gt;
+    &lt;style&gt;
+      a {
+        text-decoration: none;
+      }
+    &lt;/style&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div class=""topfiller""&gt;&lt;/div&gt;
+
+    &lt;div class=""header""&gt;
+      &lt;img src=""images/logo.jpg"" height=""90"" alt=""SweetVieLogo""&gt;
+      &lt;h2 class=""subtitle""&gt;Vegan Baking Made Easy&lt;/h2&gt;
+    &lt;/div&gt;
+
+    &lt;nav&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;a href=""#""&gt;HOME&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=""#""&gt;ABOUT US&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=""#""&gt;COMMUNITY&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=""#""&gt;FAQ&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=""#""&gt;SUBSCRIBE&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/nav&gt;
+
+    &lt;div class=""banner""&gt;
+      &lt;img class=""bannerimage"" src=""images/mainpageimage.jpg"" width=""1414px"" height=""580px"" alt=""homepagebanner""&gt;
+      &lt;h2 class=""bannerpromo1""&gt;Premium Packaged &lt;br&gt;Dessert Baking Kits&lt;/h2&gt;
+      &lt;h2 class=""bannerpromo2""&gt;High-quality,&lt;br&gt; organic and&lt;br&gt; vegan ingredients &lt;/h2&gt;
+      &lt;div class=""subscribebanner""&gt;
+        &lt;h3 class=""subscribebannertext""&gt; &lt;a href=""Subscribe.html"" style=""color: white""&gt; SUBSCRIBE&lt;/a&gt;&lt;/h3&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=""howitworks""&gt;
+      &lt;h1&gt;How It Works&lt;/h1&gt;
+      &lt;div class=""subheaderbox1""&gt;&lt;/div&gt;
+      &lt;div class=""subheaderbox2""&gt;&lt;/div&gt;
+      &lt;div class=""subheaderbox3""&gt;&lt;/div&gt;
+      &lt;div class=""subheaders""&gt;
+        &lt;h2&gt;Click Prepare Enjoy&lt;/h2&gt;
+      &lt;/div&gt;
+
+      &lt;div&gt;
+        &lt;img class=""box1"" src=""images/howitworks1.jpg"" height=""200"" width=""300"" alt=""step1""&gt;
+      &lt;/div&gt;
+      &lt;h3 class=""step1""&gt;Select one of the three&lt;br&gt;subscription options&lt;/h3&gt;
+      &lt;div&gt;
+        &lt;img class=""box2"" src=""images/howitworks2.jpg"" height=""200"" width=""300"" alt=""step2""&gt;
+      &lt;/div&gt;
+      &lt;h3 class=""step2""&gt;Get involved and play&lt;br&gt;with your food&lt;/h3&gt;
+      &lt;div&gt;
+        &lt;img class=""box3"" src=""images/howitworks3.jpg"" height=""200"" width=""300"" alt=""step3""&gt;
+      &lt;/div&gt;
+      &lt;h3 class=""step3""&gt;Share or indulge in your&lt;br&gt;decadent and delicious treat&lt;/h3&gt;
+
+    &lt;div class=""section1""&gt;
+      &lt;h2 class=""section1title""&gt;Food Time&lt;br&gt; Family Time&lt;/h2&gt;
+      &lt;br&gt;
+      &lt;p class=""section1text""&gt;Timeless family fun,&lt;br&gt; sharing special treats with the &lt;br&gt; special people you love &lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class=""section2""&gt;
+      &lt;h2 class=""section2title""&gt;The Next Step&lt;/h2&gt;
+      &lt;br&gt;
+      &lt;p class=""section2text""&gt;Health and desserts don't really&lt;br&gt; go together, with the exception of&lt;br&gt; SweetVie's sweets. Vegan desserts are the&lt;br&gt; baby steps you need for the best kind&lt;br&gt; of progress&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class=""imgsect1""&gt;
+      &lt;img src=""images/homepagesection1.jpg"" width=""720px"" height=""500px"" alt=""Food Time Family Time.jpg""&gt;
+    &lt;/div&gt;
+    &lt;div class=""imgsect2""&gt;
+      &lt;img src=""images/homepagesection2.jpg"" width=""720px"" height=""500px"" alt=""The Next Step.jpg""&gt;
+    &lt;/div&gt;
+
+    &lt;div class=""examples""&gt;
+      &lt;h2&gt;Showcasing a collection of our most classic recipes&lt;/h2&gt;
+      &lt;img src=""images/dessertsarranged.jpg"" width=""900px"" height=""800px"" alt=""""&gt;
+    &lt;/div&gt;
+    &lt;div class=""examplesdesign1""&gt;&lt;/div&gt;
+    &lt;div class=""examplesdesign2""&gt;&lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+</div>
+</div>
+</p>
+",<unfetched sequence: Comment>,2019-01-13 13:38:50,54173457,True,2019-01-13 14:07:36,2019-01-13 14:07:36,1891677,"(33396, 1891677, 'registered', 89, 'https://www.gravatar.com/avatar/38c13c3ccee10dcfc38799fb45d5a65b?s=128&d=identicon&r=PG', 'Andrei Gheorghiu', 'https://stackoverflow.com/users/1891677/andrei-gheorghiu')",54173362,<unfetched sequence: PostRevision>,0,http://stackoverflow/questions/54173362/54173457#54173457
+2,False,"<p><code>mb_detect_encoding</code> is part of an optional extension for PHP. This extension is either not loaded or not installed on the server you are running this application.</p>
+
+<p><a href=""http://php.net/manual/de/book.mbstring.php"" rel=""nofollow noreferrer"">http://php.net/manual/de/book.mbstring.php</a></p>
+
+<p>On many linux systems it's called like <code>php-mbstring</code> or <code>php7.2-mstring</code> and so on.</p>
+
+<p>If you are on a shared hoster you should as the error stated, contact your hoster to resolve this issue.</p>
+
+<p>At least now you know what it needs.</p>
+",<unfetched sequence: Comment>,2019-01-13 14:07:11,54173659,False,2019-01-13 14:07:11,,1083087,"(1, 1083087, 'registered', 'https://www.gravatar.com/avatar/231ff35c894e8024f25473dc2ef16c02?s=128&d=identicon&r=PG', 'msphn', 'https://stackoverflow.com/users/1083087/msphn')",54173122,<unfetched sequence: PostRevision>,0,http://stackoverflow/questions/54173122/54173659#54173659
+3,False,"<p>It seems this error was just due to my own mistakes.  I must not have built my application for a while whilst creating new classes and building new architectures.  </p>
+
+<p>For this reason, I did actually have a class which was implementing ThreadPoolExecutor, however I had already ditched this class for other libraries and completely forgot about it!</p>
+
+<p><strong>Morale of the story</strong> </p>
+
+<p>keep track of your ideas, and properly comment them out if your not using them.  Then remember to remove them once your done developing that feature!</p>
+",<unfetched sequence: Comment>,2019-01-13 14:07:00,54173658,False,2019-01-13 14:07:00,,10013384,"(20, 10013384, 'registered', 'https://lh3.googleusercontent.com/-JtqdF-H7gqE/AAAAAAAAAAI/AAAAAAAAAF0/uhLdn4UFauI/photo.jpg?sz=128', 'Matthew Strom', 'https://stackoverflow.com/users/10013384/matthew-strom')",54165669,<unfetched sequence: PostRevision>,0,http://stackoverflow/questions/54165669/54173658#54173658
+4,False,"<p><code>bash</code> brace expansion is for this</p>
+
+<pre><code>$ cp 20190108{JPY,CHN}USDabced.csv
+</code></pre>
+",<unfetched sequence: Comment>,2019-01-13 14:06:49,54173657,False,2019-01-13 14:06:49,,1435869,"(48317, 1435869, 'registered', 'https://www.gravatar.com/avatar/845cbefc372dea43a93d01ffd75062f2?s=128&d=identicon&r=PG', 'karakfa', 'https://stackoverflow.com/users/1435869/karakfa')",54173084,<unfetched sequence: PostRevision>,0,http://stackoverflow/questions/54173084/54173657#54173657
+5,False,"<p>Try this:</p>
+
+<pre><code>A = [0,   1,   7,   1,   1,   5, 10]
+B = [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0]
+
+lookupDictionary = {}
+
+for i, x in enumerate(A):
+    if x in lookupDictionary:
+        lookupDictionary[x].append(B[i]) # Element already in dictionary, append val
+    else:
+        lookupDictionary[x] = [B[i]] # Element not in dictionary so add as a list
+
+ans = 0
+for k, v in lookupDictionary.items():
+    if len(v) &gt; 1: # Check which element appeared more than once
+        ans = sum(v)
+print(ans)
+</code></pre>
+
+<p>We store the values of repetitive indices in a dictionary, then whichever index has value length greater than 1, we sum its value and assign it to ans.</p>
+",<unfetched sequence: Comment>,2019-01-13 14:06:49,54173656,False,2019-01-13 14:06:49,,7366300,"(11, 7366300, 'registered', 'https://graph.facebook.com/1472777482732714/picture?type=large', 'Mohammed Jasam', 'https://stackoverflow.com/users/7366300/mohammed-jasam')",54173579,<unfetched sequence: PostRevision>,0,http://stackoverflow/questions/54173579/54173656#54173656
+6,False,"<p>Your current solution could be fixed by eliminating the duplicates from the two arrays (the ones that store the multiples). However, from your problem statement I don't see why you need to store the multiples and then get the sum. You could instead add them to the sum as soon as you come across them:</p>
+
+<pre><code>sum = 0
+for (let i = 1; i &lt; num; i++) {
+    if (num % 3 == 0 or num % 5 == 0) {
+        sum += num
+    }
+}
+</code></pre>
+
+<p>The condition in the if statements allows for the number to be added if it is a multiple of 3, a multiple of 5, or a multiple of both. The addition happens only once.</p>
+",<unfetched sequence: Comment>,2019-01-13 14:06:48,54173655,False,2019-01-13 14:06:48,,7662085,"(7277, 7662085, 'registered', 83, 'https://i.stack.imgur.com/X4wrF.jpg?s=128&g=1', 'stybl', 'https://stackoverflow.com/users/7662085/stybl')",54173512,<unfetched sequence: PostRevision>,0,http://stackoverflow/questions/54173512/54173655#54173655

@@ -13,7 +13,7 @@ def dict_lines(d, indent=2):
 
 def clean_yaml(filename='dsfaq.yml'):
     """ FIXME: TEST || Attempts to return a valid yaml string with deduped dictionary keys
-    
+
     Attempts to deal with multiple answers (duplicate keys) within a single dictionary for a FAQ item.
     """
     try:
@@ -66,12 +66,10 @@ def load_yaml(filename='dsfaq.yml'):
 
     df = pd.DataFrame(lod)
     replacer_dict = dict(zip(df.columns, loaders.clean_columns(df.columns)))
-    clean_lod = []
+    # clean_lod = []
     for i, d in enumerate(lod):
         newd = {}
         for k in d:
             newd[replacer_dict[k]] = d[k]
         lod[i] = newd
     return pd.DataFrame(lod)
-
-

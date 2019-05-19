@@ -1,0 +1,162 @@
+-
+  Q: "In Medicare regulations, Fraud Waste and Abuse (FWA) are 3 different categories of laws and regulations. Which one requires the **intent** to obtain payment as well as the knowledge that the actions are wrong or illegal?"
+  A: "A Medicare FWA fraud conviction requires that the violator intended to obtain payment and knew it was wrong."
+  tag: HIPPA
+  date: 2019
+-
+  Q: "In Medicare FWA regulations, which is not potentially a penalty for a violation: Civil monetary penalties, Deportation, or Exclusion from participation in Federal healthcare programs?"
+  A: "Deportation is not a potential penalty for violating Medicare FWA regulations. "
+  tag: HIPPA
+  date: 2019
+-
+  Q: "In Medicare FWA regulations what is an FDR?"
+  A: "In Medicare FWA regulations an FDR is a Firs-Tier (call center, hospital), Downstream (provider), or Related Entity (contractor, researcher). All such organizations must have policies an procedures that address FWA."
+  tag: HIPPA
+  date: 2019
+-
+  Q: "In Medicare FWA regulations what is an SIU"
+  A: "In Medicare FWA regulations an SIU is a Special Investigations Unit within a sponsor organization, such as a Firs-Tier (call center, hospital) participant in the Medicare program. An SIU will investigate any reports of FWA, including anonymous reports."
+  tag: HIPPA
+  date: 2019
+-
+  Q: "Where can I report Medicare FWA violations?"
+  A: "1-800-HHS-TIPS (1-800-447-8477) or HHSTips@olg.hhs.gov or forms.oig.hhs.gov/hotlineoperation/index.aspx"
+  tag: HIPPA
+  date: 2019
+-
+  Q: "In Medicare FWA regulations, what is OIG?"
+  A: "In the Medicare FWA context, OIG is the Office of Inspector General responsible for investigating and prosecuting FWA."
+  tag: HIPPA
+  date: 2019
+-
+  Q: "What are some common indicators of Medicare FWA in a medical dataset for beneficiaries or patients?"
+  A: "Altered or forged prescriptions, medical records, or laboratory test results; Beneficiaries medical history doesn't support the requested servics; identical prescriptions for the same beneficiary, often from different doctors; beneficiary identity mismatch (identity theft); innappropriate prescriptions based on the beneficiary's other prescriptions (dangerous drug interactions or contrary indications)."
+  tag: HIPPA
+  date: 2019
+-
+  Q: "What are some common indicators of Medicare FWA in a medical dataset for providers or doctors?"
+  A: "Medically unnecessary or harmful prescriptions; services not provided but billed; provider writes prescriptions for controlled substances or a broad variety of drugs often; medically unnecessary services provided to beneficiary; unneccessarily high quantities of prescriptions/procedures; invalid or missing Ntional Provider Identifier on prescriptions; unsupported diagnoses based on the medical record."
+  tag: HIPPA
+  date: 2019
+-
+  Q: "What are some common indicators of Medicare FWA in a medical dataset that includes pharmacy data?"
+  A: "Drugs meant for nursing homes, hospices, etc sent elsewhere; dispensed drugs are expired, fake, diluted, or illegal, generic drugs when prescription requires branded drug; PBMs billed for unfilled or never picked up prescriptions; additional dispensing fees for split prescriptions; altered prescriptions like changed quantities or 'Dispense As Written' notation added to prescriptions."
+-
+  Q: "What are some common indicators of Medicare FWA in a medical dataset that includes wholesaler data?"
+  A: "Wholesaler delivering/distributing fake, diluted, expired, or illegal drugs; wholesaler diverting drugs intended for nursing homes, hospices, and AIDS clinics, marking up the prices and sending them to other small wholesalers or pharmacies."
+  tag: HIPPA
+  date: 2019
+-
+  Q: "What are some common indicators of Medicare FWA in a medical dataset that includes manufacturer data?"
+  A: "Manufacturer promotes off-label drug usage; wholesaler providing samples to entities (providers) that are also billing Medicare for those same drugs."
+  tag: HIPPA
+  date: 2019
+-
+  Q: "To avoid Medicare FWA what should you do if a regular beneficiary suddenly has an increase in their quantity or dosage for a prescription or controled substance?"
+  A: "Contact the provider to verify the quantity."
+  tag: HIPPA
+  date: 2019
+-
+  Q: "Within the medicare and medical field, what is CMS?"
+  A: "Centers for Medicare & Medicaid Services"
+  tag: HIPPA
+  date: 2019
+-
+  Q: "Where can I find medical or healthcare datasets?"
+  A: "Search for papers on https://scholar.google.com/ that interest you and try to regcreate the results in those papers using any data that they link to or referecnct. Browse or search https://github.com/topics/datasets for datasets that interest you. Google's [dataset search tool](https://toolbox.google.com/datasetsearch/) can help you find obscure datasets. Put a search into Duck Duck go that includes words like 'machine learning data science download zip gz csv data training set test set validation'"
+-
+  Q: "What is MLM in the Health field?"
+  A: "Medicare and Medicaid Learning Network which provides resources for continuing education of FDRs (First tier providers, downstream businesses or related entities)."
+  tag: HIPPA
+  date: 2019
+-
+  Q: "What are FDRs in healthcare?"
+  A: "FDRs are first tier (providers/insurerers?), downstream businesses or related entities like AllMed who reviews and processes claims and appeals to insurers. All staff at FDRs are required to receive three 30 minute+ training sessions on Medicare/Medicaid law and waste/fraud reduction."
+  tag: HIPPA
+  date: 2019
+-
+  Q: "What is CMS Part C in healthcare?"
+  A: "Medicare insurance from private insurers who must cover the same things that Midicare covers except for hospice care."
+  tag: HIPPA
+  date: 2019
+-
+  Q: "What is CMS Part D in healthcare?"
+  A: "Medicare insurance for prescription drugs from private CMS Part B insurers."
+  tag: HIPPA
+  date: 2019
+-
+  Q: "What is CMS in healthcare?"
+  A: "Centers for Medicare and Medicaid Services like MLM (Medicare and Medicaid Learning Network) and training resources."
+  tag: HIPPA
+  date: 2019
+-
+  Q: "What is a Compliance Program?"
+  A: "Communicating and enforcing a process that prevents, detects , adn corrects noncompliance with healthcare and CMS regularions regarding FWA (fraud waste and abuse)."
+  tag: HIPPA
+  date: 2019
+-
+  Q: "What are the seven requirements of a CMS compliance program in healthcare?"
+  A: "1. Written polices and procedures for compliance. 2. A compliance officer, committee, with senior management oversight. 3. Training. 4. Communication lines available to all. 5. Publicized disciplinary standards. 6. System for monitoring, auditing, and compliance risk assessment. 7. Procedures for response to compliance issues."
+  tag: HIPPA
+-
+  Q: "List some noncompliance examples (for healthcare CMS Parts C and D)."
+  A: "Agent/broker misrepresentation. Appeals review. Beneficiary notices. Conflicts of interest. Claims processing. Credntialing and provider networks. Documentation requirements. Ethics. FDR oversight. HIPAA (Health Insurance Portability and Accountability Act). Marketing and enrollment. Pharmacy administration. Quality of care."
+  tag: HIPPA
+  date: 2019
+-
+  Q: "You work in a pharmacy doing inventory control and discover a minor discrepancy for controled substances. What should you do? A) Call law enforcement. B) Do another review. C) Contact your compliance department. D) Discuss with your supervisor. E) Follow your pharmacy's procedures."
+  A: "E) Follow your pharmacy's procedures."
+  tag: HIPPA
+  date: 2019
+-
+  Q: "You work for a sponsor and notice multiple individuals not enrolled in your plan but are being paid for by CMS. What should you do?"
+  A: "To protect yourself from retaliation you report the noncompliance with the compliance departments anonymous tip line."
+  tag: HIPPA
+  date: 2019
+-
+  Q: "A medical insurance sales agent asks you (an FDR employee) to backdate a policy by one month when processing a claim. What should you do?"
+  A: "Process the claim without the backdating and report the request by the sales agent to your supervisor."
+  tag: HIPPA
+  date: 2019
+-
+  Q: "What is HIPPA?"
+  A: "The Health Insurance Portability and Accountabilty Act of 1996. It helps people move between health insurance plans when they change jobs or are unemployed. It governs how information can be shared between healthcare organizations, including IT security standards."
+  tag: HIPPA
+  date: 2019
+-
+  Q: "What is HHS in medicine?"
+  A: "The US Department of Health and Human Services which enforces HIPAA regulations."
+  tag: HIPPA
+  date: 2019
+-
+  Q: "What is PHI in medicine?"
+  A: "Protected Health Information (PHI) includes names, addresses, age, employers, relatives' names, dates of birth, telephone and fax numbers, email addresses, SSNs, medical records numbrers, member or account numbers, voiceprints and fingerprints, photos, information that distinguishes a patient from others (reasons for treatment, medical history, observations)."
+  tag: HIPPA
+  date: 2019
+-
+  Q: "What is PII in healthcare and data science?"
+  A: "Personally identifiable information, personal data or sensitive personal information (SPI) -- any information that can be used to isolate an individual within a dataset and associate private information with that individual. Aggregating statistics about patients or customers is not always sufficient to ensure anonymity."
+  tag: HIPPA
+  date: 2019
+-
+  Q: "What is differential privacy?"
+  A: "Differential privacy is one approach for anonymization of data that prevents deanonymization. Noise is added to a dataset that is sufficient to prevent others from discovering PII about individual records while not corrupting the research value of aggregate statistics on the data.(see [2012 paper by inventor Cynthia Dwork](https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/dwork.pdf)) Researchers were able to deanonymize the Netflix Prize by corrlating released netflix data with public IMDB data to identify individual subscribers political and religious beliefs.(see [2016 blog post by Stephen Swoyer](https://tdwi.org/articles/2016/09/12/protecting-personal-information-differential-privacy.aspx))."
+  tag: HIPPA
+  date: 2019
+-
+  Q: "What is the HITECH Act in healthcare?"
+  A: "The Health Information Technology for Economic and Clinical Health Act of 2009 intended to incentivize the adoption of Electronic Health Records (EHR)."
+  tag: HIPPA
+  date: 2019
+-
+  Q: "Under HIPAA regulations, is psychotherapy data (provider notes) treated with the same protections as other medical data?"
+  A: "No, regulations are more strict for psychotherapy data. Unlike medical data which can be reviewed for treatment, payment, or health care operations, psychotherapy notes and records cannot be reviewed without individuals authorization for you to review it."
+  tag: HIPPA
+  date: 2019
+-
+  Q: "Under what conditions are patients rights to privacy overruled by public health regulations?"
+  A: "Some communicable diseases must be reported to state agencies. The FDA requires providers to report the failure or malfunction of some medical devices. If a provider suspects child or domestic abuse they must report it to police. Police have the right to request information for identifying suspects in criminal investigations. Courts can order the release of medical records. Providers must report suspicious deaths of violence victims (for example, gunshot wounds). Funeral directors and coroners can request medical records of the deceased."
+  tag: HIPPA
+  date: 2019
+-
+

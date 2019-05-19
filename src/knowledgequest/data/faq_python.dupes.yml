@@ -1,0 +1,17 @@
+-
+  Q (student): I compiled opencv on raspbian stretch on a raspberry pi B 3+ but I can't import opencv.
+  A (teacher): Are you using a virtual environment?
+  Q2 (student): I didn't think that was important. I skipped those steps.
+  A2 (teacher): Make sure you activate a virtual environment before you pip install opencv. Then you need to make sure you activate that same environment before launching python. You can tell which virtual environment you are in by typing `which python` to show the path to the virtualenv. And you can tell the version of python by typeing `python --version`. Make sure it's python3.5+.
+-
+  Q: "Why can't I connect to my RDS PostGreSQL instance from my AWS EC2 instance. I can connect from other IP addresses and EC2 instances."
+  A: "You need to make sure egress on port 5432 is allowed. AWS instances do not allow all outgoing ports by default, you have to explicitly turn them on."
+-
+  Q: "In the expression `from scratch import *` what is `scratch`?"
+  A: "It's a package or module name. You can find it on the [Cheese Shop](https://pypi.org/project/scratch) by [`duck`](http://duck.com)ing 'install scratch python package'. The scratch package is for Joel Grus's book _Data Science from Scratch_ which contains a python crash course as well as some fun data science exercises you work without install `scipy`, `scikit-learn` or any of the other big Data Science python frameworks."
+-
+  Q: "How do you fix this bug: `ModuleNotFoundError: No module named 'scratch'`?"
+  A: "What does the error message tell you that `scratch` is?"
+  A (student): "It's a module."
+  A (teacher): "Yes it's a module once you import it into python, but it's also a package outside of your environment that you can install by using the command shown at the top of the [docs page on pypi](https://pypi.org/project/scratch). If you're in the console or shell: `pip install scratch`. If you're in an ipython or jupyter console: `!pip install scratch`."
+
