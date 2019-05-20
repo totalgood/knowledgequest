@@ -17,6 +17,10 @@
 
 django>=1.8,<1.9
 django-extensions>=1.8,<1.9
+flask
+jupyter
+nlpia
 psycopg2
+PyYaml
 tqdm
 -e .
