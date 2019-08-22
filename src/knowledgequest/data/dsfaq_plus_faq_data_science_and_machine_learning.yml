@@ -34,7 +34,7 @@
 -
   Q: "What is a Markhov Chain Monte Carlo model?"
   A: "A Markov Chain that estimates the distribution for the next state by sampling historical data or a simulation. Example: predictive text that only looks at the last token you typed (or the \"<start>\" token) to predict the next token and estimates the distribution of possible next tokens based on historical data for all the texts you (or people like you) have typed in the past."
-- 
+-
   Q: "What is a static model or distribution?"
   A: "A probability distribution or model whose underlying statistics or behavior do not change over time."
 -
@@ -46,7 +46,7 @@
 -
   Q: "Give examples of deterministic and nondeterministic models."
   A: "Stochastic: KNN, K-Means, Stochastic Gradient Descent? Neural Networks with random dropout or random initialization of weights, Random Forest, Decision Tree. Deterministic: Linear Regression, PCA, SVD, Logistic Regression, Polynomial Regression, Stochastic Gradient Descent?"
-- 
+-
   Q: "What are the characteristics you look for in a Data Science or Machine Learning model?"
   A: "Training time/complexity per data sample and feature (dimensionality). Inference time/complexity. Data efficiency. Number of parameters (degrees of freedom). Linearity/nonlinearity of the solution. Nonlinearity/complexity of the generated model. Classifier or regressor. Supervised or unsupervised. Stochastic or deterministic."
 -
@@ -62,7 +62,7 @@
   Q: "What is False Discovery Rate?"
   A: "It's a way to adjust your P-Value or T-test or Z-test or X^2 test to account for the number of experiments you've run, then number of times you've compared your P-value to your 5% threshold (typically). If you only do one experiment you can be 95% confident that your results are going to be repeatable by others, if your P-value is below 5%. But if you do 2 experiments, an only one passes the p-value threshold test, then you can only be 91% confident. So to keep your confidence high, you need to tighten your P-value threshold based on the number of tests you've performed on a given dataset."
 -
-  Q: "What is the Kernel Trick?" 
+  Q: "What is the Kernel Trick?"
   A: "It's when an ML algorithm like SVM transforms the feature vectors using a linear or nonlinear kernel function. For example there may be a  linear rotation and scaling matrix that unwinds and flattens a spiral classification dataset (there's an example in playground.tensorflow.org)."
 -
   Q: "And what does it mean when someone says that an algorithm like SVM doesn't actually transform the data with the kernel?"
@@ -97,10 +97,10 @@
 -
   Q: "Are these plots useful or should I remove them?"
   A: "What are you trying to convey to the reader? What do you want them to get out of them? What do they tell you? Is that piece of information obvious at first glance? You reader will likely only look at the plot for a few seconds. In a bar plot, the bars next to each other should always have a relationship to each other that is interesting, since those will be compared to each other. If you have more than 10 bars on a single plot, they will likely hide the important pairs that you want your reader to look at, so cluster or group them more agressively. And never ever use raw counts on a bar plot or histogram, always us percent or normalized count so that your plot shows probability and allows your reader to compare values from different histograms with different total counts (like the cohorts in your income survey data)."
-- 
+-
   Q: "The conclusion to my capstone starts with "The above plots show that feature importance are driving model performance." What do you think?"
   A: "I'm not sure I understand what you are trying to say with that. Are you saying that the features with high feature importances values from the random forest model statistics are important to the model's decision tree branches? That's a circular statement that doesn't say anything new. Talk about the real world affects of your features on your target, income level. Talk about the fact that relationship status questions can have both a postiive and a negative impact on income. "married with wife" relationship status is highly positively correlated with income, whereas "married with children" relationship status is highly negatively correlated with income. And talk about how education level is not highly correlated with income, above a high school diploma. Those are interesting, meaningful, specific conclusions you can share with your reader."
-- 
+-
   Q: "Which penalty function should I use for logistic regression, l1 or l2. My dataset has the heights and weights of hospital patients and the target variable is gender."
   A: "What do you think is the right way to chose between two different possible settings or values for a hyperparameter, like the regularization penalty metric for logistic regression? Try it, right? Whichever one improves your performance on the test set is the **right** one, right? And for this particular model your degrees of freedom is only 2 (`len(np.array(model.coef_).flatten())`) and the number of examples is presumably much larger than 2, probably 100s or even 1000s. So theres almost no change your 2 DOF logistic regression can overfit. So it doesn't matter what C value (inverse regularization strength) you chose and which penalty metric you choose."
 -
@@ -118,10 +118,10 @@
 -
   Q: How does one decide what to do next with a 2-layer 128-cell LSTM network that is getting 95% training set accuracy and 91% test set accuracy for sentiment analysis? Does it have high variance or high bias?
   A: I don't like using those terms what's a better way to describe how your model is doing? (Overfitting vs underfitting)  You model is overfitting so you need to increase the random dropout and reduce the number of layers or the number of neurons in each layer. In general the only way to decide what to do next is to try it. And record your answers in a hyper-parameter tuning log or table. And record each new model as a separate python file or notebook so your can reproduce the results of previous models. Especially when it takes a long time to train.
-- 
+-
   Q: should I get more data to reduce overfitting?
   A: getting more data is usually the harder thing to do so you should do it last. Instead try to make your model smarter by increasing regularization and reducing the number of features or doing feature reduction like PCA.
-- 
+-
   Q: Is scaling and normalization useful for a Linear Regression? What about SVM?
   A: No, in general vastly different scales do not affect the performance of most ML models like linear regression. However a Support Vector Classifier and Support Vector Regressor do tend to benefit from normalized scaling of the data (for example `sklearn.preprocessing.MinMaxScaler()`). This is because an SVM optimizes the margin between target values/class, and normalizing your feature values ensures that the margin is balanced across the features. For example, the margin/separation between the class boundary for a feature ranging over +/- 100 would be 100x further away from the "true" class boundary than for a feature ranging between +/- 1, if feature normalization or scaling were not used.
 -
@@ -136,31 +136,31 @@
 -
   Q: "Is SQL required for DS work?"
   A: "No, but it's required to get through many interviews."
-- 
+-
   Q: "The inferential statistics exercises are hard."
   A: "Inferential statistics is all about using classical Data Science statistical approaches to create basic models to predict a target varialbe. And example of an inferential statistics model would be if you tried to predict gender based on only the height and weight of people. You could take the mean height and weight of the women in your training set, and likewise for the men, and then assume that whichever centroid your test examples are closest to can be used to assign them a predicted gender label. Obviously this model has flaws and a machine learning approach would involve creating additional features, like perhaps dividing the height by the weight and then finding the optimal threshold on this estimate of BMI (body mass index) to predict the gender (whichever threshold gives you the highest accuracy, precision, or recall, whatever you care about most). "
-- 
+-
   Q: "How can a testing engineer position interview (asked about DS applied to test engineering) be parlayed into a Data Science position."
   A: "Once you have the job as a test engineer, you can show your colleagues how to predicting and diagnose issues with hardware or software (whatever you're testing) using machine learning."
-- 
+-
   Q: "I'm in sales and marketing. How can I apply AI to my work?"
   A: "You can use ML (a form of AI) to predict customer behavior, like favorable or unfavorable response to a marketing campaign or the sales generated by a particular promotion. You could even build a chatbot or a generative model to perform that advertisement for you. Google is a leader in AI research and their focus is on advertising and marketing, mostly through the AI that is part of their search engine and ad-words program."
-- 
+-
   Q: "What are some ways to learn about marketing, and marketing techniques that apply ML."
   A: "There are numerous blog posts and academic papers on applying ML to marketing and advertisement. Search for "advertising marketing machine learning" on DuckDuckGo.com, toolbox.google.com/datasetsearch, kaggle.com/datasets,  and scholar.google.com."
 -
   Q (teacher): "What is a good way to plot data that has widely varying scale like the frequency or document frequency for the 50 most frequent words in my documents?"
   A (student): "I don't know, maybe zoom in on one part of the data? Oh I know, how about a log scale plot so that all the values have equal visibility."
-- 
+-
   Q: "What values for min_df and max_df I should you use for the `sklearn` `TfidfVectorizer()` ?"
   A: "What does df mean? What does min_df do? What does max_df do? How does it help a model? What is the purpose. How does df vary across the words in your documents? How many documents would be affected if you increased the min_df by one? How much would your vocabulary size be reduced? How much would this help your model? What if you decreased max_df by 1 or by 1% (.01), how many documents would be affected? How much would this help?"
-- 
+-
   Q: "Is it a good data science project to build a smart search tool for GEO and Environmental dataset like oil pipeline locations, whale and marine species migration data, farming data, etc."
   A: "No. Just gathering up the metadata about those datasets would be very difficult and time consuming. The best project ideas are not ideas that I generate on my own, they are ideas that are suggested by a dataset a table with numbers in it."
-- 
+-
   Q: "What is a good dataset to practice joining datasets or tables?"
   A: "The conventional approach is to find an existing data science problems like predicting home prices and predicting crime in Chicago and then join them to create additional features for both problems. The crime data joined on the latitude and longitude or street address in both tables could be useful as a feature in predicting home prices. And the home prices and number of stories and other features of homes might be useful in predicting crime rates if joined with the crime table on the street address or geolocation of the crime reports."
-- 
+-
   Q: "What about joining the Kaggle competition on predicting the dish name based on the ingredient lists in recipes, with another table from grocery stores about their stock of those ingredients. Is that a good Data Science project?"
   A: "Is it going to be easy to obtain a reqpresentative sampling of grocery store stock and prices from across the united states? It's not. So it is better to let the datasets suggest a project rather than letting you mind dream up hypothetical datasets that might be hard to obtain. For example can you think of a way to use the FDA.gov website which has CSV files of food items and their nutritional content? What if you joined it on the recipe dataset from Kaggle? What would your target variable be? (any of the nuttitional components available on the FDA databse, like sugar or fat or calories or vitamin C) Would it be supervised or unsupervised? (unsupervised) Use toolbox.google.com/datasetsearch and kaggle.com/datasets to help you come up with a dataset (or pair of datasets) and a problem statement."
 -
@@ -169,7 +169,7 @@
 -
   Q: "For hyperparameter tuning, feature selection in particular, should I train a model based on a single feature at a time before training on combinations? "
   A: "It will be more efficient to simply accumulate more and more features by adding features one at a time and not training on them each independently. If you don't see an improvement in the training set or the test set accuracy, then you can likely skip it. Or you can keep it in and wait until your test set accuracy is degraded before your ignore features."
-- 
+-
   Q: "For hyperparameter tuning, should I record the model coefficients using something like `model.save()` with every new combination of features or hyperparameters that I train it on?"
   A: "Not if the model is relatively fast to train/fit.  Because you've recorded your hyperparameters in a hyperparameter tuning log or table you can always recreate any of the models that worked well by refitting it using those hyperparameters and the training set you used the first time.  If the model is complicated with a lot of coefficients and takes a long time to train you can save a "checkpoint" whenever you see an improvement in your test set accuracy, so you don't have to try to recreate it later."
 -
@@ -214,7 +214,7 @@
   A: "_Natural Lanugage Processing in Action_ is an excellent book if you have the budget for it. Otherwise you can install the `nlpia` package at github.com/totalgood/nlpia and try the examples in each chapter on the repo. And here is another [great list of NLP resources]( https://github.com/sebastianruder/NLP-progress)"
 -
   Q (teacher): what was the target variable in your past projects
-  A: HIV positive woman screening, predict accepting or not cervical cancer screening test. 
+  A: HIV positive woman screening, predict accepting or not cervical cancer screening test.
 -
   Q (teacher): what featuer variables did you use to predict the target variable in that project
   A: income level, type of community/society (military, civil), age (16-48), height and weight, clinical screen
@@ -234,7 +234,7 @@
   Q (teacher): so if the keys were the column names in your dictionary for a table of numbers, what would the values be?
   A: a float? (no, it would probably need to be a list or numpy array of floats since), lists, arrays, tuples and dictionaries are called collections because they can contain multiple objects
 -
-  Q (student): I will not have too much trouble with the technical aspects. I hope you can help me with motivation and focus and understanding of the US culture since I am new to the country. 
+  Q (student): I will not have too much trouble with the technical aspects. I hope you can help me with motivation and focus and understanding of the US culture since I am new to the country.
   A: The Springboard counselor and I will certainly keep you on track and help you make continuous progress. Also, I will help you chose among the many technical approaches by recommending the "best practice" for a professional data scientist in the US.
 -
   Q: I broke up my number of weeks to complete the project into buckets 0-10, 11-20, ... etc. I created a categorical variable for this with an integer 0-9. How can I use that in my model as a feature?
@@ -245,7 +245,7 @@
 -
   Q (teacher): You're in an interview at Siemens, and they ask you to whiteboard a problem. "I have the crime dataset for Chicago and I'd like to use it to decide where to put bike racks for our rental U-bike product."
   A (student): You should estimate the crime rate at various locations throughout Chicago and put bike racks in low crime areas.
-- 
+-
   Q (teacher): No. Don't ever reccommend a solution. Ask clarifying questions about the data and the problem before recommending a solution.
   A (student): OK, So what is in the crime dataset? Is it geocoded with latitude and longitude information? Does it have crime type categories? Does it have a category for bike theft? How many crime reports are there? Are there natural language descriptions? Over what time period do you have the reports? Is it live data that is generated every day or static?
 -
@@ -271,20 +271,20 @@
 -
   Q: What's a good way to learn about the theory behind neural nets?
   A: Find a textbook from a university course.
-- 
+-
   Q: How many samples do you need to get a **good** estimate of mean or standard deviation.
   A1: What do you think? What do you think the error in your mean and standard deviation is proportional to?
   A2: The error in your standard deviation and mean is proportional to `1/sqrt(N)`. MOst academics will accept a sample size of 30 for calculating a p-value and standard deviation and other critical statistics. But a sample size of 10 is usually sufficient for most practical real world problems. That will usually give you less than 10% error on your statistics.
-- 
+-
   Q: I have a model that predicts the adjusted finish time of grayhounds, horses, or people. How can I incoporate information about how long ago it was that that runner raced, because I'm using their previous 5 adjusted finish times as features in my model.
-  A: There's the easy way and the hard way and the super complicated way. The simple way is to compute the average adjusted finish time for each racer over the past N **days** rather than the previous N **races**. The hard way is to add a sample_weights array during training of your model that accounts for how long ago the last race was for each runner. And the most complicated way is to build a separate model that predicts adjusted finish time using **only** the adjusted finish times from the previous 5 races, with sample_weights proprotional to the time since those 5 races. Then you can use that prediction as a new feature to replace the previous 5 adjusted finish times as features in your model. 
+  A: There's the easy way and the hard way and the super complicated way. The simple way is to compute the average adjusted finish time for each racer over the past N **days** rather than the previous N **races**. The hard way is to add a sample_weights array during training of your model that accounts for how long ago the last race was for each runner. And the most complicated way is to build a separate model that predicts adjusted finish time using **only** the adjusted finish times from the previous 5 races, with sample_weights proprotional to the time since those 5 races. Then you can use that prediction as a new feature to replace the previous 5 adjusted finish times as features in your model.
 -
   Q: This dataset of rental bike inspection reports for New York city looks interesting buy I'm not sure how to use it as a time series or geo spatial data.
-  A: "First, examine each column of data as if you don't know what the column heading means. How can you turn it into a number? How many numbers/features can you extract from each column? What kind of variable are those numerical features: categorical, ordinal, or continuous. What is the dimensionality of the features generated by each raw column of data? What feature engineering can you do on them to reduce dimensions or cluster them to make them more useful? And finally which column has a target variable (like the inspection report) that has information in it you would like to now before it is available in the dataset? What is the timeline for recording the columns in the dataset. Which values are known before the target variable? Would predicting the target ahead of time have business or scientific value?" 
+  A: "First, examine each column of data as if you don't know what the column heading means. How can you turn it into a number? How many numbers/features can you extract from each column? What kind of variable are those numerical features: categorical, ordinal, or continuous. What is the dimensionality of the features generated by each raw column of data? What feature engineering can you do on them to reduce dimensions or cluster them to make them more useful? And finally which column has a target variable (like the inspection report) that has information in it you would like to now before it is available in the dataset? What is the timeline for recording the columns in the dataset. Which values are known before the target variable? Would predicting the target ahead of time have business or scientific value?"
 -
   Q: Should I try to translate a Caffe model to Keras like [this 2-stream model](github.com/wushidonguc/two-stream) to see how much optical flow helps with action prediction.
   A: That's a great research project or "future work" idea, but for this project all you need is a hyper parameter table listing all the parameters you tried and the performance as columns. The parameter columns can be things like image_shape/size, seq_length, batch_size, num_neurons layer 1, num_neurons layer 2, etc. The performance columns can be accuracy on your target for the training set and the test set or validation set.
-- 
+-
   Q: What plots should I include in my final report.
   A: The money plot is few scatter plots (pair plots) of the model performance (accuracy) vs the most interesting hyperparameters. So the horizontal axis should be a parameter like batch size or num total neurons or num trainable parameters. The vertical axis should be test set and/or training set accuracy.
 -
@@ -350,16 +350,16 @@
 -
   Q: "In Medicare regulations, Fraud Waste and Abuse (FWA) are 3 different categories of laws and regulations. Which one requires the **intent** to obtain payment as well as the knowledge that the actions are wrong or illegal?"
   A: "A Medicare FWA fraud conviction requires that the violator intended to obtain payment and knew it was wrong."
-- 
+-
   Q: "In Medicare FWA regulations, which is not potentially a penalty for a violation: Civil monetary penalties, Deportation, or Exclusion from participation in Federal healthcare programs?"
   A: "Deportation is not a potential penalty for violating Medicare FWA regulations. "
-- 
+-
   Q: "In Medicare FWA regulations what is an FDR?"
   A: "In Medicare FWA regulations an FDR is a Firs-Tier (call center, hospital), Downstream (provider), or Related Entity (contractor, researcher). All such organizations must have policies an procedures that address FWA."
-- 
+-
 Q: "In Medicare FWA regulations what is an SIU"
 A: "In Medicare FWA regulations an SIU is a Special Investigations Unit within a sponsor organization, such as a Firs-Tier (call center, hospital) participant in the Medicare program. An SIU will investigate any reports of FWA, including anonymous reports."
-- 
+-
   Q: "Where can I report Medicare FWA violations?"
   A: "1-800-HHS-TIPS (1-800-447-8477) or HHSTips@olg.hhs.gov or forms.oig.hhs.gov/hotlineoperation/index.aspx"
 -
@@ -383,7 +383,7 @@ A: "In Medicare FWA regulations an SIU is a Special Investigations Unit within a
 -
   Q: "To avoid Medicare FWA what should you do if a regular beneficiary suddenly has an increase in their quantity or dosage for a prescription or controled substance?"
   A: "Contact the provider to verify the quantity."
-- 
+-
   Q: "Within the medicare and medical field, what is CMS?"
   A: "Centers for Medicare & Medicaid Services"
 -
@@ -406,9 +406,9 @@ A: "You need to use pd.get_dummies to create one-hot encodings of your categoric
   A (student): "There are two general approaches for recommendation engines, collaborative filtering and content-based filtering. A content-based approach would use NLP to compare all pairings of job descriptions and resumes to look for good matches. A collaborative filtering approach would cluster candidates and job descriptions and recommend jobs to candidates that were a good match for others in their cluster. "
 
 
-  
-  
-    
+
+
+
 
 
 -
@@ -1193,5 +1193,127 @@ _
 -
   Q: "I have 7 features describing how often students interact with the website and how much of the assignments they've completed in the past month. Which clustering algorithm should I use (KNN, K-Means, DB-Scan, etc) and what can I use the cluster information for?"
   A: "The categorical label found by a clustering algorithm may or may not represent anything meaningful or useful about your problem or the things you want to be able to predict, like completion rate for students. The only way to find out is to add the cluster ID as another feature to a machine learning model, that is attempting to classify or regress to a target label you are interested it. A more common approach is to use clustering on demographic data to identify segments of your customers so that you can target your product features and your marketing campaign for difference segments of your market. The Scikit-Learn documentation has [a nice table](https://scikit-learn.org/stable/modules/clustering.html#overview-of-clustering-methods) showing the advantages and disadvantages of 10 popular clustering algorithms. You should choose one that looks like it would work will with your data and will run in a reasonable amount of time for the dimensionality and size of your dataset."
+-
+  Q: "How do I create a folder within my github repository?"
+  A: "If you learn how to use the command line tool you can push any file or directory (that isn't empty) using the standard `git add`, `git commit`, `git push` workflow. If you'd prefer to use a GUI you can download http://desktop.github.com for your laptop and connect it to your github account so you can clone and manage any repositories there."
+-
+  Q: "What sort of hyperparameters should I try?"
+  A: "You can try different models, and model types, like random forest regressor, linear regression, polynomial regression."
+-
+  Q: "How do I do polynomial regression?"
+  A: "The easiest way is to transform augment your features with additional features that are the polynomial exponents that you want to try, by say squaring all the features so that you have twice as many features as your started with."
+-
+  Q: "What is the difference between a Senior Business Intelligence Analyst and a Business Analyst?"
+  A: "The ranking of data science postions in an organization like Amazon, in order from most experienced to least experienced would be: '''
+      1. Senior Data Scientist--capable of applying cutting edge models to new problems (e.g. Kaggle competition top 10-20%
+      2. Data Scientist -- able to develop software for best-in-class models for applications that have previously been solved using similar models (e.g. Kaggle competition middle of the pack).
+      3. Senior Business Intelligence Analyst -- not a CS major but proficient at a high level language like R or python. Proficient at complex SQL queries like temporary intermediary tables and graph queries. Capable of producing visualizations and statistical measures of the performance of predictive models. Can create plausible hypotheses and formulate strategies for testing them.
+      4. Data Analyst or Business Analyst -- not proficient at software development but can manipulate and query databases using basic SQL and VB scripts or formulas in Excel. Can use commercial tools for data visualization and plotting.
+    '''"
+-
+  Q: "A data science bootcamp instructor claimed that some models *require* input features and target variables be normally distributed? Which models are these?"
+  A: "This is false. No models *require* normally distributed data. This may come from a misunderstanding of the textbook descriptions of models like Linear Regression. Some models *assume* normally distributed data in order to make it possible to prove, theoretically, that they are optimimum in some way. This usually means that some particular measure of error is minimized or some accuracy metric is maximized. However, this does not in any way mean that the input must be scaled with something like the NormalScaler or that if it is skewed or uniform or in any other way nonnormally distributed that it will not work well for that model. In fact Ridge and Lasso regression define cost functions for which this normal data assumption is not even applicable. And Ridge and Lasso work better on almost any dataset and any problem than linear regression alone works."
+  Q: "A data science bootcamp instructor claimed that some models *require* input features and target variables be normally distributed? Which models are these?"
+  A: "This is incorrect. No models *require* normally distributed data. You can discover this yourself with any nonnormally distributed dataset you like. You will find that sklearn.LinearRegression and other models that are *designed* for normally distributed data will usually work equally well whether your scale the data to be normally distributed or not, even with large skewness or nonlinearities in your data. And even if the linear models work *better* on normally distributed data, that does not mean that other models will work better or worse than models that assume normally distributed data. Every problem is different. You will have to develop your own intuition about which models work best on different kinds of data."
+-
+  Q: "How can I be sure that I will have a complete machine learning pipeline built in the 4 weeks I have remaining for this project?"
+  A: "Built a minimum complete pipeline first. Even if your pipeline simply produces random guesses, it will give you the framework to begin improving the pipeline by adding additional features and transformations one at a time. By incrementally improving your pipeline you'll be able to see progress towards your goals if you record your results and hyperparameters in a table that you can review at each step. Plus, you can halt the project at any point and have a complete pipeline whose results will be valuable, if nothing else to show how difficult the problem is."
+-
+  Q: "How should I process the enron email dataset?"
+  A: "You can use the `email` package in python to extract the body, date, from, to, and even fields like `Message-ID`. Each of these can be parsed individually to produce ordinal and categorical variables, like the domain names for the from e-mail addresses. Many of the fields, like the subject and body and even the `Date:` and `From:` can be parsed like semi-strucured or unstructured natural language fields. The more of this metadata you can extract as numerical features, the better your model will perform."
+-
+  Q: "How do I type the eñe character on a Mac or PC?"
+  A: "On a Mac press [option]-[~] then [n]. On a PC type [ctrl]-[~]-[n] and then [n]."
+-
+  Q: "How do I type the accented e character (as in resumè) on a Mac or PC?"
+  A: "On a Mac type [option]-[`] then [e]. On a PC type [ctrl]-[`]-[e] simultaneously."
+-
+  Q: "I've tried a linear regression, ridge regression, polynomial regression, and random forest model for my home price prediction model. So I have 3 rows in my hyperparameter tuning table. What other models should I try to add more rows?"
+  A: "You can vary the hyperparameters for your existing models to get intuition about the affect of those hyperparameters. Example parameters include the alpha parameter for Ridge regression or the polynomial order for your polynomial regression. Check out the `sklearn` documentation and think about which arguments to each of your model's `__init__()` constructor. Think about which ones might affect the accuracy of your model."
+  A: "You can also look at your data cleaning steps to see how you might do things differently. This may also affect your accuracy and add to your intuition to help you on future problems."
+-
+  Q: "Is R^2 a good metric to put in my hyperparameter table?"
+  A: "When you present your results what questions do you think your audience will have about the accuracy of your model? Will your audience or boss care about R^2 correlation coefficients? What accuracy number would they need in order to make good business decisions based on your model and the accuracy you are reporting?"
+  A (student): "The audience would probably want to know about the maximum dollar error in the price prediction for each home. Sellers could use something like a 60%, 90%, or 99% confidence interval to make business decisions based on how over or undervalued the home listing is relative the that confidence interval."
+-
+  Q: "My data (word counts) has a really broad range so the histogram looks like an exponential curve and it's hard to see the values for the smaller counts. Should I split it into two plots for the small and large word counts?"
+  A: "No. You should use a log scale on the vertical axis of your histogram."
+  A (student): "But my audience may not be able to interpret logarithmic scales."
+  A (teacher): "Then you may have to educate them. Two separate linear plots with different vertical scales side by side will be misleading. You will be helping them draw incorrect conclusions. You will encounter many logarithmic and exponential datasets in data science. To get the most out of that data you will have to visualize it in a way that is both accurate and informative. Logarithmic scaling is an invaluable tool for that."
+-
+  Q: "How important is knowing SQL and python programming for a data scientist?"
+  Q: "How important is it for a data scientist to know SQL and python for a data scientist?"
+  A: "Start with learning python. You can get familiar with data queries and joins using `sqlalchemy`, `Django`, or even Pandas `DataFrame` APIs. These provide a high level abstraction on SQL that builds on your understanding of python. So you can do SQL queries in python without learning another language and syntax. This will free up brain cells to learn more advanced python and data manipulation approaches. Only if you have a performance/scaling challenge (your queries are taking too long) should you dig into the SQL. But you'll find that it takes as much effort as learning python and you will have very limited use for your new SQL skill."
+-
+  Q: "What activation function should I use for my output fully connected layer (`keras.layers.Dense`) when my target variable is an ordinal. For other neural networks people mostly use `softmax`. My target is adoption rate of pets (0 through 4) in the [\"Shelter Animal Outcomes\" Kaggle competition](https://www.kaggle.com/c/shelter-animal-outcomes/data) dataset."
+  A: "You should definitely **not** use softmax for an ordinal target variable. You have a regression problem, not a classification problem. What does a `softmax` function do? Does it have one or many inputs and outputs? It's worth your time to read up on all the activation functions like `sigmoid` and `relu` in addition to `linear`. You can play with them if it's not obvious what they do or whetehr they are appropriate for your problem."
+-
+  Q: "How can I use `curl` or `wget` to download an image or data file on a web page that has a username and password dialog box?"
+  A: "This `curl` command will work on any website that uses a standard HTTP `.htaccess` file for the username and password: `curl -u \"$SITE_USERNAME:$SITE_PASSWORD\" 'http://example.com/path/to/file.csv'`. If you don't want your password stored in your `.bash_history` or shell history, you can use: `curl -u \"$SITE_USERNAME\" 'http://example.com/path/to/file.csv'` and you will then be prompted for the password."
+-
+  Q: "How can I put my Google Slides on GitHub with my code?"
+  A: "You need to download it as a file that others can use, like an `.odp` Open Office Presentation file."
+-
+  Q: "Does GitHub support slides like `.odp` Libre Office Presentations?"
+  A: "Yes, but they aren't editable or viewable on the GitHub website. Like all binary files associated with your code you should edit and view them on your local copy of the `.git` repository."
+-
+  Q: "Would unsupervised learning for classification of the Enron dataset make a good project to learn Data Science and NLP?"
+  A: "Not really. In order to learn from your project you need to know how good your model is at making predictions. Without a labeled dataset, that's really hard to do. A _sillouette score_ can give you a qualitative assessment of the quality of your class label predicitons, but unless you have a business use case for those labels where you can measure the effectiveness of them for that use, you won't have a quantitiative measure of the usefuless of your model. Fortunately Berkeley grad students have categorized some of the enron email dataset into about 30 hierarchical categories or classes: [bailando.sims.berkeley.edu/enron_email.html](http://bailando.sims.berkeley.edu/enron_email.html)"
+  Goal: "Supervised learning problems are much better for learning Data Science."
+-
+  Q: "What happens when you set `sample_weights` equal to your target variable (home price) in a `scikit-learn` model?"
+  A: "It multiplies the home price by the loss to emphasize the error for expensive homes and deemphsize the error for lower priced homes during optimization of the weights."
+-
+  Q: "Why does setting `sample_weights` to your target variable (home price) cause underfitting?"
+  A: "Because some of the errors are not given much weight so they don't affect the fit as much and the regression doesn't match the data as closely in those places. It causes underfitting over `all` your data on average, but causes overfitting on the parts of your data where there are high weights (like expensive homes in your example)."
+-
+  Q: "How can I brush up on my SQL skill?"
+  A: "Install sqlite and use python in a jupyter notebook to issue queries on a sqlite database. Any projects that have multiple tables of data with relationships between those tables can benefit from using a sqlite database rather than DataFrames. Try replacing some of your Pandas data cleaning steps with sql queries."
+-
+  Q: "I'm having trouble understanding the data format in the enron email dataset here: [bailando.sims.berkeley.edu/enron_email.html](http://bailando.sims.berkeley.edu/enron_email.html) text files. What should I do?"
+  A: "Read one email and see if you can figure out which of the categories each of the integers refers to. And if you don't have time to develop your data ETL (Export, Transform, Load) skills then you can try this pre-cleaned version of the classified Enron e-mail dataset by [Brian Ray](https://data.world/brianray/enron-email-dataset)."
+-
+  Q: "My Kaggle dataset has multiple facets. One csv file has pet characteristics like bree, cat/dog, hair length, color. Andother table has metadata about an image of the pet, such as the labels returned by GCV or another computer vision algorithm. Another CSV files had metadata on the natural language description of the pet, such as a TFIDF vector. What can I do to easily incorporate the metadata into my model."
+  A: "The image labels can each become a new binary feature in your model. You don't have to incorporate them all. Instead you can just add one at a time and see how it improves your accuracy or starts to increase overfitting (reduced accuracy on your testset)."
+-
+  Q: "What does the [Slalom](https://www.slalom.com/) company do?"
+  A: "[Slalom](https://www.slalom.com/) sends conultants (data engineer, data scientist, and/or business analyst teams) to medium to large corporations to help them figure out what to do with their data. Like if a distributor wants to improve their efficiency base on data about their routes, drivers, and packages. This can often be more of a process optimization problem than a data science problem."
+-
+  Q: "How do I use a different tokenizer in the sklearn `TFIDFVectorizer`"
+  A: "You need to instantiate the TFIDFVectorizer assigning your callable tokenize function to the tokenize argument within the `TFIDFVectorizer` constructor."
+-
+  Q: "What does it mean when the docs for `TFIDFVectorizer` say that its constructor takes an argument \"tokenize\" that must be a `callable`?"
+  A: "That means the argument must be the function name, not the string returned by calling the tokenizer, e.g. use the instance method `tokenize` like this: `tfidfvectorizer = TFIDFVectorizer(tokenize=nltk.Tokenizer().tokenize)` **not** the class method: tfidfvectorizer = TFIDFVectorizer(tokenize=nltk.Tokenizer.tokenize)."
+-
+  Q: "How can you do dimension reduction on a high dimensional vector like a TFIDF vector or an image?"
+  A: "PCA is the most straightforward technique. It is a linear transformation that maximizes the distance between points that were far apart in the high dimesnsional space. TSNE is a nonlinear transformation that mainains the closeness of points that are close together."
+-
+  Q: How can I create a document vector using spacy?
+  A: |
+    You can do it yourself by summing up all the word vectors:
+    ```python
+    >>> !python -m spacy download en_core_web_md
+    >>> import spacy
+    >>> nlp = spacy.load('en_core_web_md')
+    >>> docs = ['Hello world!', 'Another doc, another $.', 'Goobye world...']
+    >>> pd.DataFrame((pd.DataFrame([w.vector for w in nlp(doc)]).sum(axis=0) for doc in docs))
+            0         1         2         3         4         5    ...       294       295       296       297       298       299
+    0 -0.019890  0.659450 -0.179160 -0.257430  0.778790 -0.346290  ...  0.677553  0.056050  0.399765  0.059472 -0.580639  0.596957
+    1 -0.940003  0.830166 -0.574090  0.328137  1.504906  0.614334  ... -1.912200  0.324076 -0.189071 -0.382730 -1.281060 -0.331810
+    2 -0.004859  0.471100  0.191603 -0.432700  0.321437 -0.309723  ...  0.254403  0.313342  0.050089  0.073897  0.047953  0.240027
+    ```
+    Or you can just use the doc vector computed internally by Spacy the exact same way (except Spacy calculates the `.mean()` rather than the `.sum()`:
+    ```python
+    >>> pd.DataFrame((nlp(doc).vector for doc in docs))
+            0         1         2         3         4         5    ...       294       295       296       297       298       299
+    0 -0.006630  0.219817 -0.059720 -0.085810  0.259597 -0.115430  ...  0.225851  0.018683  0.133255  0.019824 -0.193546  0.198986
+    1 -0.156667  0.138361 -0.095682  0.054689  0.250818  0.102389  ... -0.318700  0.054013 -0.031512 -0.063788 -0.213510 -0.055302
+    2 -0.001620  0.157033  0.063868 -0.144233  0.107146 -0.103241  ...  0.084801  0.104447  0.016696  0.024632  0.015984  0.080009
+    [3 rows x 300 columns]
+    ```
+    Notice that the first document vector computed by spacy is 1/3 the magnitude in each dimension than the sums that we computed for those dimensions, because "Hello world!" tokenizes into 3 tokens 'Hello', 'world', and '!'.
 
+    Also, notice that mispelled words that don't exist in the spacy dictionary, like "Goobye" don't crash the loop. Spacy just returns an all-zero vector for those words.
 
+    See the [spaCy documentation](https://spacy.io/usage/vectors-similarity) for more details.
+-

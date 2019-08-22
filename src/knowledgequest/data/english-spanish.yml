@@ -161,3 +161,329 @@
 -
   en: Is there a fishing lure or a tool you'd like me to bring down?
   sp: ¿Hay un señuelo de pesca o una herramienta que me gustaría que derribara?
+-
+  en: The diver says that for installing zincs the cost is 500 and for cleaning plus zincs 900.
+  sp: Dice el buso que por poner los sing cobra 500 y por limpieza y los sing 900.
+-
+  en: That sounds good.
+  sp: Eso suena bien.
+-
+  en: I will send 1000 pesos to Isabella for you to pay the diver for both.
+  sp: Enviaré 1000 pesos a Isabella para que pague al buceador por ambos.
+-
+  sp: Por nada.
+  en: It's nothing.
+-
+  sp: Por nada.
+  en: You're welcome.
+-
+  sp: De nada.
+  en: It's nothing.
+-
+  sp: Para cundo mandas el dinero para desirle al sr
+  en: For when you send the money to tell the sr
+-
+  sp: Que is "al sr"?
+  en: What is "al sr"?
+  en-ans: señor
+-
+  sp: los otras no quedaron
+  en: the others were not left
+  image: a prop zinc from a sailing yacht named Mar Libre
+  previous: Este es el sing [sic] que lleva la flecha del Mar Libre.
+-
+  sp: los otras no quedaron
+  en: the others were gone
+  image: a prop zinc from a sailing yacht named Mar Libre
+  previous: Este es el sing [sic] que lleva la flecha del Mar Libre.
+-
+  sp: los otras no quedaron
+  en: the others were completely corroded away
+  image: a prop zinc from a sailing yacht named Mar Libre
+  previous: Este es el sing [sic] que lleva la flecha del Mar Libre.
+-
+  sp: los otras no quedaron
+  en: the others were completely eaten away
+  image: a prop zinc from a sailing yacht named Mar Libre
+  previous: Este es el sing [sic] que lleva la flecha del mar libre.
+-
+  sp: Este es el sing [sic] que lleva la flecha del Mar Libre
+  en: This is the zinc that attaches to the arrow of the Mar Libre
+  image: a prop zinc from a sailing yacht named Mar Libre
+-
+  sp: Este es el zinc que lleva la flecha del velero Mar Libre
+  en: This is the zinc that attaches to prop shaft of the sailing yacht Mar Libre
+  image: a prop zinc from a sailing yacht named Mar Libre
+-
+  sp: Este es el zinc que lleva la flecha del barco Mar Libre
+  en: This is the zinc that attaches to the prop shaft of the ship Mar Libre
+  image: a prop zinc from a sailing yacht named Mar Libre
+-
+  sp: Este es el zinc que se adjuntó a la hélice del velero Mar Libre.
+  en: This is the zinc that was attached to the propeller of the sailing yacht Mar Libre
+  image: a prop zinc from a sailing yacht named Mar Libre
+-
+  sp: Este es el zinc que se adjuntó al eje de apoyo del yate de vela Mar Libre
+  en: This is the zinc that was attached to the prop shaft of the sailing yacht Mar Libre
+  image: a prop zinc from a sailing yacht named Mar Libre
+-
+  sp: Así es lo lleva en la parte frontal de la propela.
+  en: This is what is on the front of the propeller.
+  image: a prop zinc from a sailing yacht named Mar Libre
+-
+  sp: Asi es lo lleva en la parte frontal de la propela.
+  en: This is what is on the front of the propeller.
+  image: a prop zinc from a sailing yacht named Mar Libre
+-
+  sp: Asi es lo lleva en la parte frontal de la propela.
+  en: This is how it is on the front of the propeller.
+  image: a prop zinc from a sailing yacht named Mar Libre
+-
+  sp: ¿Hay espacio en el eje entre la hélice y el casco de fibra de vidrio del barco?
+
+
+
+-
+  sp: ¿No fue posible usar los cinc del eje que te envié?
+
+
+
+-
+  sp: ¿Son demasiado pequeños o demasiado grandes?
+
+-
+  sp: No los lleva nomas ese que te mande
+  en: They do not fit on the boat.
+
+-
+  sp: Es muy corta la barra tiene como cuatro o cinco pulgadas de barraentre la propela y el casco del barco
+  en: Es muy corta la barra tiene como cuatro o cinco pulgadas de barraentre la propela y el casco del barco
+-
+  en: I will need the inner diameter at the large end of the cone.
+  sp: Necesitaré el diámetro interior en el extremo grande del cono.
+-
+  en: Also the number and size of the holes used to attach it to the propellor.
+  sp: También el número de tamaño de los orificios utilizados para unirlo a la hélice.
+-
+  en: And it would help to have an approximate thickness of the cone wall, though most of it is corroded away.
+  sp: Y ayudaría tener un grosor aproximado de la pared del cono, aunque la mayor parte está corroída.
+-
+  en: Also, the approximate length from front to back of the cone.
+  sp: Además, la longitud aproximada de la parte delantera a la parte posterior del cono.
+-
+  en: Let me check.
+  sp: Dejan checo.
+  context:
+-
+  sp: Lo que puedo medir y te mando las medidas.
+  en: What I can measure and I send you the measurements.
+-
+  en: I thought I left 2 zincs de formas diferentes.
+  sp: Pensé que te dejé 2 zincs de formas diferentes.
+-
+  en: One of the zincs I left with you was only 1 inch long.
+  sp: Uno de los cinc que dejé contigo tenía solo 1 pulgada de largo.
+-
+  en: It did not fit within the 3 inches available between the propeller and the boat hull?
+  sp: ¿No cabía dentro de las 3 pulgadas disponibles entre la hélice y el casco del barco?
+-
+  en: Also, one of the zincs I left with you was only 1 inch long.
+  sp: Además, uno de los cinc que dejé contigo tenía solo 1 pulgada de largo.
+-
+  en: I'm surprised it did not fit within the 3 inches available between the propeller and the boat hull.
+  sp: Me sorprende que no encajara dentro de las 3 pulgadas disponibles entre la hélice y el casco del barco.
+-
+  sp: Ya recogi el paquete pero es mas chico que el original
+  en: I already picked up the package but it's smaller than the original
+-
+  sp: El diametro que te mande era interior
+  en: The diameter that you send was inside
+-
+  en: Can I send you both for the same return package?
+  sp: Te puedo mandar los dos por la misma paqueteria de regreso?
+-
+  sp: O lo llevo a un tornero
+  en: Or I take it to a turner
+-
+  sp: Que lo arregle
+  en: That fix it
+  previous: O lo llevo a un tornero
+-
+  en: I will send another larger one.
+  sp: Enviaré otro más grande.
+-
+  en: Tonight.
+  sp:  Esta noche.
+  previous: Enviaré otro más grande.
+-
+  en: That way you and the diver can figure out a way to make one of them fit.
+  sp: De esa manera, usted y el buzo pueden encontrar la manera de hacer que uno de ellos se ajuste.
+-
+  sp: 1 1/2 inches es el diametro de lai flecha (cono).
+  en: 1 1/2 inches is the diameter of the bullet (cone).
+-
+  sp: Lo alto del cono de zink es de 2".
+  en: The height of the zink cone is 2 inch.
+-
+  sp: Del interior la parte mas delgada de la bullet es de 1".
+  en: Inside the thinnest part of the arrow is 1"
+-
+  en: I will send you the money this week.
+  sp: Te enviaré el dinero esta semana.
+-
+  en: Will send you the money this week.
+  sp: Te enviaré el dinero esta semana.
+-
+  en: The diver man charged 350 more for putting the zinc because he says that it was not an error that the other fell off.
+  sp: El Sr. buso cobró 350 más por poner el zing porque dice que no fue un error que el otro
+-
+  en: The scuba diver charged 350 more for putting the zinc because he says that it was not an error that the other fell off.
+  sp: El Sr. buso cobró 350 más por poner el zing porque dice que no fue un error que el otro
+-
+  en: The bottom cleaner diver charged 350 more for putting the zinc because he says that it was not an error that the other fell off.
+  sp: El Sr. busoe cobró 350 más por poner el zing porque dice que no fue un error que el otro
+-
+  en: OK thanks.
+  sp: ok gracias
+-
+  en: Please make two copies of the ignition key.
+  sp: Por favor haga dos copias de la llave de encendido.
+-
+  en: One copy for you and one for us.
+  sp: Una copia para usted y otra para nosotros.
+-
+  en: that one in the boat is the only copy we have
+  sp: Esa es la única copia que tenemos en el barco.
+-
+  sp: asi es
+  en: so is
+-
+  sp: asi es!
+  en: Quite so!
+-
+  sp: Un mecánico diesel marino entenderá.
+  en: A marine diesel mechanic will understand.
+-
+  sp: marino
+  en: marine
+-
+  en: I sent her the email this morning.
+  sp: Le envié el correo esta mañana.
+-
+  en: I asked Maria to give you 1400 pesos, 350+50 for the diver with tip, and 1000 for you for another month of boat maintenance.
+  sp: Le pedí a María que le entregara 1400 pesos, 350 + 50 para el buzo con punta y 1000 para usted por otro mes de mantenimiento de embarcaciones.
+-
+  en: Could not get the money in Fonatur
+  sp: No se pudo sacar el dinero en Fonatur
+-
+  sp: Pero te mando mi tarjeta
+  en: But I send you my card
+  previous:
+    en: Could not get the money in Fonatur
+    sp: No se pudo sacar el dinero en Fonatur
+-
+  sp: Con los 16 numeros me llega
+  en: With the 16 numbers where I receive money
+  previous:
+    en: But I send you my card
+    sp: Pero te mando mi tarjeta
+-
+  sp: Acabo de enviarle otro correo electrónico a Isabela para pedirle que le envíe 2400 pesos.
+  en: I just sent another email to Isabela to ask her to send you 2400 pesos.
+  previous:
+    sp: Con los 16 numeros me llega
+    en: With the 16 numbers where I receive money
+-
+  en: I'll call her by phone if she does not reply by Monday.
+  sp: La llamaré por teléfono si no responde antes del lunes.
+  previous:
+    sp: Acabo de enviarle otro correo electrónico a Isabela para pedirle que le envíe 2400 pesos.
+    en: I just sent another email to Isabela to ask her to send you 2400 pesos.
+-
+  sp: 2000 es por 2 meses de mantenimiento de Mar Libre.
+  en: 2000 is for 2 months of Mar Libre maintenance.
+  previous:
+    en: I'll call her by phone if she does not reply by Monday.
+    sp: La llamaré por teléfono si no responde antes del lunes.
+
+-
+  en: 400 is for the diver that changed the zinc propeller nut.
+  sp: 400 es para el buzo que cambió la tuerca de la hélice de zinc.
+  previous:
+    sp: 2000 es por 2 meses de mantenimiento de Mar Libre.
+    en: 2000 is for 2 months of Mar Libre maintenance.
+-
+  en: 400 is for the diver that changed the zinc prop nut.
+  sp: 400 es para el buzo que cambió la tuerca de zinc.
+  previous:
+    sp: 2000 es por 2 meses de mantenimiento de Mar Libre.
+    en: 2000 is for 2 months of Mar Libre maintenance.
+-
+  en: 400 is for the diver that changed the propeller zinc.
+  sp: 400 es para el buzo que cambió la hélice de zinc.
+  previous:
+    sp: 2000 es por 2 meses de mantenimiento de Mar Libre.
+    en: 2000 is for 2 months of Mar Libre maintenance.
+-
+  sp: No sé cómo enviar dinero a su cuenta bancaria.
+  en: I do not know how to send money to your bank account.
+  previous:
+    sp: 2000 es por 2 meses de mantenimiento de Mar Libre.
+    en: 2000 is for 2 months of Mar Libre maintenance.
+-
+  sp: Solamente de tijuana.
+  en: Only from tijuana.
+  previous:
+    sp: No sé cómo enviar dinero a su cuenta bancaria.
+    en: I do not know how to send money to your bank account.
+-
+  sp: Y con los numeros de la tarjeta.
+  en: And with the card number.
+  previous:
+    sp: Solamente de tijuana.
+    en: Only from tijuana.
+-
+  sp: Y con los numeros de la tarjeta.
+  en: And with the numbers on the card.
+  previous:
+    sp: Solamente de tijuana.
+    en: Only from tijuana.
+-
+  sp: Ya recibi el dinero a le pague al buso muchas gracias.
+  en: I received the money and paid the diver thank you.
+-
+  sp: Gracias para used.
+  en: Thank **you**.
+  previous:
+    sp: Ya recibi el dinero a le pague al buso muchas gracias.
+    en: I received the money and paid the diver thank you.
+-
+  sp: Gracias para ti.
+  en: Thanks to you.
+  previous:
+    sp: Ya recibi el dinero a le pague al buso muchas gracias.
+    en: I received the money and paid the diver thank you.
+-
+  sp: Lo siento que yo no vistante a Mar Libre eso mes.
+  en: I'm sorry I didn't vist Mar Libre this month.
+  previous:
+    sp: Ya recibi el dinero a le pague al buso muchas gracias.
+    en: I received the money and paid the diver thank you.
+-
+  sp: No importa aqui lo cuidamos.
+  en: It doesn't matter here we take care of it.
+  previous:
+    sp: Lo siento que yo no vistante a Mar Libre eso mes.
+    en: I'm sorry I didn't vist Mar Libre this month.
+-
+  sp: No importa aquí lo cuidamos.
+  en: It doesn't matter here we take care of it.
+  previous:
+    sp: Lo siento que yo no vistante a Mar Libre eso mes.
+    en: I'm sorry I didn't vist Mar Libre this month.
+-
+  sp: No importa aquí nos encargamos de ello.
+  en: It doesn't matter here we take care of it.
+  previous:
+    sp: Lo siento que yo no vistante a Mar Libre eso mes.
+    en: I'm sorry I didn't vist Mar Libre this month.
