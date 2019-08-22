@@ -5,10 +5,18 @@
 #   * Make sure each ForeignKey has `on_delete` set to the desired behavior.
 #   * Remove `managed = False` lines if you wish to allow Django to create, modify, and delete the table
 # Feel free to rename the models, but don't rename db_table values or field names.
-from django.db import models
+import os
+import keyword
+
 from tqdm import tqdm
 import sqlite3
-import keyword
+import yaml
+
+from django.db import models
+from django.contrib.postgres.fields import ArrayField
+
+from knowledgequest.constants import DATA_DIR
+
 
 PYTHON_KEYWORDS = set(keyword.kwlist)
 PARTICIPANT_CHOICES = (
@@ -74,14 +82,57 @@ class Email(models.Model):
     class Meta:
         app_label = 'knowledgequest'
 
+# TODO: Delete Reply table to normalize DB so that we only have a single Statement table
+#       Create a Conversation DAG (directional graph)
 
-class Participant(models.Model):
-    email = models.ForeignKey(Email, on_delete=models.CASCADE)
-    address = models.ForeignKey(Address, on_delete=models.CASCADE)
-    kind = models.CharField(max_length=2, choices=PARTICIPANT_CHOICES)
+
+class Reply(models.Model):
+    text = models.TextField()
+    usevec = ArrayField(base_field=models.FloatField(), size=512)
+    docvec = ArrayField(base_field=models.FloatField(), size=300)
 
     class Meta:
         app_label = 'knowledgequest'
+
+
+class Statement(models.Model):
+    text = models.TextField()
+    usevec = ArrayField(base_field=models.FloatField(), null=True, blank=True, size=512)
+    docvec = ArrayField(base_field=models.FloatField(), null=True, blank=True, size=300)
+    replies = models.ManyToManyField(Reply, through='Option')
+
+    class Meta:
+        app_label = 'knowledgequest'
+
+
+class Option(models.Model):
+    statement = models.ForeignKey(Statement, on_delete=models.CASCADE)
+    reply = models.ForeignKey(Reply, on_delete=models.CASCADE)
+    probability = models.FloatField()
+
+    class Meta:
+        app_label = 'knowledgequest'
+
+
+class Participant(models.Model):
+    email = models.ForeignKey(Email, on_delete=models.CASCADE)
+    name = models.TextField(null=True, blank=True)
+    address = models.ForeignKey(Address, on_delete=models.CASCADE)
+    kind = models.CharField(max_length=2, choices=PARTICIPANT_CHOICES)
+    statements = models.ManyToManyField('Statement', blank=True)
+    replies = models.ManyToManyField('Reply', blank=True)
+
+    class Meta:
+        app_label = 'knowledgequest'
+
+
+def load_faq(faq_path=os.path.join(DATA_DIR, 'dsfaq.yml')):
+    with open(faq_path, 'r') as instream:
+        try:
+            faq = yaml.safe_load(instream)
+        except yaml.YAMLError as e:
+            print(e)
+    return faq
 
 
 def create_from_sqlite(
@@ -102,13 +153,13 @@ def create_from_sqlite(
             fields = [row[1] for row in rows]
             print('sqfields: ', fields)
             cur2 = con.cursor()
-            count = cur2.execute('select count(id) from {}'.format(table_name)).scalar()
+            # count = cur2.execute('select count(id) from {}'.format(table_name)).scalar()
             cur2 = con.cursor()
             cur2.execute('SELECT * FROM {}'.format(table_name.lower()))
             rows = cur2.fetchall()
 
             batch = []
-            for i, row in tqdm(enumerate(rows), total=total):
+            for i, row in tqdm(enumerate(rows), total=len(rows)):
                 djfields = [(s.lower() + '_field' if s in PYTHON_KEYWORDS else s.lower()) for s in fields]
                 if not i:
                     print('djfields: ', djfields)
@@ -119,3 +170,33 @@ def create_from_sqlite(
                     results = model.objects.bulk_create(batch, batch_size=batch_size)
                     batch = []
                 batch.append(obj)
+    return results
+
+
+def generate_sentence(spec=SENTENCE_SPEC, sentence_id=None):
+    """ Generate random sentence using word probabilities specified in SENTENCE_SPEC
+
+    >>> spec = {
+    ...     "answers":[[{"HDL":0.95,"good_cholesterol":0.05}, {"150": 0.01,"145": 0.01,"unk": 0.98}],
+    ...     "sentences":["Patient LDL level is 100, ________ level is 50, and the total is ______ .",]
+    ...     }
+    >>> s = generate_sentence(spec=spec, sentence_id=0)  # doctest: +ELLIPSIS, +NORMALIZE_WHITESPACE
+    >>> s
+    'Patient LDL level is 100, ... level is 50, and the total is ... .'
+    >>> s[26:42] in ('HDL level is 50,', 'good_cholesterol')
+    True
+    >>> s[60:63] in ('150', '145', 'unk')
+    True
+    """
+    sentences = spec['sentences']
+    if sentence_id is None:
+        sentence_id = np.random.randint(0, len(sentences))
+    sentence = sentences[sentence_id]
+    answer = spec['answers'][sentence_id]
+    i_unk = 0
+    tokens = []
+    for i, tok in enumerate(NLP(sentence)):
+        if re.match(r'^(_+|unk|\[MASK\])$', tok.text):
+            possible_tokens, p = list(zip(*answer[i_unk].items()))
+            tokens.append(np.random.choice(a=possible_tokens, p=p))
+            i_unk += 1

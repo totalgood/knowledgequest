@@ -83,17 +83,25 @@ WSGI_APPLICATION = 'knowledgequest.wsgi.application'
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
 DATABASES = {
-    'sqlite': {
+    'enronemail-sqlite': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, '..', '..', '..', 'src', 'springboard', 'tannistha', 'enron_email.db'),
     },
-    'default': {
+    'enronemail': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'enronemail',
         'USER': 'enron',
         'PASSWORD': os.environ.get('POSTGRES_ENRON_PW', 'password_314159'),
         'HOST': 'localhost',
         'PORT': '',
+    },
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'knowledge',
+        'USER': 'hobs',
+        'PASSWORD': os.environ.get('POSTGRES_HOBS_PW', 'password_314159'),
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 
