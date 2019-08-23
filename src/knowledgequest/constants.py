@@ -1,10 +1,10 @@
 import os
 import logging
 from collections import Counter
-import json
 
 import nltk
 import nltk.corpus
+import spacy
 
 
 SRC_DIR = os.path.dirname(os.path.dirname(__file__))
@@ -29,9 +29,7 @@ except LookupError:
     STOPWORDS_DICT = Counter(nltk.corpus.stopwords.words('english'))
 STOPWORDS = set(STOPWORDS_DICT)
 
-# NLP = spacy.load('en_core_web_sm')
+NLP = spacy.load('en_core_web_sm')
 TFHUB_USE_MODULE_URL = "https://tfhub.dev/google/universal-sentence-encoder-large/3"
-SENTENCE_SPEC_PATH = os.path.join(DATA_DIR, 'medical_sentences.json')
-SENTENCE_SPEC = json.load(open(SENTENCE_SPEC_PATH, 'r'))
 # Universal Sentence Encoder's TF Hub module for creating USE Embeddings from
 USE = None

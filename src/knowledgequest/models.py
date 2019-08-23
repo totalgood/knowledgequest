@@ -7,17 +7,21 @@
 # Feel free to rename the models, but don't rename db_table values or field names.
 import os
 import keyword
+import json
+import re
+import logging
 
 from tqdm import tqdm
 import sqlite3
 import yaml
+import numpy as np
 
 from django.db import models
 from django.contrib.postgres.fields import ArrayField
 
-from knowledgequest.constants import DATA_DIR
+from knowledgequest.constants import DATA_DIR, NLP
 
-
+log = logging.getLogger(__name__)
 PYTHON_KEYWORDS = set(keyword.kwlist)
 PARTICIPANT_CHOICES = (
     ('FR', 'from'),
@@ -126,12 +130,30 @@ class Participant(models.Model):
         app_label = 'knowledgequest'
 
 
-def load_faq(faq_path=os.path.join(DATA_DIR, 'dsfaq.yml')):
+def load_faq(faq_path=os.path.join(DATA_DIR, 'dsfaq_plus_faq_data_science_and_machine_learning.yml')):
+    faq = None
     with open(faq_path, 'r') as instream:
         try:
             faq = yaml.safe_load(instream)
         except yaml.YAMLError as e:
             print(e)
+            raise(e)
+    for i, qa in enumerate(faq):
+        if not isinstance(qa, dict):
+            faq[i] = {}
+            log.warning(f'qa #{i} was not a dict')
+            continue
+        for k in qa:
+            if k.lower() != k:
+                qa[k.lower()] = qa.pop(k)
+        # if 'q' not in qa:
+        #     log.warning(f'qa #{i} had no Question: {list(qa)} {qa[list(qa)[0]]}')
+        #     qa['q'] = qa.pop('q_student', qa.pop('q_student2', qa.pop('q_teacher')))
+        # if 'a' not in qa:
+        #     log.warning(f'qa #{i} had no Answer: {list(qa)} {qa[list(qa)[0]]}')
+        #     qa['a'] = qa.pop('a_teacher', qa.pop('a_teacher2', qa.pop('a_student')))
+        #     continue
+
     return faq
 
 
@@ -171,6 +193,10 @@ def create_from_sqlite(
                     batch = []
                 batch.append(obj)
     return results
+
+
+SENTENCE_SPEC_PATH = os.path.join(DATA_DIR, 'medical_sentences.json')
+SENTENCE_SPEC = json.load(open(SENTENCE_SPEC_PATH, 'r'))
 
 
 def generate_sentence(spec=SENTENCE_SPEC, sentence_id=None):

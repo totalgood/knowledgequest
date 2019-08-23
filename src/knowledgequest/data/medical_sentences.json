@@ -1,4 +1,13 @@
 {
+    "sentences": [
+        "Your blood pressure is too ___ .",
+        "How old are ________ ?",
+        "Does it hurt when you ________ ?",
+        "Do you have a family history of ________ ?",
+        "Dr. ________ told me the diagnosis .",
+        "Patient LDL level is 100, ________ level is 50, and the total is ______ .            .",
+        "Dr. Smith gave me ________ best estimate ."
+    ],
     "answers": [
         [
             {
@@ -65,14 +74,5 @@
                 "their": 0.05
             }
         ]
-    ],
-    "sentences": [
-        "Your blood pressure is too ___ .",
-        "How old are ________ ?",
-        "Does it hurt when you ________ ?",
-        "Do you have a family history of ________ ?",
-        "Dr. ________ told me the diagnosis .",
-        "Patient LDL level is 100, ________ level is 50, and the total is ______ .            .",
-        "Dr. Smith gave me ________ best estimate ."
     ]
 }

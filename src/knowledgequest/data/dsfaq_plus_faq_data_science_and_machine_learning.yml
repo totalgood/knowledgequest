@@ -98,8 +98,8 @@
   Q: "Are these plots useful or should I remove them?"
   A: "What are you trying to convey to the reader? What do you want them to get out of them? What do they tell you? Is that piece of information obvious at first glance? You reader will likely only look at the plot for a few seconds. In a bar plot, the bars next to each other should always have a relationship to each other that is interesting, since those will be compared to each other. If you have more than 10 bars on a single plot, they will likely hide the important pairs that you want your reader to look at, so cluster or group them more agressively. And never ever use raw counts on a bar plot or histogram, always us percent or normalized count so that your plot shows probability and allows your reader to compare values from different histograms with different total counts (like the cohorts in your income survey data)."
 -
-  Q: "The conclusion to my capstone starts with "The above plots show that feature importance are driving model performance." What do you think?"
-  A: "I'm not sure I understand what you are trying to say with that. Are you saying that the features with high feature importances values from the random forest model statistics are important to the model's decision tree branches? That's a circular statement that doesn't say anything new. Talk about the real world affects of your features on your target, income level. Talk about the fact that relationship status questions can have both a postiive and a negative impact on income. "married with wife" relationship status is highly positively correlated with income, whereas "married with children" relationship status is highly negatively correlated with income. And talk about how education level is not highly correlated with income, above a high school diploma. Those are interesting, meaningful, specific conclusions you can share with your reader."
+  Q: "The conclusion to my capstone starts with \"The above plots show that feature importance are driving model performance.\" What do you think?"
+  A: "I'm not sure I understand what you are trying to say with that. Are you saying that the features with high feature importances values from the random forest model statistics are important to the model's decision tree branches? That's a circular statement that doesn't say anything new. Talk about the real world affects of your features on your target, income level. Talk about the fact that relationship status questions can have both a postiive and a negative impact on income. \"married with wife\" relationship status is highly positively correlated with income, whereas \"married with children\" relationship status is highly negatively correlated with income. And talk about how education level is not highly correlated with income, above a high school diploma. Those are interesting, meaningful, specific conclusions you can share with your reader."
 -
   Q: "Which penalty function should I use for logistic regression, l1 or l2. My dataset has the heights and weights of hospital patients and the target variable is gender."
   A: "What do you think is the right way to chose between two different possible settings or values for a hyperparameter, like the regularization penalty metric for logistic regression? Try it, right? Whichever one improves your performance on the test set is the **right** one, right? And for this particular model your degrees of freedom is only 2 (`len(np.array(model.coef_).flatten())`) and the number of examples is presumably much larger than 2, probably 100s or even 1000s. So theres almost no change your 2 DOF logistic regression can overfit. So it doesn't matter what C value (inverse regularization strength) you chose and which penalty metric you choose."
@@ -113,8 +113,8 @@
   Q: What is the difference between l1 and l2 penalty or distance? How does each one affect the regularization penalty in a logistic regression.
   A: How do you chose any hyperparameter? What does l1 penalty mean? What does l2 penalty/distance mean?
 -
-  Q (teacher): If you're given a data set with 10 columns 1M rows of numbers and the 10th column is the target you are trying to predict. What do you do to get started?
-  A (student): df.describe(), df.info(), assume any low cardinality integers are categorical (get_dummies). Scatter plot of each feature vs the target. Linear regression, if no overfitting, random forest, if overfitting add regularization or feature reduction.
+  Q_teacher: "If you're given a dataset with 10 columns 1M rows of numbers and the 10th column is the target you are trying to predict. What do you do to get started with data exploration?"
+  A_student: "df.describe(), df.info(), assume any low cardinality integers are categorical (get_dummies). Scatter plot of each feature vs the target. Linear regression, if no overfitting, random forest, if overfitting add regularization or feature reduction."
 -
   Q: How does one decide what to do next with a 2-layer 128-cell LSTM network that is getting 95% training set accuracy and 91% test set accuracy for sentiment analysis? Does it have high variance or high bias?
   A: I don't like using those terms what's a better way to describe how your model is doing? (Overfitting vs underfitting)  You model is overfitting so you need to increase the random dropout and reduce the number of layers or the number of neurons in each layer. In general the only way to decide what to do next is to try it. And record your answers in a hyper-parameter tuning log or table. And record each new model as a separate python file or notebook so your can reproduce the results of previous models. Especially when it takes a long time to train.
@@ -147,10 +147,10 @@
   A: "You can use ML (a form of AI) to predict customer behavior, like favorable or unfavorable response to a marketing campaign or the sales generated by a particular promotion. You could even build a chatbot or a generative model to perform that advertisement for you. Google is a leader in AI research and their focus is on advertising and marketing, mostly through the AI that is part of their search engine and ad-words program."
 -
   Q: "What are some ways to learn about marketing, and marketing techniques that apply ML."
-  A: "There are numerous blog posts and academic papers on applying ML to marketing and advertisement. Search for "advertising marketing machine learning" on DuckDuckGo.com, toolbox.google.com/datasetsearch, kaggle.com/datasets,  and scholar.google.com."
+  A: "There are numerous blog posts and academic papers on applying ML to marketing and advertisement. Search for \"advertising marketing machine learning\" on DuckDuckGo.com, toolbox.google.com/datasetsearch, kaggle.com/datasets,  and scholar.google.com."
 -
-  Q (teacher): "What is a good way to plot data that has widely varying scale like the frequency or document frequency for the 50 most frequent words in my documents?"
-  A (student): "I don't know, maybe zoom in on one part of the data? Oh I know, how about a log scale plot so that all the values have equal visibility."
+  Q_teacher: "What is a good way to plot data that has widely varying scale like the frequency or document frequency for the 50 most frequent words in my documents?"
+  A_student: "I don't know, maybe zoom in on one part of the data? Oh I know, how about a log scale plot so that all the values have equal visibility."
 -
   Q: "What values for min_df and max_df I should you use for the `sklearn` `TfidfVectorizer()` ?"
   A: "What does df mean? What does min_df do? What does max_df do? How does it help a model? What is the purpose. How does df vary across the words in your documents? How many documents would be affected if you increased the min_df by one? How much would your vocabulary size be reduced? How much would this help your model? What if you decreased max_df by 1 or by 1% (.01), how many documents would be affected? How much would this help?"
@@ -171,19 +171,19 @@
   A: "It will be more efficient to simply accumulate more and more features by adding features one at a time and not training on them each independently. If you don't see an improvement in the training set or the test set accuracy, then you can likely skip it. Or you can keep it in and wait until your test set accuracy is degraded before your ignore features."
 -
   Q: "For hyperparameter tuning, should I record the model coefficients using something like `model.save()` with every new combination of features or hyperparameters that I train it on?"
-  A: "Not if the model is relatively fast to train/fit.  Because you've recorded your hyperparameters in a hyperparameter tuning log or table you can always recreate any of the models that worked well by refitting it using those hyperparameters and the training set you used the first time.  If the model is complicated with a lot of coefficients and takes a long time to train you can save a "checkpoint" whenever you see an improvement in your test set accuracy, so you don't have to try to recreate it later."
+  A: "Not if the model is relatively fast to train/fit.  Because you've recorded your hyperparameters in a hyperparameter tuning log or table you can always recreate any of the models that worked well by refitting it using those hyperparameters and the training set you used the first time.  If the model is complicated with a lot of coefficients and takes a long time to train you can save a \"checkpoint\" whenever you see an improvement in your test set accuracy, so you don't have to try to recreate it later."
 -
   Q: "What are the characteristics you look for in a Data Science or Machine Learning model?"
   A: "Training time/complexity per data sample and feature (dimensionality). Inference time/complexity. Data efficiency. Number of parameters (degrees of freedom). Linearity/nonlinearity of the solution. Nonlinearity/complexity of the generated model. Classifier or regressor. Supervised or unsupervised. Stochastic or deterministic."
   R: "Springboard 2019 DSC curriculum and Phoenix"
 -
   Q: "What makes a good dataset?"
-  A: "A large number of labeled samples is important to make the problem straightforward. high dimensionality can make the problem harder. Examine the relationship between possible target variables and the other features to make sure the target is something that would be interesting to "predict" if you only had access to the features."
+  A: "A large number of labeled samples is important to make the problem straightforward. high dimensionality can make the problem harder. Examine the relationship between possible target variables and the other features to make sure the target is something that would be interesting to \"predict\" if you only had access to the features."
   R: "Sprinboard 2019 student Ali"
 -
   Q: "Should I look for something I'm interested in, or something that would be a good project?"
-  A: "Both. Start with the dataset, like at the google dataset search tool. Look for interesting datasets where the data is arranged in tables that you can easily import an manipulate (CSVs with numerical values). Think about the dimensionality of the features and the number of samples/examples/rows and whether you think the problem will be solvable. Examine the relationship between possible target variables and the other features to make sure the target is something that would be interesting to "predict" if you only had access to the features.
-  R: Sprinboard 2019 DSC student Ali"
+  A: "Both. Start with the dataset, like at the google dataset search tool. Look for interesting datasets where the data is arranged in tables that you can easily import and manipulate. CSVs with numerical values are usually the easiest. Think about the dimensionality of the features and the number of samples/examples/rows and whether you think the problem will be solvable. Examine the relationship between possible target variables and the other features to make sure the target is something that would be interesting to \"predict\" if you only had access to the features."
+  R: "Sprinboard 2019 DSC student Ali"
 -
   Q: "How can I view the sparse matrix output of a `vectorizer.transform()` method, like sklearn.CountVectorizer().transform()"
   A: "`doc_vectors = pd.DataFrame(sparse_matrix, columns=vectorizer.get_feature_names())`"
@@ -213,28 +213,28 @@
   Q: "Where should I start if I want to start getting up to speed on NLP."
   A: "_Natural Lanugage Processing in Action_ is an excellent book if you have the budget for it. Otherwise you can install the `nlpia` package at github.com/totalgood/nlpia and try the examples in each chapter on the repo. And here is another [great list of NLP resources]( https://github.com/sebastianruder/NLP-progress)"
 -
-  Q (teacher): what was the target variable in your past projects
+  Q_teacher: what was the target variable in your past projects
   A: HIV positive woman screening, predict accepting or not cervical cancer screening test.
 -
-  Q (teacher): what featuer variables did you use to predict the target variable in that project
+  Q_teacher: what featuer variables did you use to predict the target variable in that project
   A: income level, type of community/society (military, civil), age (16-48), height and weight, clinical screen
 -
-  Q (teacher): how did you determine causality
+  Q_teacher: how did you determine causality
   A: individual linear regression and ANOVA
 -
-  Q (teacher): have you programmed before in visual basic or other programming languages like R, or C, or matlab?
+  Q_teacher: have you programmed before in visual basic or other programming languages like R, or C, or matlab?
   A: I created a data entry form using visual basic for my research project that helped improve the data entry error rate
 -
-  Q (teacher): how well did your interventions work and match your model predictions
+  Q_teacher: how well did your interventions work and match your model predictions
   A: I didn't get a chance to see as I left the country after the research project (by Warren Buffet foundation) concluded
 -
-  Q (teacher): Shifting gears to python, what are the various data types in python and which one would you use for a table?
+  Q_teacher: Shifting gears to python, what are the various data types in python and which one would you use for a table?
   A: int, float, list, tuple, dictionary. I'd use a dictionary for a table of numbers.
 -
-  Q (teacher): so if the keys were the column names in your dictionary for a table of numbers, what would the values be?
+  Q_teacher: so if the keys were the column names in your dictionary for a table of numbers, what would the values be?
   A: a float? (no, it would probably need to be a list or numpy array of floats since), lists, arrays, tuples and dictionaries are called collections because they can contain multiple objects
 -
-  Q (student): I will not have too much trouble with the technical aspects. I hope you can help me with motivation and focus and understanding of the US culture since I am new to the country.
+  Q_student: I will not have too much trouble with the technical aspects. I hope you can help me with motivation and focus and understanding of the US culture since I am new to the country.
   A: The Springboard counselor and I will certainly keep you on track and help you make continuous progress. Also, I will help you chose among the many technical approaches by recommending the "best practice" for a professional data scientist in the US.
 -
   Q: I broke up my number of weeks to complete the project into buckets 0-10, 11-20, ... etc. I created a categorical variable for this with an integer 0-9. How can I use that in my model as a feature?
@@ -243,14 +243,14 @@
   Q: What other models can I try with this data that I'm using to predict completion of our course?
   A: Random Forest may do a little better than logistic regression, but you may be running up against the limit of predictability of human behavior. A better approach would be to try to incorporate additional demographic data about students to create categorical variables that can be used as 1-hot encoded features to input into your model.
 -
-  Q (teacher): You're in an interview at Siemens, and they ask you to whiteboard a problem. "I have the crime dataset for Chicago and I'd like to use it to decide where to put bike racks for our rental U-bike product."
-  A (student): You should estimate the crime rate at various locations throughout Chicago and put bike racks in low crime areas.
+  Q_teacher: You're in an interview at Siemens, and they ask you to whiteboard a problem. "I have the crime dataset for Chicago and I'd like to use it to decide where to put bike racks for our rental U-bike product."
+  A_student: You should estimate the crime rate at various locations throughout Chicago and put bike racks in low crime areas.
 -
-  Q (teacher): No. Don't ever reccommend a solution. Ask clarifying questions about the data and the problem before recommending a solution.
-  A (student): OK, So what is in the crime dataset? Is it geocoded with latitude and longitude information? Does it have crime type categories? Does it have a category for bike theft? How many crime reports are there? Are there natural language descriptions? Over what time period do you have the reports? Is it live data that is generated every day or static?
+  Q_teacher: No. Don't ever reccommend a solution. Ask clarifying questions about the data and the problem before recommending a solution.
+  A_student: OK, So what is in the crime dataset? Is it geocoded with latitude and longitude information? Does it have crime type categories? Does it have a category for bike theft? How many crime reports are there? Are there natural language descriptions? Over what time period do you have the reports? Is it live data that is generated every day or static?
 -
-  Q (teacher): What questions can you ask about the target variable and objective of the project?
-  A (student): What are you trying to optimize? Sales? Theft? Minimize cost? Predict bike thefts?
+  Q_teacher: What questions can you ask about the target variable and objective of the project?
+  A_student: What are you trying to optimize? Sales? Theft? Minimize cost? Predict bike thefts?
   Q: Will discretizing my continuous variable to create an ordinal feature help reduce the noise and error in the output target variable predictions?
   A: No, it will not reduce the noise in this feature. Discretizing a continuous variable always reduces information. You should use the raw number in your model whenever possible. The best noise filter is the model itself. Consider a Random Forest or Decision Tree model, they will both discretize all your data with optimized thresholds betwee ordinal classes. And a linear or logistic regression, will average this noise over all the examples in your training set. So discretizing a feature is never a good feature engineering transformation.
 -
@@ -289,23 +289,23 @@
   A: The money plot is few scatter plots (pair plots) of the model performance (accuracy) vs the most interesting hyperparameters. So the horizontal axis should be a parameter like batch size or num total neurons or num trainable parameters. The vertical axis should be test set and/or training set accuracy.
 -
   Q: How do I do inferential statistics for Spam classification problem (dataset of spam and ham emails or messages).
-  A: How did you do it for the discriminatory job interview callback statistics? How did you do it for the human body temperature dataset? You selecte a column of numerical values (categorical, ordinal or continuous feature values) and propose the hypothesis that there is a statistically significant positive (or negative) affect on the target variable. The target can be categorical (like job interview callback or not) or continuous (like body temperature). How could you do that for a dataset where your features are the frequencies (counts) of individual words or tokens and the target is the categorical (class) variable "is_spam"? You just pick a word likely to be predictive of spam and calculate the mean in the two classes and run a T-test or P-value test to see if you can discard the null hypothesis. Alternatively you can propose the hypothesis on all the words in your vocabulary in order and then sort them by their p-values to find the most significant predictors of spam. Or you can do dimension reduction (PCA or LSA) or clustering (KNN or LDiA) to generate aggregate classes for multiple words or topics and do your inferential statistics on those words.
+  A: How did you do it for the discriminatory job interview callback statistics? How did you do it for the human body temperature dataset? You selecte a column of numerical values (categorical, ordinal or continuous feature values) and propose the hypothesis that there is a statistically significant positive (or negative) affect on the target variable. The target can be categorical (like job interview callback or not) or continuous (like body temperature). How could you do that for a dataset where your features are the frequencies (counts) of individual words or tokens and the target is the categorical (class) variable \"is_spam\"? You just pick a word likely to be predictive of spam and calculate the mean in the two classes and run a T-test or P-value test to see if you can discard the null hypothesis. Alternatively you can propose the hypothesis on all the words in your vocabulary in order and then sort them by their p-values to find the most significant predictors of spam. Or you can do dimension reduction (PCA or LSA) or clustering (KNN or LDiA) to generate aggregate classes for multiple words or topics and do your inferential statistics on those words.
 -
-  Q: Do you know of any employers in the bay area? I'm interested in the less well-known ones.
-  A: Subscribe to the Owler, SiliconValley.com, silicontap.com, and siliconflorist.com and other newsletters/blogs that regularly report on startups receiving funding. In portland there are [slack](pdxstartups.com), Reddit, and IRC forums where startup news is shared. Meetups and "Million Cups" pitches are another great way to get plugged into your startup scene. Whenever you hear of an interesting startup receiving funding or hiring a CTO, visit their website to see if they have job openings in your area.
+  Q: "Do you know of any employers in the bay area? I'm interested in the less well-known ones."
+  A: "Subscribe to the Owler, SiliconValley.com, silicontap.com, and siliconflorist.com and other newsletters/blogs that regularly report on startups receiving funding. In portland there are [slack](pdxstartups.com), Reddit, and IRC forums where startup news is shared. Meetups and \"Million Cups\" pitches are another great way to get plugged into your startup scene. Whenever you hear of an interesting startup receiving funding or hiring a CTO, visit their website to see if they have job openings in your area."
 -
-  Q (student): "What is LSA?"
-  Q (teacher): "What does the LSA acronym stand for? What do each of those words mean to you? What do you think LSA means when you combine those words?"
-  A (student): Latent Semantic Analysis. Latent means hidden? I'm not sure what semantic means. Analysis means breaking something down into parts or computing numbers that describe the parts of something.
-  A (teacher): "You're right. The word "semantic" means "meaning". So semantic analysis is breaking down a natural language document into its pieces of meaning. These are sometimes called "topics" or "subjects" when analyzing the meaning of natural language documents. So LSA is an unsupervised machine learning algorithm that creates a vector of topics or meaning for each of a large collection of natural language documents. The "latent" word is just an expression of researchers facination with the algorithms seeming ability to discover meaning in documents that was hidden from both humans and machines until LSA was invented."
+  Q_student: "What is LSA?"
+  Q_teacher: "What does the LSA acronym stand for? What do each of those words mean to you? What do you think LSA means when you combine those words?"
+  A_student: "Latent Semantic Analysis. Latent means hidden? I'm not sure what semantic means. Analysis means breaking something down into parts or computing numbers that describe the parts of something."
+  A_teacher: "You're right. The word \"semantic\" means \"meaning\". So semantic analysis is breaking down a natural language document into its pieces of meaning. These are sometimes called \"topics\" or \"subjects\" when analyzing the meaning of natural language documents. So LSA is an unsupervised machine learning algorithm that creates a vector of topics or meaning for each of a large collection of natural language documents. The \"latent\" word is just an expression of researchers facination with the algorithms seeming ability to discover meaning in documents that was hidden from both humans and machines until LSA was invented."
 -
-  Q (student): "What is PCA and how is it related to LSA?"
-  Q (teacher): "What does the PCA acronym stand for? What do each of those words mean to you? What do you think PCA means when you combine those words?"
-  A (student): """Principal Component Analysis. "Principal" means "most important". "Component" means "piece or part of something, often a dimension in a vector". "Analysis" means "breaking down something into its parts or pieces, usually expressed as numbers for each of the pieces within a vector"."""
-  A (teacher): "You're right, and PCA is an algorithm that creates low dimensional dense vectors that express the topics or meaning within high dimensional vectors or tensors like images (light intensity arrays or tensors for each pixel), time series (prices or volume of transactions in vectors), word frequency vectors (bag-of-word vectors), DNA gene frequency vectors, any discrete fixed-length sequences or vectors, song audio sequences (audio amplitude vectors), etc.  When PCA is applied to natural language bag of words vectors (which have thousands of dimensions) it is called LSA (Latent Semantic Analysis) because the vectors PCA produces are semantic vectors that represent the meaning of each document in a lower-dimensional vector."
+  Q_student: "What is PCA and how is it related to LSA?"
+  Q_teacher: "What does the PCA acronym stand for? What do each of those words mean to you? What do you think PCA means when you combine those words?"
+  A_student: "Principal Component Analysis. \"Principal\" means \"most important\". \"Component\" means \"piece or part of something, often a dimension in a vector\". \"Analysis\" means \"breaking down something into its parts or pieces, usually expressed as numbers for each of the pieces within a vector\"."
+  A_teacher: "You're right, and PCA is an algorithm that creates low dimensional dense vectors that express the topics or meaning within high dimensional vectors or tensors like images (light intensity arrays or tensors for each pixel), time series (prices or volume of transactions in vectors), word frequency vectors (bag-of-word vectors), DNA gene frequency vectors, any discrete fixed-length sequences or vectors, song audio sequences (audio amplitude vectors), etc.  When PCA is applied to natural language bag of words vectors (which have thousands of dimensions) it is called LSA (Latent Semantic Analysis) because the vectors PCA produces are semantic vectors that represent the meaning of each document in a lower-dimensional vector."
 -
-  Q: "Do you know of any data scientist employers in LA? "
-  A: "For finance (quant) jobs check out all the banks in Santa Monica. To find lesser well-known companies, subscribe to the Owler and other newsletters/blogs that regularly report on startups receiving funding. In portland there are [slack](pdxstartups.com), Reddit, and IRC forums where startup news is shared. Meetups and "Million Cups" pitches are another great way to get plugged into the startup scene in any new area. Whenever you hear of an interesting startup receiving funding or hiring a CTO, visit their website to see if they have job openings in your area."
+  Q: "Do you know of any data scientist employers in LA?"
+  A: "For finance (quant) jobs check out all the banks in Santa Monica. To find lesser well-known companies, subscribe to the Owler and other newsletters/blogs that regularly report on startups receiving funding. In portland there are [slack](pdxstartups.com), Reddit, and IRC forums where startup news is shared. Meetups and \"Million Cups\" pitches are another great way to get plugged into the startup scene in any new area. Whenever you hear of an interesting startup receiving funding or hiring a CTO, visit their website to see if they have job openings in your area."
 -
   Q: "Isn't machine learning for optical flow a trivial problem."
   A: "No, it's an active area of research. And if you can come up with some preprocessing, like FFT or optical processing, like microlens arrays, that reduce the latency and computation required it would be extremely valuable in self-driving car and robotics applications."
@@ -314,7 +314,7 @@
   A: "The averaged 2D spatial FFT fringe lines look like they are parallel to optical flow to me because they point out radially from the center of the FOV for a camera facing forward on a self-driving car application."
 -
   Q: "I have data for water consumption over 15 minute intervals. I also have flags like, 'is_sports_event', 'is_holiday', 'is_weekend', 'is_rush_hour', 'is_business_hours' for each 15 minute interval. And there's a previous 3 hours of precipitation value as well. Some values are nan, particularly in the precipitation and water consumption columns. How can I build a time series model to predict the next day's water consumption?"
-  A: """
+  A: "
   You need to use `DataFrame.ffill()` to fill `NaN` values rather than filling with the mean. Any data preprocessing that brings in future data to the past will help your model cheat. Next, you need to aggregate all the columns for each day using the DataFrame.resample(). Then you can time shift the precipitation water consumption data like this. Here's some fake data with column 'c' as your consumption data. You have to be careful to avoid Pandas' indexing magic which will try to prevent you from shifting your data:
   ```python
   >>> pd.np.random.seed(hash('Peter Watts') % 2**32)
@@ -346,7 +346,7 @@
   2020-01-07  3  6  2          NaN
   Now you can perform any old machine learning model `.fit()` on the 'abc' columns as your indicator features and 'c_tomorrow' as your target output variable.
   ```
-  """
+  "
 -
   Q: "In Medicare regulations, Fraud Waste and Abuse (FWA) are 3 different categories of laws and regulations. Which one requires the **intent** to obtain payment as well as the knowledge that the actions are wrong or illegal?"
   A: "A Medicare FWA fraud conviction requires that the violator intended to obtain payment and knew it was wrong."
@@ -357,8 +357,8 @@
   Q: "In Medicare FWA regulations what is an FDR?"
   A: "In Medicare FWA regulations an FDR is a Firs-Tier (call center, hospital), Downstream (provider), or Related Entity (contractor, researcher). All such organizations must have policies an procedures that address FWA."
 -
-Q: "In Medicare FWA regulations what is an SIU"
-A: "In Medicare FWA regulations an SIU is a Special Investigations Unit within a sponsor organization, such as a Firs-Tier (call center, hospital) participant in the Medicare program. An SIU will investigate any reports of FWA, including anonymous reports."
+  Q: "In Medicare FWA regulations what is an SIU"
+  A: "In Medicare FWA regulations an SIU is a Special Investigations Unit within a sponsor organization, such as a Firs-Tier (call center, hospital) participant in the Medicare program. An SIU will investigate any reports of FWA, including anonymous reports."
 -
   Q: "Where can I report Medicare FWA violations?"
   A: "1-800-HHS-TIPS (1-800-447-8477) or HHSTips@olg.hhs.gov or forms.oig.hhs.gov/hotlineoperation/index.aspx"
@@ -399,11 +399,11 @@ A: "In Medicare FWA regulations an SIU is a Special Investigations Unit within a
   Q: "What goes in the presentation slides for the capstone?"
   A: "A summary of all the interesting things you discovered in your report. Visualizations and statistics that you think would be interesting to your audience."
 -
-Q: "Because I have mostly categorical variables my correlation matrix with my target variable does not have many continuous correlation values."
-A: "You need to use pd.get_dummies to create one-hot encodings of your categorical variables and you need to encode your ordinal variables and consecutive integers so that `df.corr()` will display all the correlations that you are interested in."
+  Q: "Because I have mostly categorical variables my correlation matrix with my target variable does not have many continuous correlation values."
+  A: "You need to use pd.get_dummies to create one-hot encodings of your categorical variables and you need to encode your ordinal variables and consecutive integers so that `df.corr()` will display all the correlations that you are interested in."
 -
-  Q (teacher): "An employer asks you to create a recommendation engine for a recruiting firm. They have a database of resumes and job descriptions with some structured metadata for each (job title, location, name, email). They have information about past candidates and the jobs they applied for, interviewed for, and were hired for. What approach would you recommend?"
-  A (student): "There are two general approaches for recommendation engines, collaborative filtering and content-based filtering. A content-based approach would use NLP to compare all pairings of job descriptions and resumes to look for good matches. A collaborative filtering approach would cluster candidates and job descriptions and recommend jobs to candidates that were a good match for others in their cluster. "
+  Q_teacher: "An employer asks you to create a recommendation engine for a recruiting firm. They have a database of resumes and job descriptions with some structured metadata for each (job title, location, name, email). They have information about past candidates and the jobs they applied for, interviewed for, and were hired for. What approach would you recommend?"
+  A_student: "There are two general approaches for recommendation engines, collaborative filtering and content-based filtering. A content-based approach would use NLP to compare all pairings of job descriptions and resumes to look for good matches. A collaborative filtering approach would cluster candidates and job descriptions and recommend jobs to candidates that were a good match for others in their cluster. "
 
 
 
@@ -511,8 +511,8 @@ A: "You need to use pd.get_dummies to create one-hot encodings of your categoric
   Q: "Are these plots useful or should I remove them?"
   A: "What are you trying to convey to the reader? What do you want them to get out of them? What do they tell you? Is that piece of information obvious at first glance? You reader will likely only look at the plot for a few seconds. In a bar plot, the bars next to each other should always have a relationship to each other that is interesting, since those will be compared to each other. If you have more than 10 bars on a single plot, they will likely hide the important pairs that you want your reader to look at, so cluster or group them more agressively. And never ever use raw counts on a bar plot or histogram, always us percent or normalized count so that your plot shows probability and allows your reader to compare values from different histograms with different total counts (like the cohorts in your income survey data)."
 -
-  Q: "The conclusion to my capstone starts with "The above plots show that feature importance are driving model performance." What do you think?"
-  A: "I'm not sure I understand what you are trying to say with that. Are you saying that the features with high feature importances values from the random forest model statistics are important to the model's decision tree branches? That's a circular statement that doesn't say anything new. Talk about the real world affects of your features on your target, income level. Talk about the fact that relationship status questions can have both a postiive and a negative impact on income. "married with wife" relationship status is highly positively correlated with income, whereas "married with children" relationship status is highly negatively correlated with income. And talk about how education level is not highly correlated with income, above a high school diploma. Those are interesting, meaningful, specific conclusions you can share with your reader."
+  Q: "The conclusion to my capstone starts with \"The above plots show that feature importance are driving model performance.\" What do you think?"
+  A: "I'm not sure I understand what you are trying to say with that. Are you saying that the features with high feature importances values from the random forest model statistics are important to the model's decision tree branches? That's a circular statement that doesn't say anything new. Talk about the real world affects of your features on your target, income level. Talk about the fact that relationship status questions can have both a postiive and a negative impact on income. \"married with wife\" relationship status is highly positively correlated with income, whereas \"married with children\" relationship status is highly negatively correlated with income. And talk about how education level is not highly correlated with income, above a high school diploma. Those are interesting, meaningful, specific conclusions you can share with your reader."
 -
   Q: "Which penalty function should I use for logistic regression, l1 or l2. My dataset has the heights and weights of hospital patients and the target variable is gender."
   A: "What do you think is the right way to chose between two different possible settings or values for a hyperparameter, like the regularization penalty metric for logistic regression? Try it, right? Whichever one improves your performance on the test set is the **right** one, right? And for this particular model your degrees of freedom is only 2 (`len(np.array(model.coef_).flatten())`) and the number of examples is presumably much larger than 2, probably 100s or even 1000s. So theres almost no change your 2 DOF logistic regression can overfit. So it doesn't matter what C value (inverse regularization strength) you chose and which penalty metric you choose."
@@ -526,8 +526,8 @@ A: "You need to use pd.get_dummies to create one-hot encodings of your categoric
   Q: What is the difference between l1 and l2 penalty or distance? How does each one affect the regularization penalty in a logistic regression.
   A: How do you chose any hyperparameter? What does l1 penalty mean? What does l2 penalty/distance mean?
 -
-  Q (teacher): If you're given a data set with 10 columns 1M rows of numbers and the 10th column is the target you are trying to predict. What do you do to get started?
-  A (student): df.describe(), df.info(), assume any low cardinality integers are categorical (get_dummies). Scatter plot of each feature vs the target. Linear regression, if no overfitting, random forest, if overfitting add regularization or feature reduction.
+  Q_teacher: If you're given a data set with 10 columns 1M rows of numbers and the 10th column is the target you are trying to predict. What do you do to get started?
+  A_student: df.describe(), df.info(), assume any low cardinality integers are categorical (get_dummies). Scatter plot of each feature vs the target. Linear regression, if no overfitting, random forest, if overfitting add regularization or feature reduction.
 -
   Q: How does one decide what to do next with a 2-layer 128-cell LSTM network that is getting 95% training set accuracy and 91% test set accuracy for sentiment analysis? Does it have high variance or high bias?
   A: I don't like using those terms what's a better way to describe how your model is doing? (Overfitting vs underfitting)  You model is overfitting so you need to increase the random dropout and reduce the number of layers or the number of neurons in each layer. In general the only way to decide what to do next is to try it. And record your answers in a hyper-parameter tuning log or table. And record each new model as a separate python file or notebook so your can reproduce the results of previous models. Especially when it takes a long time to train.
@@ -560,10 +560,10 @@ A: "You need to use pd.get_dummies to create one-hot encodings of your categoric
   A: "You can use ML (a form of AI) to predict customer behavior, like favorable or unfavorable response to a marketing campaign or the sales generated by a particular promotion. You could even build a chatbot or a generative model to perform that advertisement for you. Google is a leader in AI research and their focus is on advertising and marketing, mostly through the AI that is part of their search engine and ad-words program."
 -
   Q: "What are some ways to learn about marketing, and marketing techniques that apply ML."
-  A: "There are numerous blog posts and academic papers on applying ML to marketing and advertisement. Search for "advertising marketing machine learning" on DuckDuckGo.com, toolbox.google.com/datasetsearch, kaggle.com/datasets,  and scholar.google.com."
+  A: "There are numerous blog posts and academic papers on applying ML to marketing and advertisement. Search for \"advertising marketing machine learning\" on DuckDuckGo.com, toolbox.google.com/datasetsearch, kaggle.com/datasets,  and scholar.google.com."
 -
-  Q (teacher): "What is a good way to plot data that has widely varying scale like the frequency or document frequency for the 50 most frequent words in my documents?"
-  A (student): "I don't know, maybe zoom in on one part of the data? Oh I know, how about a log scale plot so that all the values have equal visibility."
+  Q_teacher: "What is a good way to plot data that has widely varying scale like the frequency or document frequency for the 50 most frequent words in my documents?"
+  A_student: "I don't know, maybe zoom in on one part of the data? Oh I know, how about a log scale plot so that all the values have equal visibility."
 -
   Q: "What values for min_df and max_df I should you use for the `sklearn` `TfidfVectorizer()` ?"
   A: "What does df mean? What does min_df do? What does max_df do? How does it help a model? What is the purpose. How does df vary across the words in your documents? How many documents would be affected if you increased the min_df by one? How much would your vocabulary size be reduced? How much would this help your model? What if you decreased max_df by 1 or by 1% (.01), how many documents would be affected? How much would this help?"
@@ -584,16 +584,16 @@ A: "You need to use pd.get_dummies to create one-hot encodings of your categoric
   A: "It will be more efficient to simply accumulate more and more features by adding features one at a time and not training on them each independently. If you don't see an improvement in the training set or the test set accuracy, then you can likely skip it. Or you can keep it in and wait until your test set accuracy is degraded before your ignore features."
 -
   Q: "For hyperparameter tuning, should I record the model coefficients using something like `model.save()` with every new combination of features or hyperparameters that I train it on?"
-  A: "Not if the model is relatively fast to train/fit.  Because you've recorded your hyperparameters in a hyperparameter tuning log or table you can always recreate any of the models that worked well by refitting it using those hyperparameters and the training set you used the first time.  If the model is complicated with a lot of coefficients and takes a long time to train you can save a "checkpoint" whenever you see an improvement in your test set accuracy, so you don't have to try to recreate it later."
+  A: "Not if the model is relatively fast to train/fit.  Because you've recorded your hyperparameters in a hyperparameter tuning log or table you can always recreate any of the models that worked well by refitting it using those hyperparameters and the training set you used the first time.  If the model is complicated with a lot of coefficients and takes a long time to train you can save a \"checkpoint\" whenever you see an improvement in your test set accuracy, so you don't have to try to recreate it later."
 -
   Q: "What are the characteristics you look for in a Data Science or Machine Learning model?"
   A: "Training time/complexity per data sample and feature (dimensionality). Inference time/complexity. Data efficiency. Number of parameters (degrees of freedom). Linearity/nonlinearity of the solution. Nonlinearity/complexity of the generated model. Classifier or regressor. Supervised or unsupervised. Stochastic or deterministic."
 -
   Q: "What makes a good dataset?"
-  A: "A large number of labeled samples is important to make the problem straightforward. high dimensionality can make the problem harder. Examine the relationship between possible target variables and the other features to make sure the target is something that would be interesting to "predict" if you only had access to the features."
+  A: "A large number of labeled samples is important to make the problem straightforward. high dimensionality can make the problem harder. Examine the relationship between possible target variables and the other features to make sure the target is something that would be interesting to \"predict\" if you only had access to the features."
 -
   Q: "Should I look for something I'm interested in, or something that would be a good project?"
-  A: "Both. Start with the dataset, like at the google dataset search tool. Look for interesting datasets where the data is arranged in tables that you can easily import an manipulate (CSVs with numerical values). Think about the dimensionality of the features and the number of samples/examples/rows and whether you think the problem will be solvable. Examine the relationship between possible target variables and the other features to make sure the target is something that would be interesting to "predict" if you only had access to the features.
+  A: "Both. Start with the dataset, like at the google dataset search tool. Look for interesting datasets where the data is arranged in tables that you can easily import an manipulate (CSVs with numerical values). Think about the dimensionality of the features and the number of samples/examples/rows and whether you think the problem will be solvable. Examine the relationship between possible target variables and the other features to make sure the target is something that would be interesting to \"predict\" if you only had access to the features."
 -
   Q: "How can I view the sparse matrix output of a `vectorizer.transform()` method, like sklearn.CountVectorizer().transform()?"
   A: "Yes, try `doc_vectors = pd.DataFrame(sparse_matrix, columns=vectorizer.get_feature_names())`."
@@ -606,10 +606,10 @@ A: "You need to use pd.get_dummies to create one-hot encodings of your categoric
 -
   Q: "What are some features you can extract from a datetime?"
   A: "Here are some binary feature examples: 'Is it a Holiday?', 'Is it summer?', 'Is it the weekend?', 'Is it Sunday?', 'Is it December?', 'Is it morning?', 'Is it lunch hour?'.  Can you think of some more binary features? What about some categorical features? What about some ordinal features?"
-  A (student): "'Is it daytime?' and 'Is it nighttime?' or 'Is it a full moon?'. Some ordinal features might be the 'phase or brightness of the moon', or perhaps 'the angle of the sun to the horizon' or 'how close to noon it is') could be ordinal or continuous features."
+  A_student: "'Is it daytime?' and 'Is it nighttime?' or 'Is it a full moon?'. Some ordinal features might be the 'phase or brightness of the moon', or perhaps 'the angle of the sun to the horizon' or 'how close to noon it is') could be ordinal or continuous features."
 -
   Q: "How do I know whether 12 LSTM cells is enough. I acheieved 91% sentiment classification accuracy with 128x2 LSTM cells and I achieved 90% accuracy with 12x1 cells."
-  A: "The only way to find out is to try. Use Daniel C Bennet's intuition pump "make mistakes." That's the best way to learn and develop an intuition."
+  A: "The only way to find out is to try. Use Daniel C Bennet's intuition pump \"make mistakes.\" That's the best way to learn and develop an intuition."
 -
   Q: "What does a hyperparameter tuning table look like?"
   A: "It has a column for each hyperparameter that you changed and a row for each model that you trained. You should also have a column for the test set accuracy or loss. This is what you care about the most. You can also have the training set accuracy and maybe the test set accuracy at epoch 10, or some other arbitrary point in your training."
@@ -623,29 +623,29 @@ A: "You need to use pd.get_dummies to create one-hot encodings of your categoric
   Q: "Where should I start if I want to start getting up to speed on NLP."
   A: "_Natural Lanugage Processing in Action_ is an excellent book if you have the budget for it. Otherwise you can install the `nlpia` package at github.com/totalgood/nlpia and try the examples in each chapter on the repo. And here is another [great list of NLP resources]( https://github.com/sebastianruder/NLP-progress)"
 -
-  Q (teacher): "What was the target variable in your past projects?"
+  Q_teacher: "What was the target variable in your past projects?"
   A: "HIV positive woman screening, predict accepting or not cervical cancer screening test."
 -
-  Q (teacher): "What featuer variables did you use to predict the target variable in that project?"
+  Q_teacher: "What featuer variables did you use to predict the target variable in that project?"
   A: "Income level, type of community/society (military, civil), age (16-48), height and weight, clinical screen."
 -
-  Q (teacher): "How did you determine causality."
+  Q_teacher: "How did you determine causality."
   A: "Individual linear regression and ANOVA."
 -
-  Q (teacher): "Have you programmed before in visual basic or other programming languages like R, or C, or matlab?"
+  Q_teacher: "Have you programmed before in visual basic or other programming languages like R, or C, or matlab?"
   A: "I created a data entry form using visual basic for my research project that helped improve the data entry error rate"
 -
-  Q (teacher): "how well did your interventions work and match your model predictions"
+  Q_teacher: "how well did your interventions work and match your model predictions"
   A: "I didn't get a chance to see as I left the country after the research project (by Warren Buffet foundation) concluded"
 -
-  Q (teacher): "Shifting gears to python, what are the various data types in python and which one would you use for a table?"
+  Q_teacher: "Shifting gears to python, what are the various data types in python and which one would you use for a table?"
   A: "int, float, list, tuple, dictionary. I'd use a dictionary for a table of numbers."
 -
-  Q (teacher): "So if the keys were the column names in your dictionary for a table of numbers, what would the values be?"
+  Q_teacher: "So if the keys were the column names in your dictionary for a table of numbers, what would the values be?"
   A: "A float? (no, it would probably need to be a list or numpy array of floats since), lists, arrays, tuples and dictionaries are called collections because they can contain multiple objects."
 -
-  Q (student): I will not have too much trouble with the technical aspects. I hope you can help me with motivation and focus and understanding of the US culture since I am new to the country.
-  A: "The Springboard counselor and I will certainly keep you on track and help you make continuous progress. Also, I will help you chose among the many technical approaches by recommending the "best practice" for a professional data scientist in the US."
+  Q_student: I will not have too much trouble with the technical aspects. I hope you can help me with motivation and focus and understanding of the US culture since I am new to the country.
+  A: "The Springboard counselor and I will certainly keep you on track and help you make continuous progress. Also, I will help you chose among the many technical approaches by recommending the \"best practice\" for a professional data scientist in the US."
 -
   Q: "I broke up my number of weeks to complete the project into buckets 0-10, 11-20, ... etc. I created a categorical variable for this with an integer 0-9. How can I use that in my model as a feature?"
   A: "That's not a categorical variable, it's ordinal because it represents a quantity where the order of the categories have meaning, so you can pass it into your model just like any other."
@@ -653,14 +653,15 @@ A: "You need to use pd.get_dummies to create one-hot encodings of your categoric
   Q: "What other models can I try with this data that I'm using to predict completion of our course?"
   A: "Random Forest may do a little better than logistic regression, but you may be running up against the limit of predictability of human behavior. A better approach would be to try to incorporate additional demographic data about students to create categorical variables that can be used as 1-hot encoded features to input into your model."
 -
-  Q (teacher): "You're in an interview at Siemens, and they ask you to whiteboard a problem. 'I have the crime dataset for Chicago and I'd like to use it to decide where to put bike racks for our rental U-bike product.'"
-  A (student): "You should estimate the crime rate at various locations throughout Chicago and put bike racks in low crime areas."
+  Q_teacher: "You're in an interview at Siemens, and they ask you to whiteboard a problem. 'I have the crime dataset for Chicago and I'd like to use it to decide where to put bike racks for our rental U-bike product.'"
+  A_student: "You should estimate the crime rate at various locations throughout Chicago and put bike racks in low crime areas."
 -
-  Q (teacher): "No. Don't ever reccommend a solution. Ask clarifying questions about the data and the problem before recommending a solution."
-  A (student): "OK, So what is in the crime dataset? Is it geocoded with latitude and longitude information? Does it have crime type categories? Does it have a category for bike theft? How many crime reports are there? Are there natural language descriptions? Over what time period do you have the reports? Is it live data that is generated every day or static?
-  "-
-  Q (teacher): "What questions can you ask about the target variable and objective of the project?"
-  A (student): "What are you trying to optimize? Sales? Theft? Minimize cost? Predict bike thefts?"
+  Q_teacher: "No. Don't ever reccommend a solution. Ask clarifying questions about the data and the problem before recommending a solution."
+  A_student: "OK, So what is in the crime dataset? Is it geocoded with latitude and longitude information? Does it have crime type categories? Does it have a category for bike theft? How many crime reports are there? Are there natural language descriptions? Over what time period do you have the reports? Is it live data that is generated every day or static?"
+-
+  Q_teacher: "What questions can you ask about the target variable and objective of the project?"
+  A_student: "What are you trying to optimize? Sales? Theft? Minimize cost? Predict bike thefts?"
+-
   Q: "Will discretizing my continuous variable to create an ordinal feature help reduce the noise and error in the output target variable predictions?"
   A: "No, it will not reduce the noise in this feature. Discretizing a continuous variable always reduces information. You should use the raw number in your model whenever possible. The best noise filter is the model itself. Consider a Random Forest or Decision Tree model, they will both discretize all your data with optimized thresholds betwee ordinal classes. And a linear or logistic regression, will average this noise over all the examples in your training set. So discretizing a feature is never a good feature engineering transformation."
 -
@@ -699,23 +700,23 @@ A: "You need to use pd.get_dummies to create one-hot encodings of your categoric
   A: "The money plot is few scatter plots (pair plots) of the model performance (accuracy) vs the most interesting hyperparameters. So the horizontal axis should be a parameter like batch size or num total neurons or num trainable parameters. The vertical axis should be test set and/or training set accuracy."
 -
   Q: "How do I do inferential statistics for Spam classification problem (dataset of spam and ham emails or messages)."
-  A: "How did you do it for the discriminatory job interview callback statistics? How did you do it for the human body temperature dataset? You selecte a column of numerical values (categorical, ordinal or continuous feature values) and propose the hypothesis that there is a statistically significant positive (or negative) affect on the target variable. The target can be categorical (like job interview callback or not) or continuous (like body temperature). How could you do that for a dataset where your features are the frequencies (counts) of individual words or tokens and the target is the categorical (class) variable "is_spam"? You just pick a word likely to be predictive of spam and calculate the mean in the two classes and run a T-test or P-value test to see if you can discard the null hypothesis. Alternatively you can propose the hypothesis on all the words in your vocabulary in order and then sort them by their p-values to find the most significant predictors of spam. Or you can do dimension reduction (PCA or LSA) or clustering (KNN or LDiA) to generate aggregate classes for multiple words or topics and do your inferential statistics on those words."
+  A: "How did you do it for the discriminatory job interview callback statistics? How did you do it for the human body temperature dataset? You selecte a column of numerical values (categorical, ordinal or continuous feature values) and propose the hypothesis that there is a statistically significant positive (or negative) affect on the target variable. The target can be categorical (like job interview callback or not) or continuous (like body temperature). How could you do that for a dataset where your features are the frequencies (counts) of individual words or tokens and the target is the categorical (class) variable \"is_spam\"? You just pick a word likely to be predictive of spam and calculate the mean in the two classes and run a T-test or P-value test to see if you can discard the null hypothesis. Alternatively you can propose the hypothesis on all the words in your vocabulary in order and then sort them by their p-values to find the most significant predictors of spam. Or you can do dimension reduction (PCA or LSA) or clustering (KNN or LDiA) to generate aggregate classes for multiple words or topics and do your inferential statistics on those words."
 -
   Q: "Do you know of any employers in the bay area? I'm interested in the less well-known ones."
-  A: "Subscribe to the Owler, SiliconValley.com, silicontap.com, and siliconflorist.com and other newsletters/blogs that regularly report on startups receiving funding. In portland there are [slack](pdxstartups.com), Reddit, and IRC forums where startup news is shared. Meetups and "Million Cups" pitches are another great way to get plugged into your startup scene. Whenever you hear of an interesting startup receiving funding or hiring a CTO, visit their website to see if they have job openings in your area."
+  A: "Subscribe to the Owler, SiliconValley.com, silicontap.com, and siliconflorist.com and other newsletters/blogs that regularly report on startups receiving funding. In portland there are [slack](pdxstartups.com), Reddit, and IRC forums where startup news is shared. Meetups and \"Million Cups\" pitches are another great way to get plugged into your startup scene. Whenever you hear of an interesting startup receiving funding or hiring a CTO, visit their website to see if they have job openings in your area."
 -
-  Q (student): "What is LSA?"
-  Q (teacher): "What does the LSA acronym stand for? What do each of those words mean to you? What do you think LSA means when you combine those words?"
-  A (student): Latent Semantic Analysis. Latent means hidden? I'm not sure what semantic means. Analysis means breaking something down into parts or computing numbers that describe the parts of something.
-  A (teacher): "You're right. The word 'semantic' means 'meaning'. So semantic analysis is breaking down a natural language document into its pieces of meaning. These are sometimes called 'topics' or 'subjects' when analyzing the meaning of natural language documents. So LSA is an unsupervised machine learning algorithm that creates a vector of topics or meaning for each of a large collection of natural language documents. The 'latent' word is just an expression of researchers facination with the algorithms seeming ability to discover meaning in documents that was hidden from both humans and machines until LSA was invented."
+  Q_student: "What is LSA?"
+  Q_teacher: "What does the LSA acronym stand for? What do each of those words mean to you? What do you think LSA means when you combine those words?"
+  A_student: "Latent Semantic Analysis. Latent means hidden? I'm not sure what semantic means. Analysis means breaking something down into parts or computing numbers that describe the parts of something."
+  A_teacher: "You're right. The word 'semantic' means 'meaning'. So semantic analysis is breaking down a natural language document into its pieces of meaning. These are sometimes called 'topics' or 'subjects' when analyzing the meaning of natural language documents. So LSA is an unsupervised machine learning algorithm that creates a vector of topics or meaning for each of a large collection of natural language documents. The 'latent' word is just an expression of researchers facination with the algorithms seeming ability to discover meaning in documents that was hidden from both humans and machines until LSA was invented."
 -
-  Q (student): "What is PCA and how is it related to LSA?"
-  Q (teacher): "What does the PCA acronym stand for? What do each of those words mean to you? What do you think PCA means when you combine those words?"
-  A (student): """Principal Component Analysis. "Principal" means "most important". "Component" means "piece or part of something, often a dimension in a vector". "Analysis" means "breaking down something into its parts or pieces, usually expressed as numbers for each of the pieces within a vector"."""
-  A (teacher): "You're right, and PCA is an algorithm that creates low dimensional dense vectors that express the topics or meaning within high dimensional vectors or tensors like images (light intensity arrays or tensors for each pixel), time series (prices or volume of transactions in vectors), word frequency vectors (bag-of-word vectors), DNA gene frequency vectors, any discrete fixed-length sequences or vectors, song audio sequences (audio amplitude vectors), etc.  When PCA is applied to natural language bag of words vectors (which have thousands of dimensions) it is called LSA (Latent Semantic Analysis) because the vectors PCA produces are semantic vectors that represent the meaning of each document in a lower-dimensional vector."
+  Q_student: "What is PCA and how is it related to LSA?"
+  Q_teacher: "What does the PCA acronym stand for? What do each of those words mean to you? What do you think PCA means when you combine those words?"
+  A_student: "Principal Component Analysis. \"Principal\" means \"most important\". \"Component\" means \"piece or part of something, often a dimension in a vector\". \"Analysis\" means \"breaking down something into its parts or pieces, usually expressed as numbers for each of the pieces within a vector\"."
+  A_teacher: "You're right, and PCA is an algorithm that creates low dimensional dense vectors that express the topics or meaning within high dimensional vectors or tensors like images (light intensity arrays or tensors for each pixel), time series (prices or volume of transactions in vectors), word frequency vectors (bag-of-word vectors), DNA gene frequency vectors, any discrete fixed-length sequences or vectors, song audio sequences (audio amplitude vectors), etc.  When PCA is applied to natural language bag of words vectors (which have thousands of dimensions) it is called LSA (Latent Semantic Analysis) because the vectors PCA produces are semantic vectors that represent the meaning of each document in a lower-dimensional vector."
 -
   Q: "Do you know of any data scientist employers in LA? "
-  A: "For finance (quant) jobs check out all the banks in Santa Monica. To find lesser well-known companies, subscribe to the Owler and other newsletters/blogs that regularly report on startups receiving funding. In portland there are [slack](pdxstartups.com), Reddit, and IRC forums where startup news is shared. Meetups and "Million Cups" pitches are another great way to get plugged into the startup scene in any new area. Whenever you hear of an interesting startup receiving funding or hiring a CTO, visit their website to see if they have job openings in your area."
+  A: "For finance (quant) jobs check out all the banks in Santa Monica. To find lesser well-known companies, subscribe to the Owler and other newsletters/blogs that regularly report on startups receiving funding. In portland there are [slack](pdxstartups.com), Reddit, and IRC forums where startup news is shared. Meetups and \"Million Cups\" pitches are another great way to get plugged into the startup scene in any new area. Whenever you hear of an interesting startup receiving funding or hiring a CTO, visit their website to see if they have job openings in your area."
 -
   Q: "Isn't machine learning for optical flow a trivial problem."
   A: "No, it's an active area of research. And if you can come up with some preprocessing, like FFT or optical processing, like microlens arrays, that reduce the latency and computation required it would be extremely valuable in self-driving car and robotics applications."
@@ -724,8 +725,7 @@ A: "You need to use pd.get_dummies to create one-hot encodings of your categoric
   A: "The averaged 2D spatial FFT fringe lines look like they are parallel to optical flow to me because they point out radially from the center of the FOV for a camera facing forward on a self-driving car application."
 -
   Q: "I have data for water consumption over 15 minute intervals. I also have flags like, 'is_sports_event', 'is_holiday', 'is_weekend', 'is_rush_hour', 'is_business_hours' for each 15 minute interval. And there's a previous 3 hours of precipitation value as well. Some values are nan, particularly in the precipitation and water consumption columns. How can I build a time series model to predict the next day's water consumption?"
-  A: """
-  You need to use `DataFrame.ffill()` to fill `NaN` values rather than filling with the mean. Any data preprocessing that brings in future data to the past will help your model cheat. Next, you need to aggregate all the columns for each day using the DataFrame.resample(). Then you can time shift the precipitation water consumption data like this. Here's some fake data with column 'c' as your consumption data. You have to be careful to avoid Pandas' indexing magic which will try to prevent you from shifting your data:
+  A: "You need to use `DataFrame.ffill()` to fill `NaN` values rather than filling with the mean. Any data preprocessing that brings in future data to the past will help your model cheat. Next, you need to aggregate all the columns for each day using the DataFrame.resample(). Then you can time shift the precipitation water consumption data like this. Here's some fake data with column 'c' as your consumption data. You have to be careful to avoid Pandas' indexing magic which will try to prevent you from shifting your data:
   ```python
   >>> pd.np.random.seed(hash('Peter Watts') % 2**32)
   >>> N = 7
@@ -756,7 +756,7 @@ A: "You need to use pd.get_dummies to create one-hot encodings of your categoric
   2020-01-07  3  6  2          NaN
   Now you can perform any old machine learning model `.fit()` on the 'abc' columns as your indicator features and 'c_tomorrow' as your target output variable.
   ```
-  """
+  "
 -
   Q: "What is the computational complexity on an unsupervised algorithm to recommend commercial building retrofits to minimize energy consumption? Your goal is to find similar buildings and put them in clusters."
   A: "O(N^2)"
@@ -767,16 +767,16 @@ A: "You need to use pd.get_dummies to create one-hot encodings of your categoric
   Q: "What goes in the presentation slides for the capstone?"
   A: "A summary of all the interesting things you discovered in your report. Visualizations and statistics that you think would be interesting to your audience."
 -
-Q: "Because I have mostly categorical variables my correlation matrix with my target variable does not have many continuous correlation values."
-A: "You need to use pd.get_dummies to create one-hot encodings of your categorical variables and you need to encode your ordinal variables and consecutive integers so that `df.corr()` will display all the correlations that you are interested in."
+  Q: "Because I have mostly categorical variables my correlation matrix with my target variable does not have many continuous correlation values."
+  A: "You need to use pd.get_dummies to create one-hot encodings of your categorical variables and you need to encode your ordinal variables and consecutive integers so that `df.corr()` will display all the correlations that you are interested in."
 -
-  Q (teacher): "An employer asks you to create a recommendation engine for a recruiting firm. They have a database of resumes and job descriptions with some structured metadata for each (job title, location, name, email). They have information about past candidates and the jobs they applied for, interviewed for, and were hired for. What approach would you recommend?"
-  A (student): "There are two general approaches for recommendation engines, collaborative filtering and content-based filtering. A content-based approach would use NLP to compare all pairings of job descriptions and resumes to look for good matches. A collaborative filtering approach would cluster candidates and job descriptions and recommend jobs to candidates that were a good match for others in their cluster."
+  Q_teacher: "An employer asks you to create a recommendation engine for a recruiting firm. They have a database of resumes and job descriptions with some structured metadata for each (job title, location, name, email). They have information about past candidates and the jobs they applied for, interviewed for, and were hired for. What approach would you recommend?"
+  A_student: "There are two general approaches for recommendation engines, collaborative filtering and content-based filtering. A content-based approach would use NLP to compare all pairings of job descriptions and resumes to look for good matches. A collaborative filtering approach would cluster candidates and job descriptions and recommend jobs to candidates that were a good match for others in their cluster."
 -
-  Q (student): "Can I do machine learning on a graph?"
-  A (teacher): "Graphs are just data. You can do machine learning on anything. First, think about what a graph is and what kind of data is in a graph database. Then think about machine learning is. What exactly is machine learning?"
-  A (student): "Machine learning is using a data predict a new value."
-  A (teacher): "Yes but the prediction isn't always in the future in time. Machine learning is using a dataset of example inputs (features) and outputs (targets) to train a machine to write a function that can product similar outputs for similar inputs. Often it's used to predict something new."
+  Q_student: "Can I do machine learning on a graph?"
+  A_teacher: "Graphs are just data. You can do machine learning on anything. First, think about what a graph is and what kind of data is in a graph database. Then think about machine learning is. What exactly is machine learning?"
+  A_student: "Machine learning is using a data predict a new value."
+  A_teacher: "Yes but the prediction isn't always in the future in time. Machine learning is using a dataset of example inputs (features) and outputs (targets) to train a machine to write a function that can product similar outputs for similar inputs. Often it's used to predict something new."
 -
   Q: "Should I learn `statsmodels.ols` Ordinary Least Squares (OLS) linear regression or is it good enough to use `sklearn.LinearRegression`?"
   A: "The linear regression in `sklearn` is fine for all my work in the real world, but in the medical field or the academic world you might like having all the additional statistics that the `statsmodels` OLS model computes for you automatically."
@@ -813,8 +813,8 @@ A: "You need to use pd.get_dummies to create one-hot encodings of your categoric
 -
   Q: "How do I build a time series model that incorporates multiple features other than time?"
   A: "The marine difference in time series modeling and normal models is that you have to respect the order of the dates/times in the dataset when doing a train/test split. Research 'backtesting' or 'time series expanding window cross validation'. You also need to pay attention to time order when you shift your target variable in time to match your prediction horizon. So if you want to predict something at least one day in advance you can shift your target variable by one day so that the target variable for tomorrow is on the same row in your DataFrame as the feature values for today. Features that you know about tomorrow can also be shifted by one day and added as additional features. This works well for features you have an accurate forecast today for a value, like rainfall or max temperature, for tomorrow. Can you think of other features that you know about tomorrow before tomorrow arrives? "
-  A (student): "The day of the week, whether it's a weekday, the phase of the moon, the tides, whether it's a holiday, whether it's summer, the number of days since some other event, like the beginning of the dataset or the beginning of some significant event in the news. I need to work on an example problem before I understand it."
-  A (teacher): "Stock market data makes good multi variate time series data to model. Predicting tomorrow's stock price or it's price change relative to today. You can even make it a classification model if you create price or percent change ratio ranges of interest, like >1.005 or < .995 or between .995 and 1.005. Also it will give you practice incorporating multiple time series features like daily volume, the high prices, the low price, average news sentiment for the day, or weather. You can create independent ARMA or facebook prophet models for each such time series and use their predicted values as input into your model, if the predictions are accurate. If the predictions are not accurate you can simply use the current day's values for those time series."
+  A_student: "The day of the week, whether it's a weekday, the phase of the moon, the tides, whether it's a holiday, whether it's summer, the number of days since some other event, like the beginning of the dataset or the beginning of some significant event in the news. I need to work on an example problem before I understand it."
+  A_teacher: "Stock market data makes good multi variate time series data to model. Predicting tomorrow's stock price or it's price change relative to today. You can even make it a classification model if you create price or percent change ratio ranges of interest, like >1.005 or < .995 or between .995 and 1.005. Also it will give you practice incorporating multiple time series features like daily volume, the high prices, the low price, average news sentiment for the day, or weather. You can create independent ARMA or facebook prophet models for each such time series and use their predicted values as input into your model, if the predictions are accurate. If the predictions are not accurate you can simply use the current day's values for those time series."
   tags: [time series, expanding window, back testing]
 -
   Q: "What do I need for a good data science project report."
@@ -830,7 +830,7 @@ A: "You need to use pd.get_dummies to create one-hot encodings of your categoric
   tags: [nlp, tf-idf, train_test_split, test set, validation set, vocabulary]
 -
   Q: What are all the steps of a typical NLP pipeline for something like spam filtering or sentiment analysis.
-  A: """
+  A: "
   1. load the data or instantiate a data generator
   2. clean the data (or instantiate a new generator on the cleaned data)
   3. extract features from your numerical feature (indicator) variables
@@ -846,41 +846,41 @@ A: "You need to use pd.get_dummies to create one-hot encodings of your categoric
   13. model fit (logistic regression, linear regression, NaiveBayes, SVM, CNN, LSTM)
   14. model evaluation: `model.predict` and `.score` (accuracy) on the training validation and test sets
   15. add a row for each model and hyperparameter combination you tried to your hyperparameter tuning table
-  """
+  "
 -
   Q: "I have two datasets from UCI. One with ~120 examples of breast cancer survival with 10 numerical features (blood test results, continuous variables). One with ~156 examples of HCC (liver cancer) survival with ~67 text features, some of which are categorical or ordinal. Which would make the best data science project."
   A: "The HCC dataset would be best for learning datascience because you would have a variety of data cleaning and feature extraction tasks to practice on. But the breast cancer dataset would be much easier to work with because you could immediately fit a simple model on the raw numerical data with only a few lines of code."
 -
   Q: "Why does my NLP CNN model for spam prediction get nearly the best training and validation accuracy (93%), but gets 0 false negatives and 0 false positives?"
   A: "Do any of the other models get perfect classification accuracy on the test set?"
-  A (student): "No, all my other CNN models and LSTM models get reasonable FP and FN scores."
-  A (teacher): "Then you likely have a bug in your code. Did you manually run each model or did you use a GridSearch object or for loop to train and test your models?"
-  A (student) 2: "I manually loaded the saved models for the best ones and copied and pasted the code to compute F1 score."
-  A (teacher) 2: "The best way to avoid bugs and errors is to DRY (do not repeat yourself) your code using a for loop to perform repetitive operations."
+  A_student: "No, all my other CNN models and LSTM models get reasonable FP and FN scores."
+  A_teacher: "Then you likely have a bug in your code. Did you manually run each model or did you use a GridSearch object or for loop to train and test your models?"
+  A_student2: "I manually loaded the saved models for the best ones and copied and pasted the code to compute F1 score."
+  A_teacher2: "The best way to avoid bugs and errors is to DRY (do not repeat yourself) your code using a for loop to perform repetitive operations."
 -
-  Q (teacher): What is overfitting and how do you detect it?
-  A (student): Overfitting is when your model doesn't generalize well, it doesn't get good accuracy on new data. You can detect it by calculating the prediction accuracy (like RMSE or F1 score) on the test set and comparing it to the prediction accuracy on the training set.
+  Q_teacher: What is overfitting and how do you detect it?
+  A_student: Overfitting is when your model doesn't generalize well, it doesn't get good accuracy on new data. You can detect it by calculating the prediction accuracy (like RMSE or F1 score) on the test set and comparing it to the prediction accuracy on the training set.
 -
   Q: Based on our retention prediction model, we're planning to do 2 different interventions and compare them to a control group to try to increase retention. Is this a good approach?
   A: It's better to chose your least risky intervention, the one least likely to do harm. Unless you have time pressure, you will get more reliable results if you only do a single small intervention and measure it's effect using A/B testing (comparing to a control group). Then you can spend time examining the results to build on the approach and decide the next best intervention to try. Human behavior is complicated, so you need to minimize the complexity of your causal test protocol.
 -
   Q: "How can I use python filter out outliers in a table of home prices."
   A: "Like any programming challenge the first step is to imagine how you would do it manually in your own mind. How would you select the outliers from a table of data if you had to do it by hand using your own brain."
-  A (student): "I would plot a scatterplot and look for any values that looked funky and delete them."
-  Q (teacher): "Yes but you have to do it mathematically. You can't program feelings. But it turns out there is a score for 'funkiness' of data points of values. It's a very common statistic that can be calulated on any array of values or any distribution of values. Can you guess what the score is? Hint: it's a '____-score'."
-  A (student) 1: "Is it 'z-score'?"
-  Q (teacher) 1: "Yes! Now how can you use a z-score to filter out outliers."
-  A (student) 2: "You could just remove all the point with a z-score greater than 3 (3 sigma)."
-  Q (teacher) 2: "Yes! How do you do that efficiently in python, assuming your data is in a Pandas DataFrame?"
-  A (student) 2: "Using a mask (array of Trues and Falses) to select only those rows within the desired z-score range. The mask goes inside square brackets to select only those rows where there is a True value for the mask, which was created with a conditional expresion like `mask = (df.zscore < 3.0) & (df.zscore > -3.0)`"
+  A_student: "I would plot a scatterplot and look for any values that looked funky and delete them."
+  Q_teacher: "Yes but you have to do it mathematically. You can't program feelings. But it turns out there is a score for 'funkiness' of data points of values. It's a very common statistic that can be calulated on any array of values or any distribution of values. Can you guess what the score is? Hint: it's a '____-score'."
+  A_student1: "Is it 'z-score'?"
+  Q_teacher1: "Yes! Now how can you use a z-score to filter out outliers."
+  A_student2: "You could just remove all the point with a z-score greater than 3 (3 sigma)."
+  Q_teacher2: "Yes! How do you do that efficiently in python, assuming your data is in a Pandas DataFrame?"
+  A_student2: "Using a mask (array of Trues and Falses) to select only those rows within the desired z-score range. The mask goes inside square brackets to select only those rows where there is a True value for the mask, which was created with a conditional expresion like `mask = (df.zscore < 3.0) & (df.zscore > -3.0)`"
 -
   Q: "When should I use F-beta score instead of F-1 score?"
-  A: "When you know the "beta" that is appropriate for your problem. How do you compute the beta for a particular problem? How do you decide what beta to use?"
-  A (student): "Beta is the weight or importance of false positives vs. false negatives. So it is determined by how important it is for your model to minimize false positives vs. false negatives."
-  A (teacher): "Yes, exactly. For example in a spam filtering problem you want to minimize false positives. If false positives are twice as important in your application than false negatives, then what should you use for your value of beta?"
-  A (student) 2: "Your beta should be 2."
-  A (teacher) 2: "Yes. Now, for a medical diagnostic test for a deadly disease like a blood test for cancer, you would probably like to minimize false negative test results and they might be 10 times as important as false positives. So in that case what should your beta value be?"
-  A (student) 3: "You might use a beta value of 0.1."
+  A: "When you know the \"beta\" that is appropriate for your problem. How do you compute the beta for a particular problem? How do you decide what beta to use?"
+  A_student: "Beta is the weight or importance of false positives vs. false negatives. So it is determined by how important it is for your model to minimize false positives vs. false negatives."
+  A_teacher: "Yes, exactly. For example in a spam filtering problem you want to minimize false positives. If false positives are twice as important in your application than false negatives, then what should you use for your value of beta?"
+  A_student2: "Your beta should be 2."
+  A_teacher2: "Yes. Now, for a medical diagnostic test for a deadly disease like a blood test for cancer, you would probably like to minimize false negative test results and they might be 10 times as important as false positives. So in that case what should your beta value be?"
+  A_student3: "You might use a beta value of 0.1."
 -
   Q: "What is a leverage plot?"
   A: "A leverage plot shows the importance or usefulness of each sample in predicting the target variable. It's essentially the magnitude of the z-score for each **sample** relative to the residual. So eliminating outliers is equivalent to eliminating low leverage data points. You can think about it as as the inverse of dimesion reduction. It helps you decide which **rows** in a dataframe should be deleted rather than individual **columns** that should be deleted: http://analyticspro.org/2016/03/07/r-tutorial-how-to-use-diagnostic-plots-for-regression-models/"
@@ -928,17 +928,17 @@ A: "You need to use pd.get_dummies to create one-hot encodings of your categoric
   Q: "What is _dropout_ and how does it reduce overfitting?"
   A: "_Random dropout_ is a neural network training technique. A `Dropout` layer can be added anywhere within a deep learning neural network. It randomly blocks the activation of a portion of the neurons in the layer where the Dropout layer is installed. This cause the backpropagation (gradient) calculation to adjust different weights for the same feature values for different samples (examples). That prevents the network from 'memorizing' your training set. It produces a different activation and different weight adjustments for the same input vector during training, spreading the learned information around among many weights. After training, for activation or inference on a validation or test set, the dropout layer becomes a passthrough and does not block any activations. This maximizes the model accuracy."
 -
-  Q: I have a jupyter notebook with many different model types. How can  I automate the creation of my hyperparmeter table?
-  A: Create a function for each kind of model you want to evaluate. Create a separate function to evaluate the models with the exact same test set and training set. Create a for loop that iterates through those functions and runs them on your data to populate a list of hyperparameters and accuracy scores, one model for each row in your hyperparameter.
+  Q: "I have a jupyter notebook with many different model types. How can I automate the creation of my hyperparmeter table?"
+  A: "Create a function for each kind of model you want to evaluate. Create a separate function to evaluate the models with the exact same test set and training set. Create a for loop that iterates through those functions and runs them on your data to populate a list of hyperparameters and accuracy scores, one model for each row in your hyperparameter."
 -
   Q: "What is cross validation?"
   A: "Cross validation trains multiple models on different train-test splits of your data. This allows you to compute an average accuracy on your training sets and test sets as well as **confidence** intervals around those accuracy numbers."
 -
   Q: "What does a cross validation algorithm return?"
   A: "It does not return a model. Cross validation computes multiple training and test set accuracy values which can be combined into a mean accuracy and a confidence interval on those accuracy values. This is the desired output of CV, the expected accuracy on a new dataset and how confident you can be in that accuracy estimate--how likely your predictions in the future are going to be that accurate."
-_
+-
   Q: "What is cross validation used for?"
-  A: "Cross validation trains multiple models on different train-test splits of your data. This allows you to compute an average accuracy on your training sets and test sets as well as **confidence** intervals around those accuracy numbers. CV is used to estimate how well your model will work on new unseen data. It's especially useful when you do not have a large training set or your test set is not likely to be representative of examples you will see in the future. "
+  A: "Cross validation trains multiple models on different train-test splits of your data. This allows you to compute an average accuracy on your training sets and test sets as well as **confidence** intervals around those accuracy numbers. CV is used to estimate how well your model will work on new unseen data. It's especially useful when you do not have a large training set or your test set is not likely to be representative of examples you will see in the future."
 -
   Q: "The accuracy of my logistic regression model on my test set is always exactly 95%, no matter what value of C I use for regularizing the model."
   A: "This tells you that your model is already well-regularized without adding an addition loss term to the model for the number of nonzero weights in your model. Your dataset is large enough and your dimensionality is low enough such that a random sample of your dataset for the test set is always represetative of the other records in the training set (has similar statistics, without any missed outliers). So regularization is not necessary and will not improve your test set accuracy. You are not going to ever have an overfitting problem."
@@ -973,7 +973,7 @@ _
   Q: "How can I use an unsupervised algorithm to classify email as spam or ham."
   A: "You 'train' your unsupervised clustering algorithm to assign an arbitrary binary label to each email. Then you map those arbitrary labels to spam or ham depending on which pairing gives the best accuracy on your training set. Then you use the accuracy on your test set for that mapping and that model as your true measure of accuracy."
 -
-  Q: "Name 4 general approaches to building a model to recommend "friends" on LinkedIn or Facebook to one another?"
+  Q: "Name 4 general approaches to building a model to recommend \"friends\" on LinkedIn or Facebook to one another?"
   A: "1. supervised content-based recommendation engine. 2. unsupervised content-based recommendation engine. 3. supervised collaborative filtering model. 3. unsupervised collaborative filtering model."
 -
   Q: "Of these 4 kinds of recommendation engines, which is the least likely to provide an accurate model? 1. supervised content-based recommendation engine. 2. unsupervised content-based recommendation engine. 3. supervised collaborative filtering model. 3. unsupervised collaborative filtering model."
@@ -981,8 +981,8 @@ _
 -
   Q: "A coding challenge asked me build a binary classifier but the dataset is biased because it has more positive than negative examples (more ones than zeros). My first attempt was to make the number of 0 labels equal to the number of 1 labels by truncating the dataset. What else can I do with my SVM?"
   A: "First that's called an 'imbalanced' dataset not a 'biased' dataset. DuckDuckGo for 'sklearn imbalanced training set' to get ideas. Your first approach is called 'undersampling the majority class.'  Which class would you oversample in order to maintain a balanced training set? How would you accomplish that oversampling? Are there some other approaches?"
-  A (student): "I could oversample the minority class using sample with replacement (pandas.DataFrame.sample()) on a dataset of only positive examples. I'd alternate between tables containing the minority and majority classes with equal probability during that sampling. Another approach might be to use the `class_weights='auto'` argument in many classifiers like SVC."
-  A (teacher): "Yes, that would work well. But a better oversampling approach is to shuffle the two tables and build a generator that perpetually iteratest through each class (each table) reshuffling and restarting the iterator whenever it reaches the end. That will ensure all of the samples are reused an equal number of times, maximizing your learning rate. And yes, `class_weights='auto'` is the most efficient way to train a classifier on unbalanced datasets."
+  A_student: "I could oversample the minority class using sample with replacement (pandas.DataFrame.sample()) on a dataset of only positive examples. I'd alternate between tables containing the minority and majority classes with equal probability during that sampling. Another approach might be to use the `class_weights='auto'` argument in many classifiers like SVC."
+  A_teacher: "Yes, that would work well. But a better oversampling approach is to shuffle the two tables and build a generator that perpetually iteratest through each class (each table) reshuffling and restarting the iterator whenever it reaches the end. That will ensure all of the samples are reused an equal number of times, maximizing your learning rate. And yes, `class_weights='auto'` is the most efficient way to train a classifier on unbalanced datasets."
 -
   Q: "What are word vectors and what are they used for?"
   A: "Word vectors are a vector representation of the semantics (meaning) of words. They can be used in algebraic expressions like `wv['queen'] - wv['woman'] + wv['man']` to perform reasoning and inference. This example expression would produce a word vector that is very close to the word vector for 'king' (`wv['king']`). They can also be used in any pipeline where one-hot encoding of words into vectors are used. They reduce the dimensionality of your vector encodings of words but they make the encodings dense and continuous. This is a transfer learning technique for natural language processing pipelines, typically used for LSTM or RNN models of word sequences."
@@ -1002,9 +1002,9 @@ _
 -
   Q: "What are some good questions to ask an interviewer in an informational interview?"
   A: "As a data scientist what do you want to know about the company or business or people?"
-  A (student): "How easy they are to get along with. How interesting is the project they'd have me working on, etc."
-  Q (teacher): "Yes, in addition what does a _data scientist_ focus on in their work? What matters most to their success at work? What is a data scientist most passionate about? What is the key ingredient for a data science predictive model."
-  A (student): "A data scientist is mostly intersted in the data and the processes around it. What is the quality and amount of data for the problems the business has? How much is management behind the use of data to make decisions? Do executives pay attention to quantititave metrics when they are making decisions (data driven company) or are they focused mostly on their influence and power to control the organization using their own brilliant intuition? Ego-driven software development decisions or evidence-based decisions? You want to work for a company where data science is at the core of what they do. Otherwise you will spend your day trying to convince others to pay attention to what your models are telling you about their business."
+  A_student: "How easy they are to get along with. How interesting is the project they'd have me working on, etc."
+  Q_teacher: "Yes, in addition what does a _data scientist_ focus on in their work? What matters most to their success at work? What is a data scientist most passionate about? What is the key ingredient for a data science predictive model."
+  A_student: "A data scientist is mostly intersted in the data and the processes around it. What is the quality and amount of data for the problems the business has? How much is management behind the use of data to make decisions? Do executives pay attention to quantititave metrics when they are making decisions (data driven company) or are they focused mostly on their influence and power to control the organization using their own brilliant intuition? Ego-driven software development decisions or evidence-based decisions? You want to work for a company where data science is at the core of what they do. Otherwise you will spend your day trying to convince others to pay attention to what your models are telling you about their business."
 -
   Q: "Why is my model getting 100% accuracy (`.score() == 1`)?"
   A: "You have probably passed in the `y_pred`, the predictions for your model, rather than `y_test` the True values of your target variable. So that score is just confirming that your model is perfectly correlated with the `X_test` -> `y_pred` mapping that you created by running `y_pred = model.fit(X_test)`.  That just means that your model is not stochastic. It produces the same predictions whenever you run it on the same input features. So you should do `model.score(X_test, y_test)` instead of `model.score(X_test, y_pred)` to get a real measure of your model's performance. "
@@ -1086,11 +1086,11 @@ _
 -
   Q: "How do you fix this bug: `ModuleNotFoundError: No module named 'scratch'`?"
   A: "What does the error message tell you that `scratch` is?"
-  A (student): "It's a module."
-  A (teacher): "Yes it's a module once you import it into python, but it's also a package outside of your environment that you can install by using the command shown at the top of the [docs page on pypi](https://pypi.org/project/scratch). If you're in the console or shell: `pip install scratch`. If you're in an ipython or jupyter console: `!pip install scratch`."
+  A_student: "It's a module."
+  A_teacher: "Yes it's a module once you import it into python, but it's also a package outside of your environment that you can install by using the command shown at the top of the [docs page on pypi](https://pypi.org/project/scratch). If you're in the console or shell: `pip install scratch`. If you're in an ipython or jupyter console: `!pip install scratch`."
 -
-  Q (student): "I compiled opencv on raspbian stretch on a raspberry pi B 3+ but I can't import opencv."
-  A (teacher): "Are you using a virtual environment?"
+  Q_student: "I compiled opencv on raspbian stretch on a raspberry pi B 3+ but I can't import opencv."
+  A_teacher: "Are you using a virtual environment?"
   Q2 (student): "I didn't think that was important. I skipped those steps."
   A2 (teacher): "Make sure you activate a virtual environment before you pip install opencv. Then you need to make sure you activate that same environment before launching python. You can tell which virtual environment you are in by typing `which python` to show the path to the virtualenv. And you can tell the version of python by typeing `python --version`. Make sure it's python3.5+."
   date: 2019-02-28
@@ -1103,15 +1103,15 @@ _
 -
   Q: "How do you fix this bug: `ModuleNotFoundError: No module named 'scratch'`?"
   A: "What does the error message tell you that `scratch` is?"
-  A (student): "It's a module."
-  A (teacher): "Yes it's a module once you import it into python, but it's also a package outside of your environment that you can install by using the command shown at the top of the [docs page on pypi](https://pypi.org/project/scratch). If you're in the console or shell: `pip install scratch`. If you're in an ipython or jupyter console: `!pip install scratch`."
+  A_student: "It's a module."
+  A_teacher: "Yes it's a module once you import it into python, but it's also a package outside of your environment that you can install by using the command shown at the top of the [docs page on pypi](https://pypi.org/project/scratch). If you're in the console or shell: `pip install scratch`. If you're in an ipython or jupyter console: `!pip install scratch`."
 -
   Q: "How can I improve the accuracy of my real estate home price estimator?"
-  A1: "You can fill your NaN values in your feature vectors with predictions for each of those values based on all the other features for which you have complete data. This is called interpolation, or "imputing" data. You want to start with the feature that has the fewest NaN values, then work your way up to the features that have many NaN values. As usual, each time you impute a new set of values you should retrain your model and see how it affects your test set accuracy. And you should record each of these training runs in a hyper parameter table."
+  A1: "You can fill your NaN values in your feature vectors with predictions for each of those values based on all the other features for which you have complete data. This is called interpolation, or \"imputing\" data. You want to start with the feature that has the fewest NaN values, then work your way up to the features that have many NaN values. As usual, each time you impute a new set of values you should retrain your model and see how it affects your test set accuracy. And you should record each of these training runs in a hyper parameter table."
   A2: "You can also try different models like random forest regressor, a polynomial regressor, and an artificial neural network."
   A3: "For each model, or data cleaning approach, or hyperparameter used to configure a model, you should record a new row in a table or database that lists all the pieces of your pipeline and how they were configured differently from the other models in your table. This is called a hyperparameter table. You can use it for inspiration to find additional hyperparameters to adjust, or parts of the hyperparameter space to explore. You should save your code for each pipeline (each row in the hyperparam table) so you can recreate the results if asked."
 -
-  Q: "What do I do about NaN or missing values that appear to actually mean something, like "fence type" for a realestate home price estimator."
+  Q: "What do I do about NaN or missing values that appear to actually mean something, like \"fence type\" for a realestate home price estimator."
   A: "In your example, a `fence_type` of NaN or None or '' probably means the home does not have a fence. In this case you should replace it with an integer like 0 or a string like 'None' to represent this does not have a fence categorical value."
 -
   Q: What is Keras? Was it created by Google?
@@ -1234,12 +1234,12 @@ _
 -
   Q: "Is R^2 a good metric to put in my hyperparameter table?"
   A: "When you present your results what questions do you think your audience will have about the accuracy of your model? Will your audience or boss care about R^2 correlation coefficients? What accuracy number would they need in order to make good business decisions based on your model and the accuracy you are reporting?"
-  A (student): "The audience would probably want to know about the maximum dollar error in the price prediction for each home. Sellers could use something like a 60%, 90%, or 99% confidence interval to make business decisions based on how over or undervalued the home listing is relative the that confidence interval."
+  A_student: "The audience would probably want to know about the maximum dollar error in the price prediction for each home. Sellers could use something like a 60%, 90%, or 99% confidence interval to make business decisions based on how over or undervalued the home listing is relative the that confidence interval."
 -
   Q: "My data (word counts) has a really broad range so the histogram looks like an exponential curve and it's hard to see the values for the smaller counts. Should I split it into two plots for the small and large word counts?"
   A: "No. You should use a log scale on the vertical axis of your histogram."
-  A (student): "But my audience may not be able to interpret logarithmic scales."
-  A (teacher): "Then you may have to educate them. Two separate linear plots with different vertical scales side by side will be misleading. You will be helping them draw incorrect conclusions. You will encounter many logarithmic and exponential datasets in data science. To get the most out of that data you will have to visualize it in a way that is both accurate and informative. Logarithmic scaling is an invaluable tool for that."
+  A_student: "But my audience may not be able to interpret logarithmic scales."
+  A_teacher: "Then you may have to educate them. Two separate linear plots with different vertical scales side by side will be misleading. You will be helping them draw incorrect conclusions. You will encounter many logarithmic and exponential datasets in data science. To get the most out of that data you will have to visualize it in a way that is both accurate and informative. Logarithmic scaling is an invaluable tool for that."
 -
   Q: "How important is knowing SQL and python programming for a data scientist?"
   Q: "How important is it for a data scientist to know SQL and python for a data scientist?"
@@ -1316,4 +1316,3 @@ _
     Also, notice that mispelled words that don't exist in the spacy dictionary, like "Goobye" don't crash the loop. Spacy just returns an all-zero vector for those words.
 
     See the [spaCy documentation](https://spacy.io/usage/vectors-similarity) for more details.
--
